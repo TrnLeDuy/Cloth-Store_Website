@@ -129,14 +129,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietSanPham.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoanhThu.cs">
@@ -223,6 +222,9 @@
     <Content Include="Models\FashionDB.edmx.diagram">
       <DependentUpon>FashionDB.edmx</DependentUpon>
     </Content>
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -249,6 +251,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Account\DangKy.cshtml" />
+    <Content Include="Views\Account\DangNhap.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
