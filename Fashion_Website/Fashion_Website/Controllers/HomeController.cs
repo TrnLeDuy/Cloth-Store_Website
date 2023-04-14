@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fashion_Website.Models;
+using Fashion_Website.Models.mapSanPham;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,16 @@ namespace Fashion_Website.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult TrangChu()
         {
             return View();
-        }
+        }      
 
-        public ActionResult About()
+        public ActionResult SanPham()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            fashionDBEntities db = new fashionDBEntities();
+            var danhSachSP = db.SanPhams.ToList();
+            return View(danhSachSP);
         }
     }
 }
