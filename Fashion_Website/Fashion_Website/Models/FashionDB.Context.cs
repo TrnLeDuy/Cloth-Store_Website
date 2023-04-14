@@ -13,10 +13,10 @@ namespace Fashion_Website.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class fashionDBEntities1 : DbContext
+    public partial class fashionDBEntities : DbContext
     {
-        public fashionDBEntities1()
-            : base("name=fashionDBEntities1")
+        public fashionDBEntities()
+            : base("name=fashionDBEntities")
         {
         }
     
@@ -29,6 +29,7 @@ namespace Fashion_Website.Models
         public virtual DbSet<ChiTietSanPham> ChiTietSanPhams { get; set; }
         public virtual DbSet<DoanhThu> DoanhThus { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }

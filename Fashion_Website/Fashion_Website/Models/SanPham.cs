@@ -19,6 +19,7 @@ namespace Fashion_Website.Models
         {
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ChiTietSanPhams = new HashSet<ChiTietSanPham>();
+            this.GioHangs = new HashSet<GioHang>();
         }
     
         public string MaSP { get; set; }
@@ -29,6 +30,8 @@ namespace Fashion_Website.Models
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GioHang> GioHangs { get; set; }
         public virtual LoaiSanPham LoaiSanPham { get; set; }
     }
 }
