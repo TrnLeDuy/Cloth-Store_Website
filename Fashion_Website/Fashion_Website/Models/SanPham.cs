@@ -18,18 +18,21 @@ namespace Fashion_Website.Models
         public SanPham()
         {
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
-            this.ChiTietSanPhams = new HashSet<ChiTietSanPham>();
             this.GioHangs = new HashSet<GioHang>();
         }
     
         public string MaSP { get; set; }
         public string TenSP { get; set; }
         public string MaLoaiSP { get; set; }
+        public string Hinhanh { get; set; }
+        public string Mota { get; set; }
+        public decimal GiaSP { get; set; }
+        public string KichCoSP { get; set; }
+        public int TinhTrangSP { get; set; }
+        public int SoLuongSP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
         public virtual LoaiSanPham LoaiSanPham { get; set; }

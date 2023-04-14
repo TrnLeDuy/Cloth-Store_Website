@@ -17,6 +17,7 @@ namespace Fashion_Website.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.GioHangs = new HashSet<GioHang>();
             this.KhachHangs = new HashSet<KhachHang>();
         }
     
@@ -26,6 +27,8 @@ namespace Fashion_Website.Models
         public string Role { get; set; }
         public double TinhTrang { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GioHang> GioHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
     }
