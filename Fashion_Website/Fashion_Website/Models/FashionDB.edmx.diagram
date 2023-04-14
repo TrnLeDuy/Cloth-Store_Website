@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="fashionDBModel.KhachHang" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.SanPham" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.User" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.User" Width="1.5" PointX="3.875" PointY="10.125" IsExpanded="true" />
         <AssociationConnector Association="fashionDBModel.FK__ChiTietDon__MaDH__37A5467C" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__ChiTietDon__MaSP__36B12243" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__DoanhThu__MaHD__3A81B327" ManuallyRouted="false" />

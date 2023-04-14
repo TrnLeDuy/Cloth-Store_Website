@@ -1,0 +1,38 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+}
+
+#message-box {
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 0 35px #04040445;
+    border-radius: 20px;
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    z-index: 1111;
+}
+
+#message-box input {
+        background-color: #00e2ff;
+        color: white;
+        border: none;
+        border-radius: 40px;
+        width: 80px;
+        padding: 5px;
+        height: 40px;
+        box-shadow: 0 12px 20px #00c2ff6e;
+}
