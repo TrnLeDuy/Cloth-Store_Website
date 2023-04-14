@@ -209,7 +209,7 @@ namespace Fashion_Website.Controllers
             return View();
         }
 
-        public ActionResult Logout()
+        public ActionResult DangXuat()
         {
             //Perform any necessary cleanup or logging out of the user
             //Remove any authentication cookies or session state information
