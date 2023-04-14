@@ -44,21 +44,20 @@
                             <button style="color:black" id="signupButton">ĐĂNG KÝ</button>
                         }
                     </div>
-                    @using (Html.BeginForm("DangKy", "Account"))
+                    @using (Html.BeginForm("DangKyUser", "Account"))
                     {
                         @Html.ValidationSummary(true)
                         <div class="form-group" style="text-align: left;">
                             <label for="login">Tài khoản: </label>
                             @Html.TextBox("Username", null, new { @class = "form-control", @id = "login", required = "required" })
                         </div>
-
                         @Html.ValidationSummary(true)
                         <div class="form-group" style="text-align: left;">
                             <label for="password">Mật khẩu: </label>
                             @Html.Password("UserPass", null, new { @class = "form-control", @id = "password", required = "required" })
                         </div>
-                        <button style="margin-top:40px;" type="submit" class="btn sub-btn btn-primary">ĐĂNG NHẬP</button>
-                        <a class="forgotpassword" href="#">Forgot Password?</a>
+                        
+                        <button style="margin-top:40px;" type="submit" class="btn sub-btn btn-primary">ĐĂNG KÝ</button>
                     }
                 </div>
             </div>

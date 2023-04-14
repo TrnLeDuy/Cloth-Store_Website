@@ -196,6 +196,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\dangky.css" />
     <Content Include="Content\dangnhap.css" />
     <Content Include="Content\dangnhap.js" />
     <Content Include="Content\general.css" />
@@ -255,9 +256,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Account\DangKy.cshtml" />
     <Content Include="Views\Account\DangNhap.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Account\DangKyUser.cshtml" />
+    <Content Include="Views\Account\DangKyKhach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
