@@ -16,7 +16,7 @@ namespace Fashion_Website.Controllers
             GioHang giohang = new GioHang();
             giohang = model;
             db.GioHangs.Add(model);
-            db.SaveChanges();
+            //db.SaveChanges();
             return View();   
         }
     }
