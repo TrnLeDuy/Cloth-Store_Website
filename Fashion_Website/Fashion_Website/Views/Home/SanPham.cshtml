@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Fashion_Website.Models.SanPham>
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+
+<head>
+    <link href="~/Content/Sanpham.css" />
+</head>
+
+<body>
+    <section id="collection-wrapper" class="mg-bottom-30">
+        <div class="collection-wrapper-header">
+            <div class="grid-container tittle-container">
+                <div class="grid-item">
+                    <h1 class="section-title">
+                        T-SHIRTS
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="grid-container product">
+            @foreach (var item in Model)
+            {
+                <div class="grid-item">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <a href="~/ChiTietSanPham/ChiTietSP?masp=@item.MaSP" class="">
+                                <img src="~/images/@item.Hinhanh" class="img-responsive item-thumb">                                                           
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <a href="~/ChiTietSanPham/ChiTietSP?masp=@item.MaSP" class="product-title a">@item.TenSP</a>
+                            <span class="sku-loop">Mã sản phẩm: @item.MaSP</span>
+                            <span class="product-size">
+                                <span class="size">Size: @item.KichCoSP</span>
+                            </span>
+                            <span class="product-price">
+                                <span class="current-price">Giá: @item.GiaSP₫</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+</body>
+
+

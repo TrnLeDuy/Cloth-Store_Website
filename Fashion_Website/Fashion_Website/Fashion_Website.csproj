@@ -129,14 +129,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietSanPham.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoanhThu.cs">
@@ -172,9 +171,11 @@
     <Compile Include="Models\LoaiSanPham.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\mapSanPham\mapSanPham.cs" />
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\taoMa\taoMaGioHang.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
@@ -197,9 +198,24 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\ChiTiet.css" />
+    <Content Include="Content\hiep.css" />
+    <Content Include="Content\mystyle.css" />
+    <Content Include="Content\Sanpham.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\img1.jpg" />
+    <Content Include="images\img2.jpg" />
+    <Content Include="images\img3.jpg" />
+    <Content Include="images\img4.jpg" />
+    <Content Include="images\img5.jpg" />
+    <Content Include="images\mwc01.jpg" />
+    <Content Include="images\mwc02.jpg" />
+    <Content Include="images\mwc03.jpg" />
+    <Content Include="images\product1.jpg" />
     <Content Include="Models\FashionDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FashionDB.edmx</DependentUpon>
@@ -223,6 +239,10 @@
     <Content Include="Models\FashionDB.edmx.diagram">
       <DependentUpon>FashionDB.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -245,10 +265,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
+    <Content Include="Views\ChiTietSanPham\ChiTietSP.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
