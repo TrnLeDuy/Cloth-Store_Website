@@ -22,7 +22,10 @@ namespace Fashion_Website.Models
         public decimal GiaSP { get; set; }
         public decimal ThanhTien { get; set; }
         public string MaSP { get; set; }
+        public string UserID { get; set; }
+        public string TinhTrangGH { get; set; }
     
         public virtual SanPham SanPham { get; set; }
+        public virtual User User { get; set; }
     }
 }

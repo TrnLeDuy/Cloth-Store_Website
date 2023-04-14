@@ -4,24 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b9bb9a332e4147c69f45058037447b55" Name="Diagram1">
-        <EntityTypeShape EntityType="fashionDBModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.ChiTietSanPham" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.DoanhThu" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.DonHang" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.GioHang" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.HoaDon" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.KhachHang" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+      <Diagram DiagramId="115d799e05314c4a9b005bdae9955ae2" Name="Diagram1">
+        <EntityTypeShape EntityType="fashionDBModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.DoanhThu" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.DonHang" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.GioHang" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.HoaDon" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.KhachHang" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.SanPham" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.SanPham" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.User" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
-        <AssociationConnector Association="fashionDBModel.FK__ChiTietDon__MaDH__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK__ChiTietDon__MaSP__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK__ChiTietSan__MaSP__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK__DoanhThu__MaHD__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK__ChiTietDon__MaDH__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK__ChiTietDon__MaSP__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK__DoanhThu__MaHD__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__DonHang__MaKH__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__HoaDon__MaDH__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK__GioHang__MaSP__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK__GioHang__MaSP__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK__GioHang__UserID__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__HoaDon__MaKH__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__KhachHang__UserI__276EDEB3" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK__SanPham__MaLoaiS__33D4B598" ManuallyRouted="false" />

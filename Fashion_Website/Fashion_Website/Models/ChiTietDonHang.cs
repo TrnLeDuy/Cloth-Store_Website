@@ -15,11 +15,9 @@ namespace Fashion_Website.Models
     public partial class ChiTietDonHang
     {
         public string MaCTDH { get; set; }
-        public string Hinhanh { get; set; }
         public int SoLuongDat { get; set; }
         public decimal DonGia { get; set; }
         public string KichCoSP { get; set; }
-        public string Mota { get; set; }
         public string MaSP { get; set; }
         public string MaDH { get; set; }
     
