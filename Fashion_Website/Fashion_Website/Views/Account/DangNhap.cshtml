@@ -1,17 +1,78 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
-<!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>DangNhap</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+
+    <!--Bootstrap/CSS-->
+    <link href="~/Content/dangnhap.css" rel="stylesheet" />
+    <link href="~/Content/general.css" rel="stylesheet" />
+
+    <!--Script-->
+    <script>
+        $(document).on("click", "#signupButton", function () {
+    window.location.href = '@Url.Action("DangKyView", "Account")';
+        });
+        $(document).on("click", "#signinButton", function () {
+    window.location.href = '@Url.Action("DangNhapView", "Account")';
+        });
+    </script>
+
 </head>
 <body>
-    <div> 
+    @using (Html.BeginForm("DangNhapView", "Account"))
+    {
+        if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+        {
+            <div id="message-box">
+                <h3 class="warningMessage" style="text-align:center">@ViewBag.ThongBao</h3>
+                <form method="post" action="~/Views/Account/DangNhap.cshtml">
+                    <input type="submit" name="closeMessage" value="ĐÓNG" />
+                </form>
+            </div>
+        }
+    }
+    <div class="form">
+        <div class="layout">
+            <div class="img">
+                <img src="~/Images/background.png" alt="background" />
+            </div>
+            <div class="text">
+                <div>
+                    <div class="group">
+                        @using (Html.BeginForm("DangNhapView", "Account"))
+                        {
+                            <button style="color:black" id="signinButton">ĐĂNG NHẬP</button>
+                        }
+                        @using (Html.BeginForm("DangKyView", "Account"))
+                        {
+                            <button id="signupButton">ĐĂNG KÝ</button>
+                        }
+                    </div>
+                    @using (Html.BeginForm("DangNhap", "Account"))
+                    {
+                        @Html.ValidationSummary(true)
+                        <div class="form-group" style="text-align: left;">
+                            <label for="login">Tài khoản: </label>
+                            @Html.TextBox("Username", null, new { @class = "form-control", @id = "login", required = "required" })
+                        </div>
+
+                        @Html.ValidationSummary(true)
+                        <div class="form-group" style="text-align: left;">
+                            <label for="password">Mật khẩu: </label>
+                            @Html.Password("UserPass", null, new { @class = "form-control", @id = "password", required = "required" })
+                        </div>
+                        <button style="margin-top:40px;" type="submit" class="btn sub-btn btn-primary">ĐĂNG NHẬP</button>
+                        <a class="forgotpassword" href="#">Forgot Password?</a>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

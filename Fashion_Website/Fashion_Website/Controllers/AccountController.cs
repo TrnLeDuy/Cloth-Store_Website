@@ -41,6 +41,16 @@ namespace Fashion_Website.Controllers
             lastMaKH = "CUS" + lastNumber.ToString().PadLeft(7, '0');
             return lastMaKH;
         }
+        /*View Changing ACTION*/
+        public ActionResult DangKyView()
+        {
+            return View("DangKy");
+        }
+
+        public ActionResult DangNhapView()
+        {
+            return View("DangNhap");
+        }
 
         /*ACTION ĐĂNG KÝ*/
         /*----------------------------------------------*/
@@ -60,8 +70,6 @@ namespace Fashion_Website.Controllers
                 if (string.IsNullOrEmpty(user.Username))
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập không được để trống");
                 if (string.IsNullOrEmpty(user.UserPass))  
-                    ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
-                if (string.IsNullOrEmpty(khach.CCCD))
                     ModelState.AddModelError(string.Empty, "Vui lòng nhập Căn cược công dân của bạn");
                 if (string.IsNullOrEmpty(khach.SDT))
                     ModelState.AddModelError(string.Empty, "Vui lòng nhập Số điện thoại");
@@ -87,7 +95,6 @@ namespace Fashion_Website.Controllers
                     return View();
                 }
             }
-            
             return RedirectToAction("DangNhap");
         }
         /*----------------------------------------------*/
