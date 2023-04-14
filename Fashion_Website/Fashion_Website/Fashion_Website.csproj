@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
@@ -129,6 +129,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -171,9 +173,11 @@
     <Compile Include="Models\LoaiSanPham.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\mapSanPham\mapSanPham.cs" />
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\taoMa\taoMaGioHang.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
@@ -196,13 +200,28 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\ChiTiet.css" />
+    <Content Include="Content\hiep.css" />
+    <Content Include="Content\mystyle.css" />
+    <Content Include="Content\Sanpham.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\dangky.css" />
     <Content Include="Content\dangnhap.css" />
     <Content Include="Content\dangnhap.js" />
     <Content Include="Content\general.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\img1.jpg" />
+    <Content Include="images\img2.jpg" />
+    <Content Include="images\img3.jpg" />
+    <Content Include="images\img4.jpg" />
+    <Content Include="images\img5.jpg" />
+    <Content Include="images\mwc01.jpg" />
+    <Content Include="images\mwc02.jpg" />
+    <Content Include="images\mwc03.jpg" />
+    <Content Include="images\product1.jpg" />
     <Content Include="Images\background.png" />
     <Content Include="Models\FashionDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -227,6 +246,10 @@
     <Content Include="Models\FashionDB.edmx.diagram">
       <DependentUpon>FashionDB.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </Content>
@@ -252,10 +275,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
+    <Content Include="Views\ChiTietSanPham\ChiTietSP.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\Account\DangNhap.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Account\DangKyUser.cshtml" />

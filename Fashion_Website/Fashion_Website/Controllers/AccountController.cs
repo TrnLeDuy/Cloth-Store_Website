@@ -14,6 +14,26 @@ namespace Fashion_Website.Controllers
         //DB Context
         fashionDBEntities db = new fashionDBEntities();
 
+        /*View Changing ACTION*/
+        public ActionResult DangKyView()
+        {
+            return View("DangKyUser");
+        }
+
+        public ActionResult DangNhapView()
+        {
+            return View("DangNhap");
+        }
+
+        /*ACTION ĐĂNG KÝ*/
+        /*----------------------------------------------*/
+        [HttpGet]
+        public ActionResult DangKyUser()
+        {
+            return View();
+        }
+
+        protected string tempuid;
         //Generate User ID
         private string GenerateUserID()
         {
@@ -45,36 +65,18 @@ namespace Fashion_Website.Controllers
 
             int lastNumber;
             string numberPart = lastMaKH.Substring(prefix.Length);
-            if (!int.TryParse(numberPart, out lastNumber)) {
+            if (!int.TryParse(numberPart, out lastNumber))
+            {
                 {
                     lastNumber = 0;
-                } }
+                }
+            }
             lastNumber++;
             int maxNumber = (int)Math.Pow(10, lastMaKH.Length - prefix.Length) - 1;
-            lastNumber = Math.Min(lastNumber, maxNumber);   
+            lastNumber = Math.Min(lastNumber, maxNumber);
             lastMaKH = prefix + lastNumber.ToString().PadLeft(lastMaKH.Length - prefix.Length, '0');
             return lastMaKH;
         }
-        /*View Changing ACTION*/
-        public ActionResult DangKyView()
-        {
-            return View("DangKyUser");
-        }
-
-        public ActionResult DangNhapView()
-        {
-            return View("DangNhap");
-        }
-
-        /*ACTION ĐĂNG KÝ*/
-        /*----------------------------------------------*/
-        [HttpGet]
-        public ActionResult DangKyUser()
-        {
-            return View();
-        }
-
-        protected string tempuid;
 
         [HttpPost]
         public ActionResult DangKyUser(User user)

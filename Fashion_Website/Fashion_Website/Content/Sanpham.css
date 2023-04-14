@@ -1,0 +1,129 @@
+﻿.product {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+}
+
+.tittle-container {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+#collection-wrapper {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+    #collection-wrapper .collection-wrapper-header .section-title {
+        text-align: center;
+        margin: 0px;
+        padding: 5px;
+    }
+
+.section-title {
+    color: #000000;
+}
+
+.grid-item {
+    box-sizing: border-box;
+    float: left;
+    min-height: 1px;
+    padding-left: 30px;
+    vertical-align: top;
+    width: 100%;
+}
+
+.product-item {
+    padding: 10px 5px;
+    margin-bottom: 10px;
+}
+
+    .product-item .product-image {
+        position: relative;
+    }
+
+    .product-item .product-img a {
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+a, .text-link {
+    color: #000000;
+    text-decoration: none;
+    background: transparent;
+}
+
+.product-item .product-image a img {
+    width: 70%;
+    height: 70%;
+    transition: all 0.5s ease;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.product-item .product-image .hoverSwap {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.product-item .product-info .product-title {
+    color: #000000;
+    text-transform: capitalize;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 3px;
+    position: relative;
+    font-family: Time New Roman !important;
+    font-size: 16px;
+}
+
+    .product-item .product-info .product-title:hover {
+        text-decoration: underline;
+    }
+
+.product-item .product-info {
+    text-align: center;
+}
+
+.product-item .product-image {
+    text-align: center;
+}
+
+.sku-loop {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.product-item .product-info .product-price {
+    display: block;
+}
+
+    .product-item .product-info .product-price .current-price {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+@media only screen and (max-width: 1000px) {
+    .product {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .product {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+    }
+}

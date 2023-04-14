@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <div class="left">
+                    <div class="big-img">
+                        <img src="~/images/mwc01.jpg">
+                    </div>
+                    <div class="images">
+                        <div class="small-img">
+                            <img src="~/images/mwc01.jpg" onclick="showImg(this.src)">
+                        </div>
+                        <div class="small-img">
+                            <img src="~/images/mwc02.jpg" onclick="showImg(this.src)">
+                        </div>
+                        <div class="small-img">
+                            <img src="~/images/mwc03.jpg" onclick="showImg(this.src)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="product-info">
+                    <p class="fs-4 fw-bold">
+                        Giày Thể Thao Nam MWC NATT - 5419 Giày Thể Thao Nam Phối Sọc Thể Thao,Sneaker Nam Cổ Thấp Năng Động Cá Tính
+                    </p>
+                    <div class="d-flex">
+                        <span class="rating pe-2">
+                            <i class="fa fa-star" style="color:#FFE234"></i>
+                            <i class="fa fa-star" style="color:#FFE234"></i>
+                            <i class="fa fa-star" style="color:#FFE234"></i>
+                            <i class="fa fa-star" style="color:#FFE234"></i>
+                            <i class="fas fa-star-half" style="color:#FFE234"></i>
+                        </span>
+                        <span class="tag">
+                            <a href="#" class="text-decoration-none text-dark">| Hỏi đáp |</a>
+                        </span>
+                        <span class="product-id">No: 3200000003572</span>
+                    </div>
+                    <div class="d-flex">
+                        <span class="rounded-4 border p-1">
+                            Màu xám 350.000 <u>đ</u>
+                        </span>
+                        <span class="rounded-4 border bg-danger p-1 ms-2 text-light">
+                            Màu Đen 350.000 <u>đ</u>
+                        </span>
+                    </div>
+
+                    <div class="border d-flex align-items-baseline mt-2">
+                        <span class="fa fa-location-arrow p-2" style="color:red"></span>
+                        <a href="" class="text-decoration-none text-danger fw-bold">Có 5 cửa hàng còn hàng</a>
+                    </div>
+                    <div class="discount mt-2 bg-danger " style="margin-left: 50px;margin-right: 50px;">
+                        <div class="row">
+                            <div class="col text-light">
+                                <div class="d-flex flex-column align-items-center">
+                                    <span style="font-size: xx-large;">315.000<u>đ</u> </span>
+                                    <div class="d-flex">
+                                        <span class="me-1"><s>350.000</s><u>đ</u></span>
+                                        <span>10%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="size">
+                    <p>Size :</p>
+                    <div class="psize active">M</div>
+                    <div class="psize">L</div>
+                    <div class="psize">XL</div>
+                    <div class="psize">XXL</div>
+                </div>
+                <div class="quantity">
+                    <p>Quantity :</p>
+                    <input type="number" min="1" max="5" value="1">
+                </div>
+                <div class="btn">
+                    <button type="button" class="btn btn-outline-danger">Thêm Vào Giỏ Hàng</button>
+                    <button type="button" class="btn btn-outline-danger">Mua Ngay</button>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-12 mb-32px dt-pro">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="product-detail-des-tab" data-bs-toggle="tab" data-bs-target="#product-detail-des" type="button" role="tab" aria-controls="product-detail-des" aria-selected="true"> Chi tiết sản phẩm</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="product-detail-review-tab" data-bs-toggle="tab" data-bs-target="#product-detail-review" type="button" role="tab" aria-controls="product-detail-review" aria-selected="false"> Bình luận </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="product-detail-des-tab" data-bs-toggle="tab" data-bs-target="#product-detail-rate" type="button" role="tab" aria-controls="product-detail-rate" aria-selected="false"> Đánh giá </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="ProductTabContent">
+                            <div class="tab-pane fade active show" id="product-detail-des" role="tabpanel" aria-labelledby="product-detail-des-tab"><p><br></p><p dir="ltr" style="line-height:1.716;text-align: justify;background-color:#ffffff;margin-top:0pt;margin-bottom:3pt;"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">MÔ TẢ SẢN PHẨM : Giày Thể Thao Nam MWC - 5419</span></p><ul style="margin-top:0;margin-bottom:0;padding-inline-start:48px;"><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Giày được thiết kế kiểu dáng buộc dây sneaker cực ngầu phối sọc thể thao năng động, phong cách hiện đại,màu sắc khỏe khoắn.</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Với chất vải Flyknit chuyên dụng tạo cảm giác thoải mái cho bạn trong suốt quá trình vận động, mang lại một phong cách thật thời thượng mỗi khi xuống phố.&nbsp;</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:3pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Sản phẩm có thiết kế tinh tế cùng đường may tỉ mỉ, chắc chắn, thích hợp trong các hoạt động thể thao, dạo chơi, picnic</span></p></li></ul><p dir="ltr" style="line-height:1.716;text-align: justify;background-color:#ffffff;margin-top:0pt;margin-bottom:3pt;"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">CHI TIẾT SẢN PHẨM</span></p><p><span id="docs-internal-guid-9e61816e-7fff-b862-55c2-b7146dc5ec60"></span></p><ul style="margin-top:0;margin-bottom:0;padding-inline-start:48px;"><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Chiều cao giày 3cm</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Chất liệu vải Flyknit cao cấp</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Chất liệu đế cao su đúc êm mềm, độ đàn hồi tốt, chống trơn trượt</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Kiểu dáng giày thể thao nam cổ thấp</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Màu sắc: Xám - Đen - Trắng</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;padding:0pt 0pt 3pt 0pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Size: 39 - 40- 41 - 42 -43</span></p></li><li dir="ltr" style="list-style-type:disc;font-size:10.5pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;" aria-level="1"><p dir="ltr" style="line-height:1.716;background-color:#ffffff;margin-top:0pt;margin-bottom:3pt;" role="presentation"><span style="font-size:10.5pt;font-family:Arial;color:#000000;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Xuất xứ: Việt Nam </span></p></li></ul> </div>
+
+                            <div class="tab-pane fade" id="product-detail-review" role="tabpanel" aria-labelledby="product-detail-review-tab">
+                                <div class="be-comment-block" id="product-detail-comments">
+                                    <input type="hidden" id="TotalRow" name="TotalRow" value="0">
+                                    <h1 class="comments-title">Không có bình luận</h1>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="product-detail-rate" role="tabpanel" aria-labelledby="product-detail-rate-tab">
+                                <p>Vui lòng đăng nhập để bình luận &amp; đánh giá sản phẩm!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <script>
+                let bigImg = document.querySelector('.big-img img');
+                function showImg(pic){
+                    bigImg.src = pic;
+                }
+    </script>
+
+</body>
+

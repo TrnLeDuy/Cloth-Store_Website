@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="~/Content/hiep.css" />
+    <link rel="stylesheet" href="~/Content/mystyle.css" />
+    <link rel="stylesheet" href="~/Content/Sanpham.css" />
+    <style>
+        .menu-item {
+            position: relative;
+            display: inline-block;
+        }
+
+
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .menu-item:hover .dropdown-content {
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a {
+            text-align: left;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-item:hover .dropbtn {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-top">
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h1>LOGO</h1>
+                </div>
+                <div class="grid-item" style="text-align:right;">
+                    <ul class="hdt-contact inline-list">
+                        <li class="hdt-contact-item"> <a href="">Hệ thống cửa hàng</a></li>
+                        <li class="hdt-contact-item"> <a href="">Liên hệ</a></li>
+                        <li class="hdt-contact-item"> <a href="">Tìm Kiếm<i class="fa fa-search"></i></a></li>
+                        <li class="hdt-contact-item"> <a href="~/Account/DangNhap"><i class="fa fa-user"></i></a></li>
+                        <li class="hdt-contact-item"> <a href=""><i class="fa fa-heart"></i></a></li>
+                        <li class="hdt-contact-item"> <a href="~/GioHang/GioHang"><i class="fa fa-shopping-bag"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li class="menu-item">
+                    <a class="dropbtn">MEN<i class="fa fa-angle-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">New arrivals</a>
+                        <a href="#">T-Shirt</a>
+                        <a href="#">Hoodies</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="dropbtn">WOMEN<i class="fa fa-angle-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">New arrivals</a>
+                        <a href="#">T-Shirt</a>
+                        <a href="#">Hoodies</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="dropbtn">ACCESSORIES<i class="fa fa-angle-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Cap&Hat</a>
+                        <a href="#">Sock</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="dropbtn">SHOP INSTAGRAM</a>
+                </li>
+                <li class="menu-item">
+                    <a class="dropbtn">ABOUT US</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footer-main">
+            <div class="grid-container">
+                <div class="grid-item large--two-thirds">
+                    <div class="grid-container footer-left">
+                        <div class="grid-item large--four-tenths ">
+                            <div class="footer-info">
+
+                                <a href="/" class="footer-logo"><img src="~/images/img5.jpg" /></a>
+
+                                <div class="ft-address">
+                                    <i class="fa fa-home"></i>
+                                    <span> 830 Cách Mạng Tháng 8, Phường 5, Quận Tân Bình, TP.Hồ Chí Minh</span>
+                                </div>
+                                <div class="ft-hotline">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <a href="tel:+84903078300 " class="a">+84903078300</a>
+                                </div>
+                                <div class="ft-email">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <a href="mailto:threehundred.official@gmail.com" class="a">threehundred.official@gmail.com</a>
+                                </div>
+
+                                <div class="logo-bct">
+                                    <a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=31156"><img src="//theme.hstatic.net/1000042622/1000813518/14/logo-bct.png?v=253"></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="grid-item large--three-tenths">
+                            <div class="footer-menu">
+                                <h3 class="footer-title">Hỗ Trợ Khách Hàng</h3>
+                                <ul class="footer-nav-list no-bullets">
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/huong-dan-mua-hang" class="a">Hướng Dẫn Mua Hàng</a> <br />
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/huong-dan-doi-hang" class="a">Hướng Dẫn Đổi Hàng</a> <br />
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/cau-hoi-thuong-gap" class="a">Câu Hỏi Thường Gặp</a> <br />
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/delivery" class="a">Vận Chuyển Giao Hàng</a> <br />
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="grid-item large--three-tenths ">
+                            <div class="footer-menu">
+                                <h3 class="footer-title">Thông Tin &amp; Dịch Vụ</h3>
+                                <ul class="footer-nav-list no-bullets">
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/about-us" class="a">Về Chúng Tôi</a>
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/careers-at-three-hundred" class="a">Tuyển Dụng</a>
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/chinh-sach-bao-hanh" class="a">Chính Sách Bảo Hành</a>
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/chinh-sach-bao-mat" class="a">Chính Sách Bảo Mật</a>
+                                    </li>
+
+                                    <li class="footer-nav-item">
+                                        <a href="/pages/dieu-khoan-va-dieu-kien" class="a">Điều Khoản Và Điều Kiện</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="grid-item large--one-third text-center footer-contact">
+                    <div class="footer-social mg-bottom-30">
+                        <h4 class="footer-title mg-bottom-30">
+                            FOLLOW US
+                        </h4>
+                        <div class="list-social-network">
+                            <i class="fa fa-home social-icon"></i>
+                            <i class="fas fa-share-alt social-icon"></i>
+                        </div>
+                    </div>
+                    <div class="footer-subscribe">
+                        <h4 class="footer-title mg-bottom-30">
+                            ĐĂNG KÝ NHẬN THÔNG TIN MỚI TỪ THREE HUNDRED
+                        </h4>
+                        <form accept-charset="UTF-8" action="/account/contact" class="contact-form" method="post">
+                            <input name="form_type" type="hidden" value="customer">
+                            <input name="utf8" type="hidden" value="✓">
+                            <div class="input-group">
+                                <input type="email" value="" placeholder="	Nhập email của bạn tại dây" name="contact[email]" id="Email" class="input-group-field" aria-label="email@example.com">
+                                <input type="hidden" name="contact[tags]" value="newsletter">
+                                <span class="input-group-btn">
+                                    <button type="submit" name="subscribe" id="subscribe" value="GỬI">Đăng ký</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center">
+            Copyrights © 2019 by Three Hundred Official. Powered by THE K300
+        </div>
+    </footer>
+</body>
+</html>
