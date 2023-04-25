@@ -213,16 +213,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\img1.jpg" />
-    <Content Include="images\img2.jpg" />
-    <Content Include="images\img3.jpg" />
-    <Content Include="images\img4.jpg" />
-    <Content Include="images\img5.jpg" />
-    <Content Include="images\mwc01.jpg" />
-    <Content Include="images\mwc02.jpg" />
-    <Content Include="images\mwc03.jpg" />
-    <Content Include="images\product1.jpg" />
     <Content Include="Images\background.png" />
+    <Content Include="images\bg_img1.jpg" />
+    <Content Include="images\bg_img2.jpg" />
+    <Content Include="images\bg_img3.jpg" />
+    <Content Include="images\img9.jpg" />
+    <Content Include="images\img10.jpg" />
+    <Content Include="images\img11.jpg" />
+    <Content Include="images\img12.jpg" />
+    <Content Include="images\img13.jpg" />
+    <Content Include="images\img6.jpg" />
+    <Content Include="images\img7.jpg" />
+    <Content Include="images\img8.jpg" />
+    <Content Include="images\logo.png" />
     <Content Include="Models\FashionDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FashionDB.edmx</DependentUpon>
