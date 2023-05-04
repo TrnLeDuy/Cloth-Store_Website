@@ -12,18 +12,18 @@ namespace Fashion_Website.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LoaiSanPham
+    public partial class LOAISANPHAM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoaiSanPham()
+        public LOAISANPHAM()
         {
-            this.SanPhams = new HashSet<SanPham>();
+            this.SANPHAMs = new HashSet<SANPHAM>();
         }
     
         public string MaLoaiSP { get; set; }
         public string TenLoaiSP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

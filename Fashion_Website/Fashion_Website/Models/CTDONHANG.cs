@@ -12,20 +12,17 @@ namespace Fashion_Website.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class GioHang
+    public partial class CTDONHANG
     {
-        public string MaGH { get; set; }
-        public string HinhSP { get; set; }
+        public string MACTDH { get; set; }
+        public Nullable<int> SoLuongDat { get; set; }
+        public Nullable<decimal> DonGia { get; set; }
         public string TenSP { get; set; }
-        public string MoTaSanPham { get; set; }
-        public int SoLuong { get; set; }
-        public decimal GiaSP { get; set; }
-        public decimal ThanhTien { get; set; }
+        public string KichCo { get; set; }
+        public string MaDH { get; set; }
         public string MaSP { get; set; }
-        public string UserID { get; set; }
-        public string TinhTrangGH { get; set; }
     
-        public virtual SanPham SanPham { get; set; }
-        public virtual User User { get; set; }
+        public virtual DONHANG DONHANG { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
     }
 }

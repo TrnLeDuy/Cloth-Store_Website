@@ -25,14 +25,14 @@ namespace Fashion_Website.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        public virtual DbSet<DoanhThu> DoanhThus { get; set; }
-        public virtual DbSet<DonHang> DonHangs { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<CTDONHANG> CTDONHANGs { get; set; }
+        public virtual DbSet<CTHOADON> CTHOADONs { get; set; }
+        public virtual DbSet<DONHANG> DONHANGs { get; set; }
+        public virtual DbSet<HOADON> HOADONs { get; set; }
+        public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
+        public virtual DbSet<KICHCOSP> KICHCOSPs { get; set; }
+        public virtual DbSet<LOAISANPHAM> LOAISANPHAMs { get; set; }
+        public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
+        public virtual DbSet<USER> USERS { get; set; }
     }
 }

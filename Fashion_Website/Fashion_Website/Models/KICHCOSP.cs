@@ -12,14 +12,13 @@ namespace Fashion_Website.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DoanhThu
+    public partial class KICHCOSP
     {
-        public string MaDT { get; set; }
-        public int SoLuongBan { get; set; }
-        public int TongDoanhThu { get; set; }
-        public System.DateTime Ngay { get; set; }
-        public string MaHD { get; set; }
+        public string MaKichCo { get; set; }
+        public string KichCo { get; set; }
+        public int SoLuong { get; set; }
+        public string MaSP { get; set; }
     
-        public virtual HoaDon HoaDon { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
     }
 }

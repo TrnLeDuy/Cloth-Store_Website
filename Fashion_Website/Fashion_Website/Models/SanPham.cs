@@ -12,29 +12,30 @@ namespace Fashion_Website.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SanPham
+    public partial class SANPHAM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SanPham()
+        public SANPHAM()
         {
-            this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
-            this.GioHangs = new HashSet<GioHang>();
+            this.CTDONHANGs = new HashSet<CTDONHANG>();
+            this.CTHOADONs = new HashSet<CTHOADON>();
+            this.KICHCOSPs = new HashSet<KICHCOSP>();
         }
     
         public string MaSP { get; set; }
         public string TenSP { get; set; }
-        public string MaLoaiSP { get; set; }
-        public string Hinhanh { get; set; }
-        public string Mota { get; set; }
+        public string HinhSP { get; set; }
+        public string MoTa { get; set; }
         public decimal GiaSP { get; set; }
-        public string KichCoSP { get; set; }
         public int TinhTrangSP { get; set; }
-        public int SoLuongSP { get; set; }
+        public string MaLoaiSP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GioHang> GioHangs { get; set; }
-        public virtual LoaiSanPham LoaiSanPham { get; set; }
+        public virtual ICollection<CTHOADON> CTHOADONs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KICHCOSP> KICHCOSPs { get; set; }
+        public virtual LOAISANPHAM LOAISANPHAM { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace Fashion_Website.Controllers
         //Constructor to load the last MaKH from the database
         public AccountController()
         {
-            var lastRecord = db.KhachHangs.OrderByDescending(x => x.MaKH).FirstOrDefault();
+            var lastRecord = db.KHACHHANGs.OrderByDescending(x => x.MaKH).FirstOrDefault();
             if (lastRecord != null)
             {
                 lastMaKH = lastRecord.MaKH;
@@ -79,7 +79,7 @@ namespace Fashion_Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangKyUser(User user)
+        public ActionResult DangKyUser(USER user)
         {
             if (ModelState.IsValid)
             {
@@ -92,16 +92,16 @@ namespace Fashion_Website.Controllers
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
                 }
                 //Kiểm tra xem có người nào đã đăng ký với tên đăng nhập này hay chưa
-                var khachhang = db.Users.FirstOrDefault(k => k.Username == user.Username);
+                var khachhang = db.USERS.FirstOrDefault(k => k.Username == user.Username);
                 if (khachhang != null)
                 {
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập này đã tồn tại");
                 }
                 if (ModelState.IsValid)
                 {
-                    db.Users.Add(user);
-                    user.UserID = GenerateUserID();
-                    user.Role = "KH";
+                    db.USERS.Add(user);
+                    user.MaKH = GenerateUserID();
+                    user.UserRole = "KH";
                     user.TinhTrang = 1;
                     db.SaveChanges();
                     //return RedirectToAction("DangKyKhach", new { userId = user.UserID });
@@ -114,7 +114,7 @@ namespace Fashion_Website.Controllers
         public ActionResult DangKyKhach(string userId)
         {
             // retrieve the user from the database using the UserID parameter passed in
-            var user = db.Users.Find(userId);
+            var user = db.USERS.Find(userId);
 
             if (user == null)
             {
@@ -122,13 +122,13 @@ namespace Fashion_Website.Controllers
             }
 
             // create a new KhachHang object and set its UserID property to the UserID passed in
-            var khach = new KhachHang { UserID = userId };
-            db.KhachHangs.Add(khach);
+            var khach = new KHACHHANG { MaKH = userId };
+            db.KHACHHANGs.Add(khach);
             return View(khach);
         }
 
         [HttpPost]
-        public ActionResult DangKyKhach(KhachHang khach)
+        public ActionResult DangKyKhach(KHACHHANG khach)
         {
             if (ModelState.IsValid)
             {
@@ -162,7 +162,7 @@ namespace Fashion_Website.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    db.KhachHangs.Add(khach);
+                    db.KHACHHANGs.Add(khach);
                     khach.MaKH = GenerateMaKH();
                     db.SaveChanges();
 
@@ -181,7 +181,7 @@ namespace Fashion_Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangNhap(User users)
+        public ActionResult DangNhap(USER users)
         {
             if (ModelState.IsValid)
             {
@@ -192,12 +192,12 @@ namespace Fashion_Website.Controllers
                 if (ModelState.IsValid)
                 {
                     //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
-                    var user = db.Users.FirstOrDefault(k => k.Username == users.Username && k.UserPass == users.UserPass);
+                    var user = db.USERS.FirstOrDefault(k => k.Username == users.Username && k.UserPass == users.UserPass);
                     if (user != null)
                     {
                         //Lưu thông vào session
                         Session["Account"] = user;
-                        if (user.Role == "AD")
+                        if (user.UserRole == "AD")
                             return View("~/Views/Admin/Dashboard.cshtml");
                         else
                             return View("~/Views/Home/Index.cshtml");

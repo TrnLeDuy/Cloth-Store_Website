@@ -132,18 +132,17 @@
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChiTietDonHang.cs">
+    <Compile Include="Models\CTDONHANG.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DoanhThu.cs">
+    <Compile Include="Models\CTHOADON.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DonHang.cs">
+    <Compile Include="Models\DONHANG.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FashionDB.Context.cs">
@@ -161,24 +160,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FashionDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\GioHang.cs">
+    <Compile Include="Models\HOADON.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HoaDon.cs">
+    <Compile Include="Models\KHACHHANG.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KhachHang.cs">
+    <Compile Include="Models\KICHCOSP.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoaiSanPham.cs">
+    <Compile Include="Models\LOAISANPHAM.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\mapSanPham\mapSanPham.cs" />
-    <Compile Include="Models\SanPham.cs">
+    <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\taoMa\taoMaGioHang.cs" />
-    <Compile Include="Models\User.cs">
+    <Compile Include="Models\USER.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -242,19 +241,19 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\FashionDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FashionDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FashionDB.edmx.diagram">
-      <DependentUpon>FashionDB.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
+    </Content>
+    <EntityDeploy Include="Models\FashionDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FashionDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FashionDB.edmx.diagram">
+      <DependentUpon>FashionDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -285,14 +284,8 @@
     <Content Include="Views\ChiTietSanPham\ChiTietSP.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\Account\DangNhap.cshtml" />
-    <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Account\DangKyUser.cshtml" />
     <Content Include="Views\Account\DangKyKhach.cshtml" />
-    <Content Include="Views\Admin\QLTK.cshtml" />
-    <Content Include="Views\Admin\QLNTD.cshtml" />
-    <Content Include="Views\Admin\QLSP.cshtml" />
-    <Content Include="Views\Admin\QLDH.cshtml" />
-    <Content Include="Views\Admin\QLHD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,28 +12,17 @@ namespace Fashion_Website.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class KHACHHANG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhachHang()
-        {
-            this.DonHangs = new HashSet<DonHang>();
-            this.HoaDons = new HashSet<HoaDon>();
-        }
-    
         public string MaKH { get; set; }
         public string HoTen { get; set; }
         public string CCCD { get; set; }
         public string SDT { get; set; }
         public string Email { get; set; }
         public System.DateTime NgaySinh { get; set; }
-        public int GioiTinh { get; set; }
-        public string UserID { get; set; }
+        public string GioiTinh { get; set; }
+        public string DiaChi { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonHang> DonHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
-        public virtual User User { get; set; }
+        public virtual USER USER { get; set; }
     }
 }
