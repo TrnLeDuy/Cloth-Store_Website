@@ -39,9 +39,10 @@
 
             <div class="profile-card-ctr">
                 <a class="profile-card__button button--orange" href="~/KhachHang/Details?id=@Model.MaKH">Chi tiết</a>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }, new { @class = "profile-card__button button--orange" })
-                @Html.ActionLink("Back to List", "Index", new { @class = "profile-card__button button--blue" })
+                <a class="profile-card__button button--orange" href="~/KhachHang/Edit?id=@Model.MaKH">Chỉnh sửa</a>
             </div>
+            <a class="profile-card__button button--blue" href="~/KhachHang/Index">Back to List</a>
+
         </div>
 
         <div class="profile-card-message js-message">

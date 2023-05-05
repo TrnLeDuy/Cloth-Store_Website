@@ -14,48 +14,48 @@ namespace Fashion_Website.Controllers
         //DB Context
         private fashionDBEntities db = new fashionDBEntities();
 
-        //create variable to hold the last MaKH
-        private string prefix = "KH";
-        private string lastMaKH;
-        private string tempID;
+        ////create variable to hold the last MaKH
+        //private string prefix = "KH";
+        //private string lastMaKH;
+        //private string tempID;
 
-        //Constructor to load the last MaKH from the database
-        public AccountController()
-        {
-            var lastRecord = db.KHACHHANGs.OrderByDescending(x => x.MaKH).FirstOrDefault();
-            if (lastRecord != null)
-            {
-                lastMaKH = lastRecord.MaKH;
-            }
-            else
-            {
-                // if no record is found, start with the first ID
-                lastMaKH = prefix + "0000";
-            }
-        }
-        //Generate MaKH by 1 everysingle add new
-        private string GenerateMaKH()
-        {
-            if (string.IsNullOrEmpty(lastMaKH))
-            {
-                lastMaKH = prefix + "0001"; // assign a default starting value
-                return lastMaKH;
-            }
+        ////Constructor to load the last MaKH from the database
+        //public AccountController()
+        //{
+        //    var lastRecord = db.KHACHHANGs.OrderByDescending(x => x.MaKH).FirstOrDefault();
+        //    if (lastRecord != null)
+        //    {
+        //        lastMaKH = lastRecord.MaKH;
+        //    }
+        //    else
+        //    {
+        //        // if no record is found, start with the first ID
+        //        lastMaKH = prefix + "0000";
+        //    }
+        //}
+        ////Generate MaKH by 1 everysingle add new
+        //private string GenerateMaKH()
+        //{
+        //    if (string.IsNullOrEmpty(lastMaKH))
+        //    {
+        //        lastMaKH = prefix + "0001"; // assign a default starting value
+        //        return lastMaKH;
+        //    }
 
-            int lastNumber;
-            string numberPart = lastMaKH.Substring(prefix.Length);
-            if (!int.TryParse(numberPart, out lastNumber))
-            {
-                {
-                    lastNumber = 0;
-                }
-            }
-            lastNumber++;
-            int maxNumber = (int)Math.Pow(10, lastMaKH.Length - prefix.Length) - 1;
-            lastNumber = Math.Min(lastNumber, maxNumber);
-            lastMaKH = prefix + lastNumber.ToString().PadLeft(lastMaKH.Length - prefix.Length, '0');
-            return lastMaKH;
-        }
+        //    int lastNumber;
+        //    string numberPart = lastMaKH.Substring(prefix.Length);
+        //    if (!int.TryParse(numberPart, out lastNumber))
+        //    {
+        //        {
+        //            lastNumber = 0;
+        //        }
+        //    }
+        //    lastNumber++;
+        //    int maxNumber = (int)Math.Pow(10, lastMaKH.Length - prefix.Length) - 1;
+        //    lastNumber = Math.Min(lastNumber, maxNumber);
+        //    lastMaKH = prefix + lastNumber.ToString().PadLeft(lastMaKH.Length - prefix.Length, '0');
+        //    return lastMaKH;
+        //}
 
         [HttpGet]
         public ActionResult DangKyUser()
@@ -88,8 +88,6 @@ namespace Fashion_Website.Controllers
                     db.USERS.Add(user);
                     user.UserRole = "KH";
                     user.TinhTrang = 1;
-                    user.MaKH = GenerateMaKH();
-                    tempID = user.MaKH;
                     db.SaveChanges();
                     //return RedirectToAction("DangKyKhach", new { userId = user.UserID });
                     return RedirectToAction("DangKyThongTinKhach");
@@ -138,7 +136,6 @@ namespace Fashion_Website.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    khach.MaKH = tempID;
                     db.KHACHHANGs.Add(khach);
                     db.SaveChanges();
 
