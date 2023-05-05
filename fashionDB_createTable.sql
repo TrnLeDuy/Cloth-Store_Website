@@ -319,27 +319,32 @@ USE [fashionDB]
 GO
 
 insert into USERS values('AD001', 'hkha928', '123', 'AD', 1)
-select * from USERS 
+insert into USERS values('AD002', 'admin', '123', 'AD', 1)
+
 
 insert into KHACHHANG values ('AD001', N'Nguyễn Hoàng Kha', '079202034605', '0977216038', 'hkha928@gmail.com', '12/02/2002', 'M', N'221/ 81 Đông Thạnh 4')
-select * from KHACHHANG
+insert into KHACHHANG values ('AD002', N'Trần Lê Duy', '079202023128', '0904689418', 'trn.duyle@gmail.com', '02/26/2002', 'M', N'368/25A Tôn Đản')
 
 
 insert into LOAISANPHAM values('LSP001', N'Áo thun')
-select * from LOAISANPHAM
+
 
 insert into SANPHAM values('SP001', N'Áo trắng trơn', 'img.jpg', N'Đây là mô tả', 100000, 1, 'LSP001')
-select * from SANPHAM
 
 insert into KICHCOSP values('1', 'S', 100, 'SP001')
 insert into KICHCOSP values('2', 'M', 100, 'SP001')
 insert into KICHCOSP values('3', 'L', 100, 'SP001')
-select * from KICHCOSP
 
 
 insert into DONHANG values('DH001', '05/05/2023', '05/06/2023', N'Chuyển khoản', 0, 200000, 'AD001')
-select * from DONHANG
 
 insert into CTDONHANG values('CTDH001', 1, 100000, N'Áo trắng trơn', 'S', 'DH001', 'SP001')
 insert into CTDONHANG values('CTDH002', 1, 100000, N'Áo trắng trơn', 'M', 'DH001', 'SP001')
+
+select * from KHACHHANG
+select * from USERS 
+select * from LOAISANPHAM
+select * from SANPHAM
+select * from KICHCOSP
+select * from DONHANG
 select * from CTDONHANG

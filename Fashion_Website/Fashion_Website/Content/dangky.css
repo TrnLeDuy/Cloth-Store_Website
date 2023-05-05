@@ -20,7 +20,7 @@
 }
 
 .layout .img, .layout .text{
-    width: 50%;
+    width: 100%;
     float: left;
 }
 
@@ -28,7 +28,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 80vh;
+    height: 87vh;
 }
 
 .layout .text{
