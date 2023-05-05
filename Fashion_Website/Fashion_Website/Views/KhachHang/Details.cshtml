@@ -43,7 +43,7 @@
 
             <div class="profile-card-ctr">
                 @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }, new { @class = "profile-card__button button--orange" })
-                @Html.ActionLink("Back to List", "Index", new { id = Model.MaKH }, new { @class = "profile-card__button button--blue" })
+                <a class="profile-card__button button--blue" href="~/KhachHang/Index">Back to List</a>
             </div>
         </div>
 

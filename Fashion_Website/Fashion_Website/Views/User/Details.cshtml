@@ -13,10 +13,21 @@
 
         <div class="profile-card__cnt js-profile-cnt">
             <div class="profile-card__name">@Html.DisplayFor(model => model.MaKH)</div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.Username): <strong>@Html.DisplayFor(model => model.Username)</strong> </div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.UserPass): <strong>@Html.DisplayFor(model => model.UserPass)</strong> </div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.UserRole): <strong>@Html.DisplayFor(model => model.UserRole)</strong> </div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.TinhTrang): <strong> @Html.DisplayFor(model => model.TinhTrang)</strong> </div>
+            <div class="profile-card__txt">Tài khoản: <strong>@Html.DisplayFor(model => model.Username)</strong> </div>
+            <div class="profile-card__txt">Quyền Tài khoản: <strong>@Html.DisplayFor(model => model.UserRole)</strong> </div>
+            @{
+                if (Model.TinhTrang == 1)
+                {
+                    <div class="profile-card__txt">Tình trạng: <strong> Hoạt động</strong> </div>
+
+                }
+                else
+                {
+                    <div class="profile-card__txt">Tình trạng: <strong> Vô hiệu</strong> </div>
+                }
+
+            }
+            @*<div class="profile-card__txt">@Html.DisplayNameFor(model => model.TinhTrang): <strong> @Html.DisplayFor(model => model.TinhTrang)</strong> </div>*@
 
             <div class="profile-card-loc">
                 <span class="profile-card-loc__icon">
@@ -27,6 +38,7 @@
 
 
             <div class="profile-card-ctr">
+                <a class="profile-card__button button--orange" href="~/KhachHang/Details?id=@Model.MaKH">Chi tiết</a>
                 @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }, new { @class = "profile-card__button button--orange" })
                 @Html.ActionLink("Back to List", "Index", new { @class = "profile-card__button button--blue" })
             </div>

@@ -12,29 +12,42 @@
         </div>
 
         <div class="profile-card__cnt js-profile-cnt">
-            <div class="profile-card__name">@Html.DisplayFor(model => model.MaKH)</div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.Username): <strong>@Html.DisplayFor(model => model.Username)</strong> </div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.UserPass): <strong>@Html.DisplayFor(model => model.UserPass)</strong> </div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.UserRole): <strong>@Html.DisplayFor(model => model.UserRole)</strong> </div>
-            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.TinhTrang): <strong> @Html.DisplayFor(model => model.TinhTrang)</strong> </div>
-
-            <div class="profile-card-loc">
-                <span class="profile-card-loc__icon">
-                    <svg class="icon"><use xlink:href="#icon-location"></use></svg>
-                </span>
-            </div>
-            <div class="profile-card-ctr">
-
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-
-                    <input type="submit" value="Delete" class="btn profile-card__button button--orange" />
-                    @Html.ActionLink("Back to List", "Index", new { @class = "profile-card__button button--blue" })
+            <div class="profile-card__cnt js-profile-cnt">
+                <div class="profile-card__name">@Html.DisplayFor(model => model.HoTen)</div>
+                <div class="profile-card__txt">Mã Khách Hàng : <strong>@Html.DisplayFor(model => model.MaKH)</strong> </div>
+                @{
+                    if (Model.GioiTinh == "0")
+                    {
+                        <div class="profile-card__txt">Giới tính : <strong>Nam</strong> </div>
+                    }
+                    else
+                    {
+                        <div class="profile-card__txt">Giới tính : <strong>Nữ</strong> </div>
+                    }
                 }
-            </div>
+                @*<div class="profile-card__txt">Giới tính : <strong>@Html.DisplayFor(model => model.GioiTinh)</strong> </div>*@
 
-        </div>
+                <div class="profile-card-loc">
+                    <span class="profile-card-loc__icon">
+                        <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+                    </span>
+
+                    <span class="profile-card-loc__txt">
+                        @Html.DisplayFor(model => model.DiaChi)
+                    </span>
+                </div>
+                <div class="profile-card-ctr">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit" value="Delete" class="btn profile-card__button button--orange" />
+                        @Html.ActionLink("Back to List", "Index", new { @class = "profile-card__button button--blue" })
+                    }
+                </div>
+
+            </div>
 
         <div class="profile-card-message js-message">
             <form class="profile-card-form">
