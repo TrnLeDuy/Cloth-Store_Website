@@ -45,6 +45,7 @@
         margin: 30px 30px 35px 30px;
         transition: box-shadow 200ms;
         width: 620px;
+        height: 700px;
         display: inline-block;
     }
 
@@ -142,7 +143,7 @@
         <label for="MoTa">Hình ảnh sản phẩm</label>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.HinhSP, new { type = "file", style = "display:none", id = "file-input", onchange = "previewFile()" })
-            <button onclick="document.getElementById('file-input').click();">Choose File</button>
+            <button onclick="document.getElementById('file-input').click(); return false;">Choose File</button>
         </div>
     </div>
 
@@ -156,7 +157,7 @@
     <div class="form-input form-group">
         <label for="previewImg">Xem trước hình</label>
         <div class="col-md-10">
-            <img id="target" class="img" src="#" alt="your image" style="width: 320px; height: 300px;" />
+            <img id="target" class="img" src="~/images/@Model.HinhSP" alt="your image" style="width: 320px; height: 300px;" />
         </div>
     </div>
 
@@ -164,7 +165,7 @@
 
     <div class="form-input" style="display:inline-block;">
         <a style="text-decoration: none; display: inline-block; background: #005574; color: #ffff; padding: 6px 10px 6px 10px;
-                border-radius: 4px; margin: 0 0 0 16px !important " href="~/QuanLySanPham/DanhSachSanPham"><i class="ti-back-left"></i></a>
+                border-radius: 4px; margin: 0 0 0 16px !important " href="~/QuanLySanPham/DanhSachSanPham"><i class="ti-back-left">Quay lại trang quản lý</i></a>
     </div>
 
     <div class="form-input form-group" style="display:inline-block;">

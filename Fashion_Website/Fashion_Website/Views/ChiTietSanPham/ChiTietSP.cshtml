@@ -1,4 +1,4 @@
-﻿@model Fashion_Website.Models.SanPham
+﻿@model Fashion_Website.Models.SANPHAM
 
 @{
     ViewBag.Title = "ChiTietSP";
@@ -14,19 +14,19 @@
     <form action="~/GioHang/GioHang" method="get">
         <div class="grid-sanpham">
             <div class="grid-hinhanh">
-                <input name="MaGH" value="@{
+                @*<input name="MaGH" value="@{
                     String data = new Fashion_Website.Models.taoMa.taoMaGioHang().TaoMaGioHang();
                     @data
-                }" hidden />
-                <input type="text" name="MoTaSanPham" value="@Model.Mota" hidden />
+                }" hidden />*@
+                <input type="text" name="MoTaSanPham" value="@Model.MoTa" hidden />
                 <input type="text" name="ThanhTien" value="0" hidden />
                 <input type="text" name="MaSP" value="@Model.MaSP" hidden />
                 <input type="text" name="UserID" value="1" hidden />
                 <input type="text" name="TinhTrangGH" value="1" hidden />               
                 
 
-                <img src="~/images/@Model.Hinhanh" />
-                <input name="HinhSP" value="@Model.Hinhanh" hidden />
+                <img src="~/images/@Model.HinhSP" />
+                <input name="HinhSP" value="@Model.HinhSP" hidden />
             </div>
             <div class="grid-chitiet">
                 <div class="chitiet">
@@ -37,15 +37,13 @@
                     <br />
                     <div class="info">
                         <div>Loại : <span>Áo Thun </span></div>
-                        <div>Tình trạng :<span> Còn Hàng </span></div>
-                        <div>Số Lượng :<span>@Model.SoLuongSP</span></div>
-                        
+                        <div>Tình trạng :<span> Còn Hàng </span></div>                        
                     </div>
                     <div style="height:1px;background-color:lightgray;"></div>
                     <div class="size-div">
-                        <div class="headname">SIZE: </div>
+                        <div class="headname">SIZE: S M L</div>
                         <div class="select">
-                            @{
+                            @*@{
                                 if (Model.KichCoSP == "S")
                                 {
                                     <input type="radio" name="size" id="s" value="s" checked> <label for="s">S</label>
@@ -64,7 +62,7 @@
                                     <input type="radio" name="size" id="m" value="m" disabled> <label for="m">M</label>
                                     <input type="radio" name="size" id="l" value="l" checked> <label for="l">L</label>
                                 }
-                            }
+                            }*@
                         </div>
                     </div>
                     <br />
