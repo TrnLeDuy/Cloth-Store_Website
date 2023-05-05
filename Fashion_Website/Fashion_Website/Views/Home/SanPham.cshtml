@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Fashion_Website.Models.SanPham>
+﻿@model IEnumerable<Fashion_Website.Models.SANPHAM>
 @{
     ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
@@ -28,14 +28,14 @@
                     <div class="product-item">
                         <div class="product-image">
                             <a href="~/ChiTietSanPham/ChiTietSP?masp=@item.MaSP" class="">
-                                <img src="~/images/@item.Hinhanh" class="img-responsive item-thumb">                                                           
+                                <img src="~/images/@item.HinhSP" class="img-responsive item-thumb">                                                           
                             </a>
                         </div>
                         <div class="product-info">
                             <a href="~/ChiTietSanPham/ChiTietSP?masp=@item.MaSP" class="product-title a">@item.TenSP</a>
                             <span class="sku-loop">Mã sản phẩm: @item.MaSP</span>
                             <span class="product-size">
-                                <span class="size">Size: @item.KichCoSP</span>
+                                <span class="size">Size: S M L</span>
                             </span>
                             <span class="product-price">
                                 <span class="current-price">Giá: @item.GiaSP₫</span>
