@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -134,6 +134,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +178,7 @@
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\taoMa\taoMaSanPham.cs" />
     <Compile Include="Models\USER.cs">
       <DependentUpon>FashionDB.tt</DependentUpon>
     </Compile>
@@ -187,6 +189,18 @@
     <Content Include="Assets\Form\fonts\material-design-iconic-font\css\material-design-iconic-font.css" />
     <Content Include="Assets\Form\fonts\material-design-iconic-font\css\material-design-iconic-font.min.css" />
     <Content Include="Assets\Form\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Assets\Form\images\1000_F_420053918_yVpQT6RxcSc16C937FliLK9YPWjaNiMB.jpg" />
+    <Content Include="Assets\Form\images\background.png" />
+    <Content Include="Assets\Form\images\bank-account-illustration_335657-4821.jpg" />
+    <Content Include="Assets\Form\images\bg-01.jpg" />
+    <Content Include="Assets\Form\images\bg-registration-form-2.jpg" />
+    <Content Include="Assets\Form\images\bg.png" />
+    <Content Include="Assets\Form\images\bg2.png" />
+    <Content Include="Assets\Form\images\finance-services-financial-transaction-e-commerce-e-payment_335657-3134.jpg" />
+    <Content Include="Assets\Form\images\pig.png" />
+    <Content Include="Assets\Form\images\registration-form-2.jpg" />
+    <Content Include="Assets\Form\images\registration-form-2.png" />
+    <Content Include="Assets\js\previewFile.js" />
     <Content Include="Assets\Login\css\main.css" />
     <Content Include="Assets\Login\css\util.css" />
     <Content Include="Assets\Login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -864,6 +878,9 @@
     <Content Include="Views\KhachHang\Details.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\DanhSachSanPham.cshtml" />
+    <Content Include="Views\QuanLySanPham\ThemSanPham.cshtml" />
+    <Content Include="Views\QuanLySanPham\CapNhatSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
