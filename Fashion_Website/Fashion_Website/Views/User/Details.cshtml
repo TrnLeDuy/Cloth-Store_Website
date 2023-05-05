@@ -1,0 +1,79 @@
+﻿@model Fashion_Website.Models.USER
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="profile-card js-profile-card">
+        <div class="profile-card__img">
+            <img src="~/images/avatar.png" alt="profile card">
+        </div>
+
+        <div class="profile-card__cnt js-profile-cnt">
+            <div class="profile-card__name">@Html.DisplayFor(model => model.MaKH)</div>
+            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.Username): <strong>@Html.DisplayFor(model => model.Username)</strong> </div>
+            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.UserPass): <strong>@Html.DisplayFor(model => model.UserPass)</strong> </div>
+            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.UserRole): <strong>@Html.DisplayFor(model => model.UserRole)</strong> </div>
+            <div class="profile-card__txt">@Html.DisplayNameFor(model => model.TinhTrang): <strong> @Html.DisplayFor(model => model.TinhTrang)</strong> </div>
+
+            <div class="profile-card-loc">
+                <span class="profile-card-loc__icon">
+                    <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+                </span>
+            </div>
+
+
+
+            <div class="profile-card-ctr">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }, new { @class = "profile-card__button button--orange" })
+                @Html.ActionLink("Back to List", "Index", new { @class = "profile-card__button button--blue" })
+            </div>
+        </div>
+
+        <div class="profile-card-message js-message">
+            <form class="profile-card-form">
+                <div class="profile-card-form__container">
+                    <textarea placeholder="Say something..."></textarea>
+                </div>
+
+                <div class="profile-card-form__bottom">
+                    <button class="profile-card__button button--blue js-message-close">
+                    </button>
+
+                    <button class="profile-card__button button--gray js-message-close">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <div class="profile-card__overlay js-message-close"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script>
+    var messageBox = document.querySelector('.js-message');
+    var btn = document.querySelector('.js-message-btn');
+    var card = document.querySelector('.js-profile-card');
+    var closeBtn = document.querySelectorAll('.js-message-close');
+
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        card.classList.add('active');
+    });
+
+    closeBtn.forEach(function (element, index) {
+        console.log(element);
+        element.addEventListener('click', function (e) {
+            e.preventDefault();
+            card.classList.remove('active');
+        });
+    });
+</script>

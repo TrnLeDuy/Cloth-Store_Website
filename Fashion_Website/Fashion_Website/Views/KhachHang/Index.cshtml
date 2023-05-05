@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Fashion_Website.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .detail-button {
+        background-color: lightblue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+
+    .delete-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+
+    .edit-button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+</style>
+
+<div class="row mt-4">
+    <div class="col-6">
+        @Html.ActionLink("Thêm khách hàng mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-6">
+        <form style="width: 100%; padding-left: 250px;" action="/User" method="get">
+            <div class="form-group">
+                <input class="form-control" id="search" type="text" name="search" placeholder="" value="" />
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    <button class="edit-button">
+                        @Html.ActionLink("Cập nhật", "Edit", new { id = item.MaKH })
+                    </button>
+                    <button class="detail-button">
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaKH })
+                    </button>
+                    <button class="delete-button">
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.MaKH })
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

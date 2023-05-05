@@ -18,7 +18,7 @@ namespace Fashion_Website.Controllers
         public ActionResult SanPham()
         {
             fashionDBEntities db = new fashionDBEntities();
-            var danhSachSP = db.SanPhams.ToList();
+            var danhSachSP = db.SANPHAMs.ToList();
             return View(danhSachSP);
         }
     }

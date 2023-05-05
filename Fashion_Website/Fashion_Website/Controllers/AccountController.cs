@@ -12,39 +12,13 @@ namespace Fashion_Website.Controllers
     public class AccountController : Controller
     {
         //DB Context
-        fashionDBEntities db = new fashionDBEntities();
-
-        /*View Changing ACTION*/
-        public ActionResult DangKyView()
-        {
-            return View("DangKyUser");
-        }
-
-        public ActionResult DangNhapView()
-        {
-            return View("DangNhap");
-        }
-
-        /*ACTION ĐĂNG KÝ*/
-        /*----------------------------------------------*/
-        [HttpGet]
-        public ActionResult DangKyUser()
-        {
-            return View();
-        }
-
-        protected string tempuid;
-        //Generate User ID
-        private string GenerateUserID()
-        {
-            Random random = new Random();
-            int randomNumber = random.Next(10000000, 99999999);
-            return "KH" + randomNumber.ToString();
-        }
+        private fashionDBEntities db = new fashionDBEntities();
 
         //create variable to hold the last MaKH
-        private string prefix = "CUS";
+        private string prefix = "KH";
         private string lastMaKH;
+        private string tempID;
+
         //Constructor to load the last MaKH from the database
         public AccountController()
         {
@@ -52,6 +26,11 @@ namespace Fashion_Website.Controllers
             if (lastRecord != null)
             {
                 lastMaKH = lastRecord.MaKH;
+            }
+            else
+            {
+                // if no record is found, start with the first ID
+                lastMaKH = prefix + "0000";
             }
         }
         //Generate MaKH by 1 everysingle add new
@@ -78,6 +57,12 @@ namespace Fashion_Website.Controllers
             return lastMaKH;
         }
 
+        [HttpGet]
+        public ActionResult DangKyUser()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult DangKyUser(USER user)
         {
@@ -96,39 +81,30 @@ namespace Fashion_Website.Controllers
                 if (khachhang != null)
                 {
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập này đã tồn tại");
+                    ViewBag.ThongBao = "Tên đăng nhập này đã tồn tại";
                 }
                 if (ModelState.IsValid)
                 {
                     db.USERS.Add(user);
-                    user.MaKH = GenerateUserID();
                     user.UserRole = "KH";
                     user.TinhTrang = 1;
+                    user.MaKH = GenerateMaKH();
+                    tempID = user.MaKH;
                     db.SaveChanges();
                     //return RedirectToAction("DangKyKhach", new { userId = user.UserID });
-                    return RedirectToAction("DangNhap");
+                    return RedirectToAction("DangKyThongTinKhach");
                 }
             }
             return View();
         }
         [HttpGet]
-        public ActionResult DangKyKhach(string userId)
+        public ActionResult DangKyThongTinKhach()
         {
-            // retrieve the user from the database using the UserID parameter passed in
-            var user = db.USERS.Find(userId);
-
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-
-            // create a new KhachHang object and set its UserID property to the UserID passed in
-            var khach = new KHACHHANG { MaKH = userId };
-            db.KHACHHANGs.Add(khach);
-            return View(khach);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult DangKyKhach(KHACHHANG khach)
+        public ActionResult DangKyThongTinKhach(KHACHHANG khach)
         {
             if (ModelState.IsValid)
             {
@@ -162,8 +138,8 @@ namespace Fashion_Website.Controllers
                 }
                 if (ModelState.IsValid)
                 {
+                    khach.MaKH = tempID;
                     db.KHACHHANGs.Add(khach);
-                    khach.MaKH = GenerateMaKH();
                     db.SaveChanges();
 
                     return RedirectToAction("DangNhap");
@@ -181,6 +157,7 @@ namespace Fashion_Website.Controllers
         }
 
         [HttpPost]
+
         public ActionResult DangNhap(USER users)
         {
             if (ModelState.IsValid)
@@ -189,18 +166,22 @@ namespace Fashion_Website.Controllers
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập không được để trống");
                 if (string.IsNullOrEmpty(users.UserPass))
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
+                var user = db.USERS.FirstOrDefault(k => k.Username == users.Username && k.UserPass == users.UserPass);
                 if (ModelState.IsValid)
                 {
-                    //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
-                    var user = db.USERS.FirstOrDefault(k => k.Username == users.Username && k.UserPass == users.UserPass);
                     if (user != null)
                     {
                         //Lưu thông vào session
                         Session["Account"] = user;
+                        Session["Fullname"] = user.KHACHHANG.HoTen;
+                        Session["Username"] = user.Username;
+                        Session["ID"] = user.MaKH;
+                        user.MaKH = user.KHACHHANG.MaKH;
+                        Session["Role"] = user.UserRole;
                         if (user.UserRole == "AD")
-                            return View("~/Views/Admin/Dashboard.cshtml");
+                            return Redirect("~/Dashboard/Dashboard");
                         else
-                            return View("~/Views/Home/Index.cshtml");
+                            return Redirect("~/Home/TrangChu");
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";
@@ -214,9 +195,23 @@ namespace Fashion_Website.Controllers
             //Perform any necessary cleanup or logging out of the user
             //Remove any authentication cookies or session state information
             //Redirect the user to the login page
-            Session["Account"] = null;
+            Session["Fullname"] = null;
+            Session["Username"] = null;
+            Session["ID"] = null;
+            Session["Role"] = null;
             Session.Abandon();
-            return RedirectToAction("DangNhap", "Account");
+            return Redirect("/");
+        }
+
+        /*View Changing ACTION*/
+        public ActionResult DangKyView()
+        {
+            return View("DangKyUser");
+        }
+
+        public ActionResult DangNhapView()
+        {
+            return View("DangNhap");
         }
     }
 }

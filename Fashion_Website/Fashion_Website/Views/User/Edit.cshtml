@@ -1,0 +1,105 @@
+﻿@model Fashion_Website.Models.USER
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*@@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>USER</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaKH)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserPass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserPass, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserPass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserRole, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserRole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserRole, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+<div class="container" style="background-image: url('../../Images/fashion-background.png');">
+    <div class="inner">
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3>Cập nhập thông tin Tài khoản người dùng</h3>
+            <div class="form-group">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaKH)
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.Username)
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control1" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    @*<input type="text" class="form-control1">*@
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.UserPass)
+                    @Html.EditorFor(model => model.UserPass, new { htmlAttributes = new { @class = "form-control1" } })
+                    @Html.ValidationMessageFor(model => model.UserPass, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.TinhTrang)
+                    @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control1" } })
+                    @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.UserRole)
+                @Html.EditorFor(model => model.UserRole, new { htmlAttributes = new { @class = "form-control1" } })
+                @Html.ValidationMessageFor(model => model.UserRole, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input style="margin-left:-15px;background-color:Green" type="submit" value="Save" class=" button1" />
+                </div>
+            </div>
+        }
+
+        <div style="margin-left:45px;color:#ccc">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+
+</div>
