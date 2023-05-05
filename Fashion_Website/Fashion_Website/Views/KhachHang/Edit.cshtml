@@ -1,0 +1,71 @@
+﻿@model Fashion_Website.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container" style="background-image: url('../../Images/fashion-background.png');">
+    <div class="inner">
+        @using (Html.BeginForm("Edit", "KhachHang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3>Cập nhập thông tin Tài khoản người dùng</h3>
+            <div class="form-group">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaKH)
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.HoTen)
+                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control1" } })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    @*<input type="text" class="form-control1">*@
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.CCCD)
+                    @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "form-control1" } })
+                    @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.SDT)
+                    @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control1" } })
+                    @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.Email)
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control1" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.NgaySinh)
+                @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control1" } })
+                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-wrapper">
+                <label for="gioitinh">Giới Tính: </label>
+                @Html.DropDownListFor(model => model.GioiTinh,
+                new List<SelectListItem>
+                {
+                    new SelectListItem{Text="Nam", Value="0"},
+                    new SelectListItem{Text="Nữ", Value="1"}}, "Lựa chọn")
+                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.DiaChi)
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control1" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input style="margin-left:-15px;background-color:Green" type="submit" value="Save" class=" button1" />
+                </div>
+            </div>
+        }
+
+        <div style="margin-left:45px;color:#ccc">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+
+</div>
+

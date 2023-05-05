@@ -29,14 +29,11 @@
             </div>
             <div class="text">
                 <div class="group">
-                    @using (Html.BeginForm())
-                    {
-                        <button style="color:black" >THÔNG TIN CHI TIẾT</button>
-                    }
                 </div>
                 <div>
                     @using (Html.BeginForm("DangKyThongTinKhach", "Account"))
                     {
+                        @Html.AntiForgeryToken()
                         <div class="form-group" style="text-align: left;">
                             <label for="fullname"> Họ tên: </label>
                             @Html.TextBox("Hoten", null, new { @class = "form-control", @id = "hoten", required = "required" })
@@ -52,6 +49,10 @@
                         <div class="form-group" style="text-align: left;">
                             <label for="mail">Email: </label>
                             @Html.TextBox("Email", null, new { @class = "form-control", @id = "mail", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            <label for="diachi">Địa chỉ: </label>
+                            @Html.TextBox("Diachi", null, new { @class = "form-control", @id = "ngaysinh", required = "required" })
                         </div>
                         <div class="form-group">
                             <label for="ngaysinh">Ngày sinh: </label>

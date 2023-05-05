@@ -20,14 +20,14 @@
 }
 
 .layout .img, .layout .text{
-    width: 100%;
+    width: 50%;
     float: left;
 }
 
 .layout .img img{
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
+    width: 50%;
     height: 87vh;
 }
 

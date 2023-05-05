@@ -12,7 +12,7 @@ namespace Fashion_Website.Controllers
     public class AccountController : Controller
     {
         //DB Context
-        fashionDBEntities db = new fashionDBEntities();
+        private fashionDBEntities db = new fashionDBEntities();
 
         //create variable to hold the last MaKH
         private string prefix = "KH";
@@ -176,11 +176,12 @@ namespace Fashion_Website.Controllers
                         Session["Fullname"] = user.KHACHHANG.HoTen;
                         Session["Username"] = user.Username;
                         Session["ID"] = user.MaKH;
+                        user.MaKH = user.KHACHHANG.MaKH;
                         Session["Role"] = user.UserRole;
                         if (user.UserRole == "AD")
-                            return View("~/Views/Admin/Dashboard.cshtml");
+                            return Redirect("~/Dashboard/Dashboard");
                         else
-                            return View("~/Views/Home/TrangChu.cshtml");
+                            return Redirect("~/Home/TrangChu");
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";
@@ -199,7 +200,7 @@ namespace Fashion_Website.Controllers
             Session["ID"] = null;
             Session["Role"] = null;
             Session.Abandon();
-            return RedirectToAction("DangNhap");
+            return Redirect("/");
         }
 
         /*View Changing ACTION*/

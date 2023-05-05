@@ -132,6 +132,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,17 +187,6 @@
     <Content Include="Assets\Form\fonts\material-design-iconic-font\css\material-design-iconic-font.css" />
     <Content Include="Assets\Form\fonts\material-design-iconic-font\css\material-design-iconic-font.min.css" />
     <Content Include="Assets\Form\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
-    <Content Include="Assets\Form\images\1000_F_420053918_yVpQT6RxcSc16C937FliLK9YPWjaNiMB.jpg" />
-    <Content Include="Assets\Form\images\background.png" />
-    <Content Include="Assets\Form\images\bank-account-illustration_335657-4821.jpg" />
-    <Content Include="Assets\Form\images\bg-01.jpg" />
-    <Content Include="Assets\Form\images\bg-registration-form-2.jpg" />
-    <Content Include="Assets\Form\images\bg.png" />
-    <Content Include="Assets\Form\images\bg2.png" />
-    <Content Include="Assets\Form\images\finance-services-financial-transaction-e-commerce-e-payment_335657-3134.jpg" />
-    <Content Include="Assets\Form\images\pig.png" />
-    <Content Include="Assets\Form\images\registration-form-2.jpg" />
-    <Content Include="Assets\Form\images\registration-form-2.png" />
     <Content Include="Assets\Login\css\main.css" />
     <Content Include="Assets\Login\css\util.css" />
     <Content Include="Assets\Login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -486,10 +477,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\avatar.png" />
     <Content Include="Images\background.png" />
     <Content Include="images\bg_img1.jpg" />
     <Content Include="images\bg_img2.jpg" />
     <Content Include="images\bg_img3.jpg" />
+    <Content Include="Images\fashion-background.png" />
     <Content Include="images\img9.jpg" />
     <Content Include="images\img10.jpg" />
     <Content Include="images\img11.jpg" />
@@ -860,10 +853,20 @@
     <Content Include="Views\Account\DangNhap.cshtml" />
     <Content Include="Views\Account\DangKyUser.cshtml" />
     <Content Include="Views\Account\DangKyThongTinKhach.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\KhachHang\Create.cshtml" />
+    <Content Include="Views\KhachHang\Delete.cshtml" />
+    <Content Include="Views\KhachHang\Details.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Dashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
