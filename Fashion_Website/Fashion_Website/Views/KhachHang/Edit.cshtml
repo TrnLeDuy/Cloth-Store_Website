@@ -15,18 +15,18 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.MaKH)
                 <div class="form-wrapper">
-                    @Html.LabelFor(model => model.HoTen)
+                    Họ tên
                     @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control1" } })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                     @*<input type="text" class="form-control1">*@
                 </div>
                 <div class="form-wrapper">
-                    @Html.LabelFor(model => model.CCCD)
+                    Căn cước công dân
                     @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "form-control1" } })
                     @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-wrapper">
-                    @Html.LabelFor(model => model.SDT)
+                    Số điện thoại
                     @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control1" } })
                     @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
                 </div>
@@ -37,7 +37,7 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
             <div class="form-wrapper">
-                @Html.LabelFor(model => model.NgaySinh)
+                Ngày Sinh
                 @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control1" } })
                 @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
             </div>
@@ -46,12 +46,12 @@
                 @Html.DropDownListFor(model => model.GioiTinh,
                 new List<SelectListItem>
                 {
-                    new SelectListItem{Text="Nam", Value="0"},
-                    new SelectListItem{Text="Nữ", Value="1"}}, "Lựa chọn")
+                    new SelectListItem{Text="Nam", Value="M"},
+                    new SelectListItem{Text="Nữ", Value="F"}}, "Lựa chọn")
                 @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
             </div>
             <div class="form-wrapper">
-                @Html.LabelFor(model => model.DiaChi)
+                Địa Chỉ
                 @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control1" } })
                 @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
             </div>
