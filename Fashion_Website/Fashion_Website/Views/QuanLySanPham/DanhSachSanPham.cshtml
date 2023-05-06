@@ -120,21 +120,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.MaSP</td>
-                    <td>@item.TenSP</td>
-                    <td>@item.MaLoaiSP</td>
-                    <td><img src="~/images/@item.HinhSP" style="width: 100px; height: 100px;" /></td>
-                    <td>@item.MoTa</td>
-                    <td>@item.GiaSP</td>
-                    <td>@item.TinhTrangSP</td>
-                    <td>
-                        <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="ti-marker-alt">~</i></a>
-                    </td>
-                    <td>
-                        <a onclick="if (confirm('Bạn chắc chắn xóa ưu đãi này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" href="#" style="text-decoration:none; color:#00305B"><i class="ti-trash">-</i></a>
-                    </td>
-                </tr>
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td>@item.MaLoaiSP</td>
+                <td><img src="~/images/@item.HinhSP" style="width: 100px; height: 100px;" /></td>
+                <td>@item.MoTa</td>
+                <td>@item.GiaSP</td>
+                @{
+                    if (item.TinhTrangSP == 1)
+                    {
+                        <td>Còn hàng</td>
+
+                    }
+                    else
+                    {
+                        <td>Hết hàng</td>
+                    }
+                }
+                <td>
+                    <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="ti-marker-alt">~</i></a>
+                </td>
+                <td>
+                    <a onclick="if (confirm('Bạn chắc chắn xóa ưu đãi này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" href="#" style="text-decoration:none; color:#00305B"><i class="ti-trash">-</i></a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

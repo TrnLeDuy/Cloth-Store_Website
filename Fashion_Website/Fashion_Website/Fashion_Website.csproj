@@ -250,6 +250,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\ChiTiet.css" />
+    <Content Include="Content\contentcss.css" />
     <Content Include="Content\hiep.css" />
     <Content Include="Content\mystyle.css" />
     <Content Include="Content\Sanpham.css" />
@@ -725,6 +726,10 @@
     <Content Include="Assets\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Assets\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Assets\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="fonts\NotoSerif-Bold.ttf" />
+    <Content Include="fonts\NotoSerif-BoldItalic.ttf" />
+    <Content Include="fonts\NotoSerif-Italic.ttf" />
+    <Content Include="fonts\NotoSerif-Regular.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -882,6 +887,7 @@
     <Content Include="Views\QuanLySanPham\DanhSachSanPham.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemSanPham.cshtml" />
     <Content Include="Views\QuanLySanPham\CapNhatSanPham.cshtml" />
+    <Content Include="Views\Home\ChinhSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
