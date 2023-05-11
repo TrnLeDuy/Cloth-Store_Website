@@ -26,15 +26,14 @@ namespace Fashion_Website.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Login([Bind(Include ="Username, UserPass")] ADMIN adUser) 
         {
             if (ModelState.IsValid)
             {
                 if (string.IsNullOrEmpty(adUser.Username))
-                    ModelState.AddModelError(string.Empty, "Tên đăng nhập không được để trống");
+                    return View(adUser);
                 if (string.IsNullOrEmpty(adUser.UserPass))
-                    ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
+                    return View(adUser);   
                 if (ModelState.IsValid)
                 {
                     //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
@@ -73,7 +72,32 @@ namespace Fashion_Website.Controllers
             Session["ID"] = null;
             Session["Role"] = null;
             Session.Abandon();
-            return RedirectToAction("/");
+            return RedirectToAction("Login");
         }
+
+        //[HttpGet]
+        //public ActionResult ChangePassword()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult ChangePassword(string oldPassword, string newPassword, string repeatPassword)
+        //{
+        //    ADMIN admin = db.ADMINs.Find(Convert.ToInt32(Session["ID"].ToString()));
+
+        //    if (admin == null)
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+
+        //    if(newPassword != repeatPassword)
+        //    {
+        //        TempData["Error"] = "Mật khẩu mới không khớp với nhau!";
+        //        return View();
+        //    }
+
+            
+        //}
     }
 }

@@ -1,4 +1,21 @@
-﻿.form {
+﻿.form-group {
+    display: flex;
+}
+
+    .form-group .form-wrapper {
+        width: 50%;
+    }
+
+        .form-group .form-wrapper:first-child {
+            margin-right: 20px;
+        }
+
+
+
+.form-wrapper label {
+    display: block;
+}
+.form {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,8 +26,8 @@
 }
 .layout{
     display: inline-block;
-    width: 800px;
-    height: 660px;
+    width: 1000px;
+    height: 700px;
     background-color: #fff;
     overflow: hidden;
     position: absolute;
@@ -27,8 +44,8 @@
 .layout .img img{
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50%;
-    height: 87vh;
+    width: 100%;
+    height: 93vh;
 }
 
 .layout .text{
@@ -66,9 +83,28 @@
     border: none;
     border-bottom: 1px solid #9b9b9b;
     padding: 15px 0;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.layout .text form select{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #9b9b9b;
+    padding: 15px 0;
     letter-spacing: 3px;
     font-size: 14px;
     margin-bottom: 25px;
+}
+
+#message-box input.pointer {
+    cursor: pointer !important;
+}
+
+#message-box input:hover{
+    transition: transform 0.5s;
+    transform: scale(110%);
 }
 
 .layout .text .sub-btn{
@@ -101,9 +137,4 @@
     text-decoration: none;
     letter-spacing: 3px;
     margin-top: 10px;
-}
-
-.layout .text .login-title {
-    display: inline-block;
-    padding-bottom: 30px;
 }

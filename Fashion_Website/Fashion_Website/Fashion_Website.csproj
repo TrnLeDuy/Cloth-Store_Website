@@ -137,6 +137,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,7 +261,6 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\dangky.css" />
     <Content Include="Content\dangnhap.css" />
-    <Content Include="Content\dangnhap.js" />
     <Content Include="Content\general.css" />
     <Content Include="CoolAdmin-master\alert.html" />
     <Content Include="CoolAdmin-master\badge.html" />
@@ -295,12 +295,12 @@
     <Content Include="CoolAdmin-master\grid.html" />
     <Content Include="CoolAdmin-master\images\bg-title-01.jpg" />
     <Content Include="CoolAdmin-master\images\bg-title-02.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-01.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-02.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-03.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-04.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-05.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-06.jpg" />
+    <Content Include="Images\avatar-01.jpg" />
+    <Content Include="Images\avatar-02.jpg" />
+    <Content Include="Images\avatar-03.jpg" />
+    <Content Include="Images\avatar-04.jpg" />
+    <Content Include="Images\avatar-05.jpg" />
+    <Content Include="Images\avatar-06.jpg" />
     <Content Include="CoolAdmin-master\images\icon\avatar-big-01.jpg" />
     <Content Include="CoolAdmin-master\images\icon\logo-bluaaae.png" />
     <Content Include="CoolAdmin-master\images\icon\logo-blue.png" />
@@ -496,7 +496,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\avatar.png" />
+    <Content Include="Images\avatar-00.jpg" />
     <Content Include="Images\background.png" />
     <Content Include="images\bg_img1.jpg" />
     <Content Include="images\bg_img2.jpg" />
@@ -767,13 +767,11 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Home\TrangChu.cshtml" />
     <Content Include="Views\Home\SanPham.cshtml" />
     <Content Include="Views\ChiTietSanPham\ChiTietSP.cshtml" />
-    <Content Include="Views\Shared\_SideBarAdmin.cshtml" />
     <Content Include="table\.DS_Store" />
     <Content Include="table\css\.DS_Store" />
     <Content Include="table\css\bootstrap\.DS_Store" />
@@ -874,19 +872,18 @@
     <Content Include="table\scss\bootstrap\_variables.scss" />
     <Content Include="table\scss\style.scss" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\QuanLySanPham\DanhSachSanPham.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemSanPham.cshtml" />
     <Content Include="Views\QuanLySanPham\CapNhatSanPham.cshtml" />
     <Content Include="Views\Home\ChinhSach.cshtml" />
+    <Content Include="Views\Authencation\Login.cshtml" />
+    <Content Include="Views\User\Signin.cshtml" />
+    <Content Include="Views\User\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Authencation\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
