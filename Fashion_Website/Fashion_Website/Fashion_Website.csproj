@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,12 +46,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -107,9 +119,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -120,69 +129,63 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthencationController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KhachHangController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ADMIN.cs">
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CTDONHANG.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTHOADON.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DONHANG.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FashionDB.Context.cs">
+    <Compile Include="Models\Fashion_Store.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FashionDB.Context.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FashionDB.cs">
+    <Compile Include="Models\Fashion_Store.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FashionDB.Designer.cs">
+    <Compile Include="Models\Fashion_Store.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FashionDB.edmx</DependentUpon>
+      <DependentUpon>Fashion_Store.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HOADON.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KHACHHANG.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KICHCOSP.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LOAISANPHAM.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\mapSanPham\mapSanPham.cs" />
     <Compile Include="Models\SANPHAM.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
+      <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\taoMa\taoMaKhachHang.cs" />
     <Compile Include="Models\taoMa\taoMaSanPham.cs" />
-    <Compile Include="Models\USER.cs">
-      <DependentUpon>FashionDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,11 +256,11 @@
     <Content Include="Content\contentcss.css" />
     <Content Include="Content\hiep.css" />
     <Content Include="Content\mystyle.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Sanpham.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\dangky.css" />
     <Content Include="Content\dangnhap.css" />
-    <Content Include="Content\dangnhap.js" />
     <Content Include="Content\general.css" />
     <Content Include="CoolAdmin-master\alert.html" />
     <Content Include="CoolAdmin-master\badge.html" />
@@ -292,12 +295,12 @@
     <Content Include="CoolAdmin-master\grid.html" />
     <Content Include="CoolAdmin-master\images\bg-title-01.jpg" />
     <Content Include="CoolAdmin-master\images\bg-title-02.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-01.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-02.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-03.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-04.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-05.jpg" />
-    <Content Include="CoolAdmin-master\images\icon\avatar-06.jpg" />
+    <Content Include="Images\avatar-01.jpg" />
+    <Content Include="Images\avatar-02.jpg" />
+    <Content Include="Images\avatar-03.jpg" />
+    <Content Include="Images\avatar-04.jpg" />
+    <Content Include="Images\avatar-05.jpg" />
+    <Content Include="Images\avatar-06.jpg" />
     <Content Include="CoolAdmin-master\images\icon\avatar-big-01.jpg" />
     <Content Include="CoolAdmin-master\images\icon\logo-bluaaae.png" />
     <Content Include="CoolAdmin-master\images\icon\logo-blue.png" />
@@ -493,7 +496,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\avatar.png" />
+    <Content Include="Images\avatar-00.jpg" />
     <Content Include="Images\background.png" />
     <Content Include="images\bg_img1.jpg" />
     <Content Include="images\bg_img2.jpg" />
@@ -508,15 +511,15 @@
     <Content Include="images\img7.jpg" />
     <Content Include="images\img8.jpg" />
     <Content Include="images\logo.png" />
-    <Content Include="Models\FashionDB.Context.tt">
+    <Content Include="Models\Fashion_Store.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FashionDB.edmx</DependentUpon>
-      <LastGenOutput>FashionDB.Context.cs</LastGenOutput>
+      <DependentUpon>Fashion_Store.edmx</DependentUpon>
+      <LastGenOutput>Fashion_Store.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\FashionDB.tt">
+    <Content Include="Models\Fashion_Store.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FashionDB.edmx</DependentUpon>
-      <LastGenOutput>FashionDB.cs</LastGenOutput>
+      <DependentUpon>Fashion_Store.edmx</DependentUpon>
+      <LastGenOutput>Fashion_Store.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -530,13 +533,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
-    </Content>
-    <EntityDeploy Include="Models\FashionDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FashionDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FashionDB.edmx.diagram">
-      <DependentUpon>FashionDB.edmx</DependentUpon>
     </Content>
     <Content Include="CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.eot" />
     <Content Include="CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.ttf" />
@@ -730,11 +726,18 @@
     <Content Include="fonts\NotoSerif-BoldItalic.ttf" />
     <Content Include="fonts\NotoSerif-Italic.ttf" />
     <Content Include="fonts\NotoSerif-Regular.ttf" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <EntityDeploy Include="Models\Fashion_Store.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Fashion_Store.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Fashion_Store.edmx.diagram">
+      <DependentUpon>Fashion_Store.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.6.4.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.4.js" />
+    <Content Include="Scripts\jquery-3.6.4.min.js" />
+    <Content Include="Scripts\jquery-3.6.4.slim.js" />
+    <Content Include="Scripts\jquery-3.6.4.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -764,13 +767,11 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Home\TrangChu.cshtml" />
     <Content Include="Views\Home\SanPham.cshtml" />
     <Content Include="Views\ChiTietSanPham\ChiTietSP.cshtml" />
-    <Content Include="Views\Shared\_SideBarAdmin.cshtml" />
     <Content Include="table\.DS_Store" />
     <Content Include="table\css\.DS_Store" />
     <Content Include="table\css\bootstrap\.DS_Store" />
@@ -870,27 +871,19 @@
     <Content Include="table\scss\bootstrap\_utilities.scss" />
     <Content Include="table\scss\bootstrap\_variables.scss" />
     <Content Include="table\scss\style.scss" />
-    <Content Include="Views\Account\DangNhap.cshtml" />
-    <Content Include="Views\Account\DangKyUser.cshtml" />
-    <Content Include="Views\Account\DangKyThongTinKhach.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\KhachHang\Create.cshtml" />
-    <Content Include="Views\KhachHang\Delete.cshtml" />
-    <Content Include="Views\KhachHang\Details.cshtml" />
-    <Content Include="Views\KhachHang\Edit.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\QuanLySanPham\DanhSachSanPham.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemSanPham.cshtml" />
     <Content Include="Views\QuanLySanPham\CapNhatSanPham.cshtml" />
     <Content Include="Views\Home\ChinhSach.cshtml" />
+    <Content Include="Views\Authencation\Login.cshtml" />
+    <Content Include="Views\User\Signin.cshtml" />
+    <Content Include="Views\User\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -916,8 +909,8 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.6.4.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.4.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -954,8 +947,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

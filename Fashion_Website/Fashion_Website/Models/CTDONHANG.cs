@@ -15,8 +15,8 @@ namespace Fashion_Website.Models
     public partial class CTDONHANG
     {
         public string MACTDH { get; set; }
-        public Nullable<int> SoLuongDat { get; set; }
-        public Nullable<decimal> DonGia { get; set; }
+        public int SoLuongDat { get; set; }
+        public decimal DonGia { get; set; }
         public string TenSP { get; set; }
         public string KichCo { get; set; }
         public string MaDH { get; set; }

@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -16,23 +19,22 @@
     <!--Script-->
     <script>
         $(document).on("click", "#signupButton", function () {
-    window.location.href = '@Url.Action("DangKyView", "Account")';
+    window.location.href = '@Url.Action("Signup", "User")';
         });
         $(document).on("click", "#signinButton", function () {
-    window.location.href = '@Url.Action("DangNhapView", "Account")';
+    window.location.href = '@Url.Action("Signin", "User")';
         });
     </script>
-
 </head>
 <body>
-    @using (Html.BeginForm("DangNhapView", "Account"))
+    @using (Html.BeginForm("Signin", "User"))
     {
         if (!string.IsNullOrEmpty(ViewBag.ThongBao))
         {
             <div id="message-box">
                 <h3 class="warningMessage" style="text-align:center">@ViewBag.ThongBao</h3>
-                <form method="post" action="~/Views/Account/DangNhap.cshtml">
-                    <input type="submit" name="closeMessage" value="ĐÓNG" />
+                <form method="post" action="~/Views/User/Signin.cshtml">
+                    <input class="pointer" type="submit" name="closeMessage" value="ĐÓNG" />
                 </form>
             </div>
         }
@@ -45,16 +47,16 @@
             <div class="text">
                 <div>
                     <div class="group">
-                        @using (Html.BeginForm("DangNhapView", "Account"))
+                        @using (Html.BeginForm("Signin", "User"))
                         {
                             <button style="color:black" id="signinButton">ĐĂNG NHẬP</button>
                         }
-                        @using (Html.BeginForm("DangKyView", "Account"))
+                        @using (Html.BeginForm("Signup", "User"))
                         {
                             <button id="signupButton">ĐĂNG KÝ</button>
                         }
                     </div>
-                    @using (Html.BeginForm("DangNhap", "Account"))
+                    @using (Html.BeginForm("Signin", "User"))
                     {
                         @Html.ValidationSummary(true)
                         <div class="form-group" style="text-align: left;">

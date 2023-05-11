@@ -4,23 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4151982b6e644398917751fefb96a6b8" Name="Diagram1">
-        <EntityTypeShape EntityType="fashionDBModel.CTDONHANG" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.CTHOADON" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+      <Diagram DiagramId="ac07c897e5644181bdfdba97f1485983" Name="Diagram1">
+        <EntityTypeShape EntityType="fashionDBModel.ADMIN" Width="1.5" PointX="3.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.CTDONHANG" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.CTHOADON" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.DONHANG" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.HOADON" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.KHACHHANG" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.HOADON" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.KICHCOSP" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="fashionDBModel.LOAISANPHAM" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.SANPHAM" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="fashionDBModel.USER" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="fashionDBModel.SANPHAM" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="fashionDBModel.FK_HOADON_ADMIN" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK_CTDONHANG_DONHANG" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK_CTDONHANG_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK_CTHOADON_HOADON" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK_CTHOADON_SANPHAM" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK_DONHANG_USERS" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK_HOADON_USERS" ManuallyRouted="false" />
-        <AssociationConnector Association="fashionDBModel.FK_KHACHHANG_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK_DONHANG_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK_HOADON_DONHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="fashionDBModel.FK_HOADON_KHACHHANG" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK_KICHCOSP_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="fashionDBModel.FK_SANPHAM_LOAISANPHAM" ManuallyRouted="false" />
       </Diagram>

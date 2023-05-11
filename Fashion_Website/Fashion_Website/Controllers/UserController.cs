@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Fashion_Website.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
-using Fashion_Website.Models;
 
 namespace Fashion_Website.Controllers
 {
@@ -15,118 +14,96 @@ namespace Fashion_Website.Controllers
         private fashionDBEntities db = new fashionDBEntities();
 
         // GET: User
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Signin()
         {
-            var uSERS = db.USERS.Include(u => u.KHACHHANG);
-            return View(uSERS.ToList());
-        }
-
-        // GET: User/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            USER uSER = db.USERS.Find(id);
-            if (uSER == null)
-            {
-                return HttpNotFound();
-            }
-            return View(uSER);
-        }
-
-        // GET: User/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "HoTen");
             return View();
         }
 
-        // POST: User/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,Username,UserPass,UserRole,TinhTrang")] USER uSER)
+        public ActionResult Signin([Bind(Include = "Username, UserPass")] KHACHHANG khachhang)
         {
             if (ModelState.IsValid)
             {
-                db.USERS.Add(uSER);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(khachhang.Username))
+                    return View(khachhang);
+                if (string.IsNullOrEmpty(khachhang.UserPass))
+                    return View(khachhang);
+                if (ModelState.IsValid)
+                {
+                    //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
+                    var user = db.KHACHHANGs.FirstOrDefault(k => k.Username == khachhang.Username && k.UserPass == khachhang.UserPass);
+                    if (user != null)
+                    {
+                        //Lưu thông vào session
+                        Session["Account"] = user;
+                        Session["Username"] = user.Username;
+                        Session["Fullname"] = user.HoTen;
+                        Session["ID"] = user.MaKH;
+                        if (user.TinhTrang == 0)
+                        {
+                            ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
+                        }
+                        else
+                            return Redirect("~/Home/TrangChu");
+                    }
+                    else
+                        ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                }
             }
-
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "HoTen", uSER.MaKH);
-            return View(uSER);
+            return View();
         }
 
-        // GET: User/Edit/5
-        public ActionResult Edit(string id)
+        [HttpGet]
+        public ActionResult Signup()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            USER uSER = db.USERS.Find(id);
-            if (uSER == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "HoTen", uSER.MaKH);
-            return View(uSER);
+            return View();
         }
-
-        // POST: User/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,Username,UserPass,UserRole,TinhTrang")] USER uSER)
+        public ActionResult Signup(KHACHHANG user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(uSER).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(user.Username))
+                    return View(user);
+                if (string.IsNullOrEmpty(user.UserPass))
+                    return View(user);
+                //Kiểm tra xem có người nào đã đăng ký với tên đăng nhập này hay chưa
+                var khachhang = db.KHACHHANGs.FirstOrDefault(k => k.Username == user.Username);
+                if (khachhang != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Tên đăng nhập này đã tồn tại");
+                    ViewBag.ThongBao = "Tên đăng nhập này đã tồn tại";
+                }
+                user = db.KHACHHANGs.FirstOrDefault(k => k.Email == user.Email);
+                if (user != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email đã được sử dụng!");
+                    ViewBag.ThongBao = "Email đã được sử dụng!";
+                }
+                if (ModelState.IsValid)
+                {
+                    db.KHACHHANGs.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Signin");
+                }
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "HoTen", uSER.MaKH);
-            return View(uSER);
+            return View();
+
         }
 
-        // GET: User/Delete/5
-        public ActionResult Delete(string id)
+        //Đăng xuất
+        public ActionResult Logout()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            USER uSER = db.USERS.Find(id);
-            if (uSER == null)
-            {
-                return HttpNotFound();
-            }
-            return View(uSER);
-        }
-
-        // POST: User/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            USER uSER = db.USERS.Find(id);
-            db.USERS.Remove(uSER);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            //Perform any necessary cleanup or logging out of the user
+            //Remove any authentication cookies or session state information
+            //Redirect the user to the login page
+            Session["Account"] = null;
+            Session["Fullname"] = null;
+            Session["Username"] = null;
+            Session["ID"] = null;
+            Session.Abandon();
+            return RedirectToAction("Home/TrangChu");
         }
     }
 }

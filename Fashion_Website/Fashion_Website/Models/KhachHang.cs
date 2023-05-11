@@ -14,15 +14,28 @@ namespace Fashion_Website.Models
     
     public partial class KHACHHANG
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KHACHHANG()
+        {
+            this.DONHANGs = new HashSet<DONHANG>();
+            this.HOADONs = new HashSet<HOADON>();
+        }
+    
         public string MaKH { get; set; }
         public string HoTen { get; set; }
-        public string CCCD { get; set; }
         public string SDT { get; set; }
         public string Email { get; set; }
         public System.DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
         public string DiaChi { get; set; }
+        public string Username { get; set; }
+        public string UserPass { get; set; }
+        public Nullable<int> TinhTrang { get; set; }
+        public string avatar { get; set; }
     
-        public virtual USER USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DONHANG> DONHANGs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }

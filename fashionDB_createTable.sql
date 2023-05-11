@@ -311,10 +311,16 @@ GO
 USE [fashionDB]
 GO
 
-insert into KHACHHANG values ('KH001', N'Nguyễn Hoàng Kha', '0977216038', 'hkha928@gmail.com', '12/02/2002', 'M', N'221/ 81 Đông Thạnh 4', 'hkha928', '123', 1)
+ALTER TABLE [dbo].[ADMIN]
+ADD avatar varchar(255);
+
+ALTER TABLE [dbo].[KHACHHANG]
+ADD avatar varchar(255);
+
+insert into KHACHHANG values ('KH001', N'Nguyễn Hoàng Kha', '0977216038', 'hkha928@gmail.com', '12/02/2002', 'M', N'221/ 81 Đông Thạnh 4', 'hkha928', '123', 1, 'avartar-01.jpg')
 
 
-insert into ADMIN values ('AD001', N'Trần Lê Duy', '0904689418', 'trn.duyle@gmail.com', '02/26/2002', 'M', N'368/25A Tôn Đản', 'admin', '123', 1, 'quan_tri_vien')
+insert into ADMIN values ('AD001', N'Trần Lê Duy', '0904689418', 'trn.duyle@gmail.com', '02/26/2002', 'M', N'368/25A Tôn Đản', 'admin', '123', 1, 'quan_tri_vien', 'avartar-02.jpg')
 
 
 insert into LOAISANPHAM values('LSP001', N'Áo thun')
