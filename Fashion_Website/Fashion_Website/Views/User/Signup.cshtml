@@ -61,42 +61,42 @@
                     @using (Html.BeginForm("Signup", "User"))
                     {
                         @Html.AntiForgeryToken()
-
-                    <div style="display: none">
-                        @{
+                        <div style="display: none">
+                            <input name="MaKH" value="@{
                             String data = new Fashion_Website.Models.taoMa.taoMaKhachHang().TaoMaKhachHang();
                             @data
-                        }
-                        @Html.TextBox("MaKH", data , new { @class = "form-control", @id = "MaKH", required = "required" })
-                        @Html.TextBox("avatar", "avatar-00.jpg", new { @class = "form-control", @id = "avatar", required = "required" })
-                        @Html.TextBox("TinhTrang", "1", new { @class = "form-control", @id = "TinhTrang", required = "required" })
-                    </div>
+                            }" readonly />
+                            <input name="avatar" src="~/images/avatar-00.jpg" />
+                            <input name="TinhTrang" value="1" />
+                        </div>
 
                         <div class="form-wrapper" style="text-align: left;">
                             <label for="fullname"> Họ tên: </label>
-                            @Html.TextBox("HoTen", null, new { @class = "form-control", @id = "hoten", required = "required" })
+                            <input class="form-control" type="text" name="HoTen" required="required" />
+                            @*@Html.TextBox("HoTen", null, new { @class = "form-control", @id = "hoten", required = "required" })*@
                         </div>
                         <div class="form-wrapper" style="text-align: left;">
                             <label for="username">Tài khoản: </label>
-                            @Html.TextBox("Username", null, new { @class = "form-control", @id = "username", required = "required" })
+                            <input class="form-control" type="text" name="Username" required="required" />
+                            @*@Html.TextBox("Username", null, new { @class = "form-control", @id = "username", required = "required" })*@
                         </div>
                         <div class="form-wrapper" style="text-align: left;">
                             <label for="password">Mật khẩu: </label>
-                            @Html.Password("UserPass", null, new { @class = "form-control", @id = "password", required = "required" })
+                            <input class="form-control" type="password" name="UserPass" required="required" />
+                            @*@Html.Password("UserPass", null, new { @class = "form-control", @id = "password", required = "required" })*@
                         </div>
                         <div class="form-group" style="text-align: left;">
                             <div class="form-wrapper" style="text-align: left;">
                                 <label for="mail">Email: </label>
-                                @Html.TextBox("Email", null, new { @class = "form-control", @id = "mail", required = "required" })
+                                <input class="form-control" type="text" name="Email" required="required" />
+                                @*@Html.TextBox("Email", null, new { @class = "form-control", @id = "mail", required = "required" })*@
                             </div>
                             <div class="form-wrapper" style="text-align: left;">
                                 <label for="phonenumber">Số điện thoại: </label>
-                                @Html.TextBox("SDT", null, new { @class = "form-control", @id = "phonenumber", required = "required" })
+                                <input class="form-control" type="text" name="SDT" required="required" />
+                                @*@Html.TextBox("SDT", null, new { @class = "form-control", @id = "phonenumber", required = "required" })*@
                             </div>
                         </div>
-
-
-
                         <div class="form-group" style="text-align: left;">
                             <div class="form-wrapper" style="text-align: left;">
                                 <label for="NgaySinh">Ngày sinh: </label>
@@ -114,7 +114,8 @@
                         </div>
                         <div class="form-wrapper" style="text-align: left;">
                             <label for="diachi">Địa chỉ: </label>
-                            @Html.TextBox("Diachi", null, new { @class = "form-control", @id = "diachi", required = "required" })
+                            <input class="form-control" type="text" name="DiaChi" required="required" />
+                            @*@Html.TextBox("Diachi", null, new { @class = "form-control", @id = "diachi", required = "required" })*@
                         </div>
 
 

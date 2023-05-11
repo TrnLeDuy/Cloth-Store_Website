@@ -36,7 +36,7 @@ namespace Fashion_Website.Controllers
                     if (user != null)
                     {
                         //Lưu thông vào session
-                        Session["Account"] = user;
+                        Session["KhachHang"] = user;
                         Session["Username"] = user.Username;
                         Session["Fullname"] = user.HoTen;
                         Session["ID"] = user.MaKH;
@@ -75,12 +75,6 @@ namespace Fashion_Website.Controllers
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập này đã tồn tại");
                     ViewBag.ThongBao = "Tên đăng nhập này đã tồn tại";
                 }
-                user = db.KHACHHANGs.FirstOrDefault(k => k.Email == user.Email);
-                if (user != null)
-                {
-                    ModelState.AddModelError(string.Empty, "Email đã được sử dụng!");
-                    ViewBag.ThongBao = "Email đã được sử dụng!";
-                }
                 if (ModelState.IsValid)
                 {
                     db.KHACHHANGs.Add(user);
@@ -88,8 +82,8 @@ namespace Fashion_Website.Controllers
                     return RedirectToAction("Signin");
                 }
             }
+            
             return View();
-
         }
 
         //Đăng xuất
@@ -98,7 +92,7 @@ namespace Fashion_Website.Controllers
             //Perform any necessary cleanup or logging out of the user
             //Remove any authentication cookies or session state information
             //Redirect the user to the login page
-            Session["Account"] = null;
+            Session["KhachHang"] = null;
             Session["Fullname"] = null;
             Session["Username"] = null;
             Session["ID"] = null;
