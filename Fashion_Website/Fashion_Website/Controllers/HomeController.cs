@@ -25,5 +25,15 @@ namespace Fashion_Website.Controllers
         {
             return View();
         }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult HeThongCuaHang()
+        {
+            return View();
+        }
     }
 }
