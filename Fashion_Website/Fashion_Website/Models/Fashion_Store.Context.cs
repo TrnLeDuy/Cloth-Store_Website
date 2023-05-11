@@ -25,6 +25,7 @@ namespace Fashion_Website.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ADMIN> ADMINs { get; set; }
         public virtual DbSet<CTDONHANG> CTDONHANGs { get; set; }
         public virtual DbSet<CTHOADON> CTHOADONs { get; set; }
         public virtual DbSet<DONHANG> DONHANGs { get; set; }
@@ -33,6 +34,5 @@ namespace Fashion_Website.Models
         public virtual DbSet<KICHCOSP> KICHCOSPs { get; set; }
         public virtual DbSet<LOAISANPHAM> LOAISANPHAMs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<USER> USERS { get; set; }
     }
 }

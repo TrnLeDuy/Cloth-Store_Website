@@ -16,7 +16,7 @@ namespace Fashion_Website.Controllers
         {
             ViewBag.countSanPham = db.SANPHAMs.Count();
             ViewBag.countLoaiSanPham = db.LOAISANPHAMs.Count();
-            ViewBag.countKhachHang = db.USERS.Count(s => s.UserRole == "KH");
+            ViewBag.countKhachHang = db.KHACHHANGs.Count();
             ViewBag.countDoanhThu = db.HOADONs.Count();
             return View();
         }

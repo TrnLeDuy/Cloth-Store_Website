@@ -25,9 +25,12 @@ namespace Fashion_Website.Models
         public decimal TongTien { get; set; }
         public string MaKH { get; set; }
         public string MaDH { get; set; }
+        public string MaAD { get; set; }
     
+        public virtual ADMIN ADMIN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHOADON> CTHOADONs { get; set; }
-        public virtual USER USER { get; set; }
+        public virtual DONHANG DONHANG { get; set; }
+        public virtual KHACHHANG KHACHHANG { get; set; }
     }
 }
