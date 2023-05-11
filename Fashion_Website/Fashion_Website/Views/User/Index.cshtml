@@ -72,15 +72,9 @@
                     @Html.DisplayFor(modelItem => item.TinhTrang)
                 </td>
                 <td>
-                    <button class="edit-button">
-                        <a href="~/User/Edit?id=@item.MaKH">Cập nhật</a>
-                    </button>
-                    <button class="detail-button">
-                        <a href="~/User/Details?id=@item.MaKH">Chi tiết</a>
-                    </button>
-                    <button class="delete-button">
-                        <a href="~/User/Delete?id=@item.MaKH">Xóa</a>
-                    </button>
+					<a class="edit-button" href="~/User/Edit?id=@item.MaKH">Cập nhật</a>
+					<a class="detail-button" href="~/User/Details?id=@item.MaKH">Chi tiết</a>
+					<a class="delete-button" href="~/User/Delete?id=@item.MaKH">Xóa</a>
                 </td>
             </tr>
         }
