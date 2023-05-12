@@ -1,11 +1,7 @@
 ﻿@model Fashion_Website.Models.KHACHHANG
 
 @{
-<<<<<<< HEAD
     ViewBag.Title = "Thêm Khách Hàng";
-=======
-    ViewBag.Title = "Create";
->>>>>>> LeDuy_workspace
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <script src="~/Assets/js/previewFile.js"></script>
@@ -106,11 +102,7 @@
                 {
                     new SelectListItem{Text="Hoạt động", Value="1"},
                     new SelectListItem{Text="Khóa", Value="0"}}, "Lựa chọn",
-<<<<<<< HEAD
                 new { @class = "form-control1", @id = "tinhtrang", required = "required" })
-=======
-                new { @class = "form-control1", @id = "gioitinh", required = "required" })
->>>>>>> LeDuy_workspace
                 @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
             </div>
         </div>

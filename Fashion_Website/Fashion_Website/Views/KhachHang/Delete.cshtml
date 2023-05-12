@@ -1,11 +1,7 @@
 ﻿@model Fashion_Website.Models.KHACHHANG
 
 @{
-<<<<<<< HEAD
     ViewBag.Title = "Xóa thông tin Khách hàng";
-=======
-    ViewBag.Title = "Delete";
->>>>>>> LeDuy_workspace
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -98,7 +94,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
