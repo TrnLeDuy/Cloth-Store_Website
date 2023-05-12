@@ -1,0 +1,226 @@
+﻿@model Fashion_Website.Models.KHACHHANG
+
+@{
+<<<<<<< HEAD
+    ViewBag.Title = "Thông tin chi tiết";
+=======
+    ViewBag.Title = "Details";
+>>>>>>> LeDuy_workspace
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Assets/js/previewFile.js"></script>
+
+<div class="wrapper">
+    <div class="profile-card js-profile-card">
+        <div class="profile-card__img">
+            <img src="~/images/@Model.avatar" alt="profile card"  />
+        </div>
+
+        <div class="profile-card__cnt js-profile-cnt">
+            <div class="profile-card__name">@Html.DisplayFor(model => model.HoTen)</div>
+<<<<<<< HEAD
+            <div class="profile-card__txt">Tài khoản : <strong>@Html.DisplayFor(model => model.Username)</strong> </div>
+=======
+>>>>>>> LeDuy_workspace
+            <div class="profile-card__txt">Mã Khách Hàng : <strong>@Html.DisplayFor(model => model.MaKH)</strong> </div>
+            @{
+                if (Model.GioiTinh == "0")
+                {
+                    <div class="profile-card__txt">Giới tính : <strong>Nữ</strong> </div>
+                }
+                else
+                {
+                    <div class="profile-card__txt">Giới tính : <strong>Nam</strong> </div>
+                }
+            }
+            @*<div class="profile-card__txt">Giới tính : <strong>@Html.DisplayFor(model => model.GioiTinh)</strong> </div>*@
+            <div class="profile-card__txt">Số điện thoại : <strong>@Html.DisplayFor(model => model.SDT)</strong> </div>
+            <div class="profile-card__txt">Email : <strong>@Html.DisplayFor(model => model.Email)</strong> </div>
+<<<<<<< HEAD
+            <div class="profile-card__txt">Địa chỉ : <strong>@Html.DisplayFor(model => model.DiaChi)</strong> </div>
+            
+=======
+
+>>>>>>> LeDuy_workspace
+            <div class="profile-card-loc">
+                <span class="profile-card-loc__icon">
+                    <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+                </span>
+<<<<<<< HEAD
+                @{
+                    if (Model.TinhTrang == 1)
+                    {
+                        <span class="profile-card-loc__txt">
+                            Hoạt động
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="profile-card-loc__txt">
+                            Đã Khóa
+                        </span>
+                    }
+                }
+                @*<div class="profile-card__txt">Tình Trạng : <strong>@Html.DisplayFor(model => model.TinhTrang)</strong> </div>*@
+            </div>
+
+=======
+
+                <span class="profile-card-loc__txt">
+                    @Html.DisplayFor(model => model.DiaChi)
+                </span>
+            </div>
+>>>>>>> LeDuy_workspace
+
+
+
+            <div class="profile-card-ctr">
+                <a class="profile-card__button button--orange" href="~/KhachHang/Edit?id=@Model.MaKH">Cập nhật</a>
+                <a class="profile-card__button button--blue" href="~/KhachHang/Index">Back to List</a>
+            </div>
+        </div>
+
+        <div class="profile-card-message js-message">
+            <form class="profile-card-form">
+                <div class="profile-card-form__container">
+                    <textarea placeholder="Say something..."></textarea>
+                </div>
+
+                <div class="profile-card-form__bottom">
+                    <button class="profile-card__button button--blue js-message-close">
+                    </button>
+
+                    <button class="profile-card__button button--gray js-message-close">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <div class="profile-card__overlay js-message-close"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script>
+    var messageBox = document.querySelector('.js-message');
+    var btn = document.querySelector('.js-message-btn');
+    var card = document.querySelector('.js-profile-card');
+    var closeBtn = document.querySelectorAll('.js-message-close');
+
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        card.classList.add('active');
+    });
+
+    closeBtn.forEach(function (element, index) {
+        console.log(element);
+        element.addEventListener('click', function (e) {
+            e.preventDefault();
+            card.classList.remove('active');
+        });
+    });
+</script>
+
+<<<<<<< HEAD
+@*<div>
+=======
+<div>
+>>>>>>> LeDuy_workspace
+    <h4>KHACHHANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.avatar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.avatar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }) |
+    @Html.ActionLink("Back to List", "Index")
+<<<<<<< HEAD
+</p>*@
+=======
+</p>
+>>>>>>> LeDuy_workspace
