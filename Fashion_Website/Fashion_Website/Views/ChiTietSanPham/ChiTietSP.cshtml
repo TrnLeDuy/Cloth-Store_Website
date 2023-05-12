@@ -11,64 +11,42 @@
 <link rel="stylesheet" href="~/Content/ChiTiet.css" />
 
 <body>
-    <form action="~/GioHang/GioHang" method="get">
+    <form action="~/Cart/AddToCart" method="post">
+        @Html.AntiForgeryToken()
         <div class="grid-sanpham">
             <div class="grid-hinhanh">
-                @*<input name="MaGH" value="@{
-                    String data = new Fashion_Website.Models.taoMa.taoMaGioHang().TaoMaGioHang();
-                    @data
-                }" hidden />*@
-                <input type="text" name="MoTaSanPham" value="@Model.MoTa" hidden />
-                <input type="text" name="ThanhTien" value="0" hidden />
-                <input type="text" name="MaSP" value="@Model.MaSP" hidden />
-                <input type="text" name="UserID" value="1" hidden />
-                <input type="text" name="TinhTrangGH" value="1" hidden />               
-                
-
                 <img src="~/images/@Model.HinhSP" />
                 <input name="HinhSP" value="@Model.HinhSP" hidden />
             </div>
             <div class="grid-chitiet">
                 <div class="chitiet">
+                    <input name="productId" value="@Model.MaSP" hidden />
                     <h1>@Model.TenSP</h1>
                     <input name="TenSP" value="@Model.TenSP" hidden />
                     <span class="price">@Model.GiaSP₫</span>
                     <input name="GiaSP" value="@Model.GiaSP" hidden />
                     <br />
                     <div class="info">
-                        <div>Loại : <span>Áo Thun </span></div>
-                        <div>Tình trạng :<span> Còn Hàng </span></div>                        
+                        <div>Loại : <span>@Model.LOAISANPHAM.TenLoaiSP</span></div>
+                        <div>Tình trạng :<span>Còn Hàng</span></div>
                     </div>
                     <div style="height:1px;background-color:lightgray;"></div>
                     <div class="size-div">
-                        <div class="headname">SIZE: S M L</div>
-                        <div class="select">
-                            @*@{
-                                if (Model.KichCoSP == "S")
+                        <div class="headname">
+                            SIZE:
+                            <select name="size" required>
+                                <option>Chọn size</option>
+                                @foreach (var item in new Fashion_Website.Models.mapSanPham.mapSanPham().DanhSachSize(Model.MaSP))
                                 {
-                                    <input type="radio" name="size" id="s" value="s" checked> <label for="s">S</label>
-                                    <input type="radio" name="size" id="m" value="m" disabled> <label for="m">M</label>
-                                    <input type="radio" name="size" id="l" value="l" disabled> <label for="l">L</label>
+                                    <option value="@item.KichCo">@item.KichCo</option>
                                 }
-                                else if (Model.KichCoSP == "M")
-                                {
-                                    <input type="radio" name="size" id="s" value="s" disabled> <label for="s">S</label>
-                                    <input type="radio" name="size" id="m" value="m" checked> <label for="m">M</label>
-                                    <input type="radio" name="size" id="l" value="l" disabled> <label for="l">L</label>
-                                }
-                                else
-                                {
-                                    <input type="radio" name="size" id="s" value="s" disabled> <label for="s">S</label>
-                                    <input type="radio" name="size" id="m" value="m" disabled> <label for="m">M</label>
-                                    <input type="radio" name="size" id="l" value="l" checked> <label for="l">L</label>
-                                }
-                            }*@
+                            </select>
                         </div>
                     </div>
                     <br />
                     <br />
                     <div class="quantity">
-                        <div>Số Lượng:  <input type="number" min="1" max="5" value="1" name="SoLuong"></div>
+                        <div>Số Lượng:  <input type="number" min="1" max="5" value="1" name="quantity"></div>
                     </div>
                     <div id="WishList_btn_none">
                         <a href="#" class="btn-yeuthich"><i class="fa fa-heart" style="height:15px;width:15px;margin-top:3px;margin-right:5px;"></i> Thêm vào yêu thích</a>
@@ -79,7 +57,7 @@
                     </div>
                     <div style="height:1px;background-color:lightgray;"></div>
                     <div class="mota">
-                        Áo là phần trang phục được mặc ở phần trên của cơ thể. Mảnh trang phục cổ nhất thế giới còn bảo tồn được, do Flinders Petrie khám phá, là một chiếc áo vải lanh từ một ngôi mộ Ai Cập tại Tarkan
+                        @Model.MoTa
                     </div>
                 </div>
             </div>

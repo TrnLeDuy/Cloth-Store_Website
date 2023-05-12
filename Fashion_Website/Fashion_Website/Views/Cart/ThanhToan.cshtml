@@ -1,0 +1,85 @@
+﻿@model List<Fashion_Website.Models.shoppingCart.CartItemViewModel>
+
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<h3>Order Summary</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName - (@item.ProductSize)</td>
+                <td><img src="@item.ProductImg" alt="@item.ProductName"></td>
+                <td>@item.Price.ToString("c")</td>
+                <td>@item.Quantity</td>
+                <td>@item.Subtotal.ToString("c")</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" align="right">Total:</td>
+            <td>@Model.Sum(item => item.Subtotal).ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+<h3>Payment Information</h3>
+<p>Customer Name: @ViewBag.CustomerName</p>
+<p>Customer Phone Number: @ViewBag.CustomerPhoneNumber</p>
+<p>Customer Address: @ViewBag.CustomerAddress</p>
+<form action="@Url.Action("ProcessPayment", "Cart")" method="post">
+    <div>
+        <label>
+            <input type="radio" name="paymentMethod" value="delivery" checked>
+            Pay on Delivery
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="radio" name="paymentMethod" value="creditCard">
+            Credit Card
+        </label>
+    </div>
+    <div id="credit-card-details" style="display: none;">
+        <div>
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="cardNumber">
+        </div>
+        <div>
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" name="expiryDate">
+        </div>
+        <div>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv">
+        </div>
+    </div>
+    <div>
+        <button type="submit">Process Payment</button>
+    </div>
+</form>
+
+<script>
+    $('input[type=radio][name=paymentMethod]').change(function () {
+        if (this.value === 'creditCard') {
+            $('#credit-card-details').show();
+        } else {
+            $('#credit-card-details').hide();
+        }
+    });
+</script>
+
+
