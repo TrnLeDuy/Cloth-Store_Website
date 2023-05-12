@@ -5,7 +5,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="~/Content/hiep.css" />
     <link rel="stylesheet" href="~/Content/mystyle.css" />
@@ -58,14 +58,14 @@
         <div class="header-top">
             <div class="grid-container">
                 <div class="grid-item">
-                    <h1>LOGO</h1>
+                    <a href="/"><img style="width: 80px" src="~/images/logo.png" /></a>
                 </div>
                 <div class="grid-item" style="text-align:right;">
                     <ul class="hdt-contact inline-list">
-                        <li class="hdt-contact-item"> <a href="">Hệ thống cửa hàng</a></li>
+                        <li class="hdt-contact-item"> <a href="/Home/HeThongCuaHang">Hệ thống cửa hàng</a></li>
                         <li class="hdt-contact-item"> <a href="">Liên hệ</a></li>
                         <li class="hdt-contact-item"> <a href="">Tìm Kiếm<i class="fa fa-search"></i></a></li>
-                        <li class="hdt-contact-item"> <a href="~/Account/DangNhap"><i class="fa fa-user"></i></a></li>
+                        <li class="hdt-contact-item"> <a href="~/User/Signin"><i class="fa fa-user"></i></a></li>
                         <li class="hdt-contact-item"> <a href=""><i class="fa fa-heart"></i></a></li>
                         <li class="hdt-contact-item"> <a href="~/GioHang/GioHang"><i class="fa fa-shopping-bag"></i></a></li>
                     </ul>
@@ -101,7 +101,7 @@
                     <a class="dropbtn">SHOP INSTAGRAM</a>
                 </li>
                 <li class="menu-item">
-                    <a class="dropbtn">ABOUT US</a>
+                    <a class="dropbtn" href="~/Home/AboutUs">ABOUT US</a>
                 </li>
             </ul>
         </nav>
@@ -189,7 +189,7 @@
                                     </li>
 
                                     <li class="footer-nav-item">
-                                        <a href="/pages/chinh-sach-bao-mat" class="a">Chính Sách Bảo Mật</a>
+                                        <a href="/Home/ChinhSach" class="a">Chính Sách Bảo Mật</a>
                                     </li>
 
                                     <li class="footer-nav-item">

@@ -10,14 +10,20 @@ namespace Fashion_Website.Controllers
     public class DashboardController : Controller
     {
         private fashionDBEntities db = new fashionDBEntities();
+        private decimal total = 0;
 
         // GET: Dashboard
         public ActionResult Dashboard()
         {
+            foreach (var entity in db.HOADONs)
+            {
+                total += entity.TongTien;
+            }
+
             ViewBag.countSanPham = db.SANPHAMs.Count();
-            ViewBag.countLoaiSanPham = db.LOAISANPHAMs.Count();
-            ViewBag.countKhachHang = db.USERS.Count(s => s.UserRole == "KH");
-            ViewBag.countDoanhThu = db.HOADONs.Count();
+            ViewBag.countDonHang = db.HOADONs.Count();
+            ViewBag.countKhachHang = db.KHACHHANGs.Count();
+            ViewBag.countDoanhThu = total;
             return View();
         }
     }

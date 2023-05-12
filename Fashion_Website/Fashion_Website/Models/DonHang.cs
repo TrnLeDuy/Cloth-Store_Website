@@ -18,6 +18,7 @@ namespace Fashion_Website.Models
         public DONHANG()
         {
             this.CTDONHANGs = new HashSet<CTDONHANG>();
+            this.HOADONs = new HashSet<HOADON>();
         }
     
         public string MaDH { get; set; }
@@ -30,6 +31,8 @@ namespace Fashion_Website.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }
-        public virtual USER USER { get; set; }
+        public virtual KHACHHANG KHACHHANG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }

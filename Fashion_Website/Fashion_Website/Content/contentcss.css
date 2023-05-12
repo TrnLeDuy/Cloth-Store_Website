@@ -1,0 +1,42 @@
+﻿.infoweb-text h3 {
+    font-family: notoserif-regular;
+    padding: 20px;
+}
+.infoweb-text p {
+    font-family: notoserif-regular;
+    font-size: large;
+}
+.infoweb-text {
+    font-family: notoserif-regular;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.chinhsach {
+    padding-top:20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.chinhsachbaomat {
+    font-family: notoserif-regular;
+}
+@font-face {
+    font-family: 'notoserif-regular';
+    src: url('../fonts/notoserif-regular.ttf') format('truetype');
+}
+.chinhsach p{
+    font-family:notoserif-regular;
+    font-size:medium;
+    padding-top:15px;
+}
+.chinhsach strong {
+    font-family: notoserif-regular;
+    font-size: x-large;
+}
+.chinhsach ul li {
+    font-family: notoserif-regular;
+    padding-top: 15px;
+}

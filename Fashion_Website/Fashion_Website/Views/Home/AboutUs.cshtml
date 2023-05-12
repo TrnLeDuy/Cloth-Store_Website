@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Về chúng tôi";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/contentcss.css" />
+</head>
+<style>
+    .grid-containerrr {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 100px;
+        padding-bottom: 50px;
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
+    .grid-containerr {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: auto;
+        text-align: center;
+    }
+</style>
+<div style="text-align: left; padding-top: 15px;padding-left:40px;padding-bottom:15px" class="chinhsachbaomat">
+    <strong style=" font-size:xx-large">About Us</strong>
+</div>
+<div class="grid-containerrr chinhsachbaomat">
+    <div class="grid-containerr" style="border-style: dashed; background-color: lightgray ; "><div><img style="width: 30%; text-align: center; padding-bottom: 20px;" src="~/images/avatar-00.jpg" /></div><strong style=" font-size:x-large">Trần Lê Duy</strong></div>
+    <div class="grid-containerr" style="border-style: double; background-color: lightcoral; "><div><img style="width: 30%; text-align: center; padding-bottom: 20px;" src="~/images/avatar-00.jpg" /></div><strong style=" font-size:x-large">Đoàn Phương Thảo</strong></div>
+    <div class="grid-containerr" style="border-style: groove; background-color: lightblue ; "><div><img style="width: 30%; text-align: center; padding-bottom: 20px;" src="~/images/avatar-00.jpg" /></div><strong style=" font-size:x-large">Nguyễn Hoàng Kha</strong></div>
+    <div class="grid-containerr" style="border-style: dotted; background-color: lightgreen; "><div><img style="width: 30%; text-align: center; padding-bottom: 20px;" src="~/images/avatar-00.jpg" /></div><strong style=" font-size:x-large">Huỳnh Tấn Hiệp</strong></div>
+
+</div>
+
+

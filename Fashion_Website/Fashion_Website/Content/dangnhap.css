@@ -71,6 +71,15 @@
     margin-bottom: 25px;
 }
 
+#message-box input.pointer {
+    cursor: pointer !important;
+}
+
+#message-box input:hover{
+    transition: transform 0.5s;
+    transform: scale(110%);
+}
+
 .layout .text .sub-btn{
     display: inline-block;
     text-decoration: none;

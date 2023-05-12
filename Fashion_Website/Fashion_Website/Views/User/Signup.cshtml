@@ -1,0 +1,129 @@
+﻿@using Fashion_Website.Models;
+@model KHACHHANG
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+
+    <!--Bootstrap/CSS-->
+    <link href="~/Content/dangky.css" rel="stylesheet" />
+    <link href="~/Content/general.css" rel="stylesheet" />
+
+    <!--Script-->
+    <script>
+        $(document).on("click", "#signupButton", function () {
+    window.location.href = '@Url.Action("Signup", "User")';
+        });
+        $(document).on("click", "#signinButton", function () {
+    window.location.href = '@Url.Action("Signin", "User")';
+        });
+    </script>
+
+</head>
+<body>
+    @using (Html.BeginForm("Signup", "User"))
+    {
+        if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+        {
+            <div id="message-box">
+                <h3 class="warningMessage" style="text-align:center">@ViewBag.ThongBao</h3>
+                <form method="post" action="~/Views/User/Signup.cshtml">
+                    <input type="submit" name="closeMessage" value="ĐÓNG" />
+                </form>
+            </div>
+        }
+    }
+    <div class="form">
+        <div class="layout">
+            <div class="img">
+                <img src="~/Images/background.png" alt="background" />
+            </div>
+            <div class="text">
+                <div class="group">
+                    @using (Html.BeginForm("Signin", "User"))
+                    {
+                        <button id="signinButton">ĐĂNG NHẬP</button>
+                    }
+                    @using (Html.BeginForm("Signup", "User"))
+                    {
+                        <button style="color:black" id="signupButton">ĐĂNG KÝ</button>
+                    }
+                </div>
+                <div>
+                    @using (Html.BeginForm("Signup", "User"))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div style="display: none">
+                            <input name="MaKH" value="@{
+                            String data = new Fashion_Website.Models.taoMa.taoMaKhachHang().TaoMaKhachHang();
+                            @data
+                            }" readonly />
+                            <input name="avatar" src="~/images/avatar-00.jpg" />
+                            <input name="TinhTrang" value="1" />
+                        </div>
+
+                        <div class="form-wrapper" style="text-align: left;">
+                            <label for="fullname"> Họ tên: </label>
+                            <input class="form-control" type="text" name="HoTen" required="required" />
+                            @*@Html.TextBox("HoTen", null, new { @class = "form-control", @id = "hoten", required = "required" })*@
+                        </div>
+                        <div class="form-wrapper" style="text-align: left;">
+                            <label for="username">Tài khoản: </label>
+                            <input class="form-control" type="text" name="Username" required="required" />
+                            @*@Html.TextBox("Username", null, new { @class = "form-control", @id = "username", required = "required" })*@
+                        </div>
+                        <div class="form-wrapper" style="text-align: left;">
+                            <label for="password">Mật khẩu: </label>
+                            <input class="form-control" type="password" name="UserPass" required="required" />
+                            @*@Html.Password("UserPass", null, new { @class = "form-control", @id = "password", required = "required" })*@
+                        </div>
+                        <div class="form-group" style="text-align: left;">
+                            <div class="form-wrapper" style="text-align: left;">
+                                <label for="mail">Email: </label>
+                                <input class="form-control" type="text" name="Email" required="required" />
+                                @*@Html.TextBox("Email", null, new { @class = "form-control", @id = "mail", required = "required" })*@
+                            </div>
+                            <div class="form-wrapper" style="text-align: left;">
+                                <label for="phonenumber">Số điện thoại: </label>
+                                <input class="form-control" type="text" name="SDT" required="required" />
+                                @*@Html.TextBox("SDT", null, new { @class = "form-control", @id = "phonenumber", required = "required" })*@
+                            </div>
+                        </div>
+                        <div class="form-group" style="text-align: left;">
+                            <div class="form-wrapper" style="text-align: left;">
+                                <label for="NgaySinh">Ngày sinh: </label>
+                                @Html.TextBox("NgaySinh", null, new { @class = "form-control", @id = "ngaysinh", type = "date", placeholder = "dd/mm/yyyy" })
+                            </div>
+                            <div class="form-wrapper" style="text-align: left;">
+                                <label for="GioiTinh">Giới Tính: </label>
+                                @Html.DropDownListFor(model => model.GioiTinh,
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Nam", Value="M"},
+                                    new SelectListItem{Text="Nữ", Value="F"}}, "Lựa chọn",
+                                new { @class = "form-control1", @id = "gioitinh", required = "required" })
+                            </div>
+                        </div>
+                        <div class="form-wrapper" style="text-align: left;">
+                            <label for="diachi">Địa chỉ: </label>
+                            <input class="form-control" type="text" name="DiaChi" required="required" />
+                            @*@Html.TextBox("Diachi", null, new { @class = "form-control", @id = "diachi", required = "required" })*@
+                        </div>
+
+
+                        <button style="margin-top:20px;" type="submit" class="btn sub-btn btn-primary">ĐĂNG KÝ</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

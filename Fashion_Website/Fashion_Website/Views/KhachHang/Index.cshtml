@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Fashion_Website.Models.KHACHHANG>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách Khách Hàng";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -78,17 +78,12 @@
                     @Html.DisplayFor(modelItem => item.DiaChi)
                 </td>
                 <td>
-                    <button class="edit-button">
-                        @Html.ActionLink("Cập nhật", "Edit", new { id = item.MaKH })
-                    </button>
-                    <button class="detail-button">
-                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaKH })
-                    </button>
-                    <button class="delete-button">
-                        @Html.ActionLink("Xóa", "Delete", new { id = item.MaKH })
-                    </button>
+                    <a class="edit-button" href="~/KhachHang/Edit?id=@item.MaKH">Cập nhật</a>
+                    <a class="detail-button" href="~/KhachHang/Details?id=@item.MaKH">Chi tiết</a>
+                    <a class="delete-button" href="~/KhachHang/Delete?id=@item.MaKH">Xóa</a>
                 </td>
             </tr>
+
         }
 
     </table>

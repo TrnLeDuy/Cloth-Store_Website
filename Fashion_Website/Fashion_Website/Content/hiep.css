@@ -22,6 +22,15 @@
     }
 }
 
+@font-face {
+    font-family: 'notoserif-regular';
+    src: url('../fonts/notoserif-regular.ttf') format('truetype');
+}
+
+.hdt-contact-item {
+    font-family: notoserif-regular;
+}
+
 header .header-top {
     padding: 5px 20px;
     background: #ffffff;
@@ -167,7 +176,7 @@ img, iframe {
 }
 
 .large--two-thirds {
-    width: 80%;
+    width: 100%;
 }
 
 .large--four-tenths {
@@ -175,7 +184,7 @@ img, iframe {
 }
 
 .large--three-tenths {
-    width: 80%;
+    width: 100%;
 }
 
 footer .footer-main .footer-left {
@@ -370,8 +379,9 @@ header .header-top .hdt-contact .hdt-contact-item > a:after {
 
 /* Caption text */
 .text {
+    font-family: notoserif-regular;
     color: white;
-    font-size: 50px;
+    font-size: 30px;
     padding: 8px 12px;
     position: absolute;
     top: 25%;
@@ -381,6 +391,7 @@ header .header-top .hdt-contact .hdt-contact-item > a:after {
 
 /* Number text (1/3 etc) */
 .numbertext {
+    display:none;
     color: #f2f2f2;
     font-size: 12px;
     padding: 8px 12px;

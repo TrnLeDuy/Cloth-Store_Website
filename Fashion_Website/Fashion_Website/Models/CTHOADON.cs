@@ -14,7 +14,7 @@ namespace Fashion_Website.Models
     
     public partial class CTHOADON
     {
-        public string MaCTHD { get; set; }
+        public string MACTHD { get; set; }
         public string TenSP { get; set; }
         public decimal DonGia { get; set; }
         public int SoLuong { get; set; }

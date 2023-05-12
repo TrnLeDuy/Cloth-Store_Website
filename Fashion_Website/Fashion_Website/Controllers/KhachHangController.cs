@@ -17,8 +17,7 @@ namespace Fashion_Website.Controllers
         // GET: KhachHang
         public ActionResult Index()
         {
-            var kHACHHANGs = db.KHACHHANGs.Include(k => k.USER).Where(k => k.USER.UserRole == "KH");
-            return View(kHACHHANGs.ToList());
+            return View(db.KHACHHANGs.ToList());
         }
 
         // GET: KhachHang/Details/5
@@ -39,7 +38,6 @@ namespace Fashion_Website.Controllers
         // GET: KhachHang/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.USERS, "MaKH", "Username");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace Fashion_Website.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,HoTen,CCCD,SDT,Email,NgaySinh,GioiTinh,DiaChi")] KHACHHANG kHACHHANG)
+        public ActionResult Create([Bind(Include = "MaKH,HoTen,SDT,Email,NgaySinh,GioiTinh,DiaChi,Username,UserPass,TinhTrang,avatar")] KHACHHANG kHACHHANG)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace Fashion_Website.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.USERS, "MaKH", "Username", kHACHHANG.MaKH);
             return View(kHACHHANG);
         }
 
@@ -73,7 +70,6 @@ namespace Fashion_Website.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.USERS, "MaKH", "Username", kHACHHANG.MaKH);
             return View(kHACHHANG);
         }
 
@@ -82,7 +78,7 @@ namespace Fashion_Website.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,HoTen,CCCD,SDT,Email,NgaySinh,GioiTinh,DiaChi")] KHACHHANG kHACHHANG)
+        public ActionResult Edit([Bind(Include = "MaKH,HoTen,SDT,Email,NgaySinh,GioiTinh,DiaChi,Username,UserPass,TinhTrang,avatar")] KHACHHANG kHACHHANG)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace Fashion_Website.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.USERS, "MaKH", "Username", kHACHHANG.MaKH);
             return View(kHACHHANG);
         }
 

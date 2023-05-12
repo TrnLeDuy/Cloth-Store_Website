@@ -21,5 +21,19 @@ namespace Fashion_Website.Controllers
             var danhSachSP = db.SANPHAMs.ToList();
             return View(danhSachSP);
         }
+        public ActionResult ChinhSach()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult HeThongCuaHang()
+        {
+            return View();
+        }
     }
 }
