@@ -1,0 +1,130 @@
+﻿@model List<Fashion_Website.Models.shoppingCart.CartItemViewModel>
+
+@{
+    ViewBag.Title = "SanPhamGH";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<h2>Your Cart</h2>
+@if (Model == null || !Model.Any())
+{
+    <h2>@ViewBag.Message</h2>
+}
+else
+{
+    @*<table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName - (@item.ProductSize)</td>
+                        <td><img src="@item.ProductImg" alt="@item.ProductName"></td>
+                        <td>@item.Price.ToString("c")</td>
+                        <td>
+                            @using (Html.BeginForm("UpdateCart", "ShoppingCart"))
+                            {
+                                @Html.Hidden("productId", item.ProductId)
+                                @Html.Hidden("size", item.ProductSize)
+                                <input type="number" name="quantity" value="@item.Quantity" min="1" max="10">
+                                <input type="submit" value="Update">
+                            }
+                        </td>
+                        <td>@item.Subtotal.ToString("c")</td>
+                        <td>
+                            @using (Html.BeginForm("RemoveFromCart", "ShoppingCart"))
+                            {
+                                @Html.Hidden("productId", item.ProductId)
+                                @Html.Hidden("size", item.ProductSize)
+                                <input type="submit" value="Remove">
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" align="right">Total:</td>
+                    <td>@Model.Sum(item => item.Subtotal).ToString("c")</td>
+                </tr>
+            </tfoot>
+        </table>
+        <a href="~/Cart/ThanhToan">Thanh toán</a>*@
+
+
+    <div class="container">
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:50%">Tên sản phẩm</th>
+                    <th style="width:10%">Giá</th>
+                    <th style="width:8%">Số lượng</th>
+                    <th style="width:22%" class="text-center">Thành tiền</th>
+                    <th style="width:10%"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+
+                {
+                    <tr>
+                        <td data-th="Product">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs">
+                                    <img src="~/images/@item.ProductImg" class="img-responsive" style="width: 100px; height: 100px;" alt="@item.ProductName" />
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4 class="nomargin">@item.ProductName - (@item.ProductSize)</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Price">@item.Price.ToString("c") đ</td>
+                        <td data-th="Quantity">
+                            <input class="form-control text-center" type="number" name="quantity" value="@item.Quantity" min="1" max="10">
+                        </td>
+                        <td data-th="Subtotal" class="text-center">@item.Subtotal.ToString("c") đ</td>
+                        <td class="actions" data-th="">
+                            <button class="btn btn-info btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+            <tfoot>
+                <tr class="visible-xs">
+                    <td class="text-center">
+                        <strong>Tổng 200.000 đ</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="~/Home/SanPham" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                    </td>
+                    <td colspan="2" class="hidden-xs"> </td>
+                    <td class="hidden-xs text-center">
+                        <strong>Tổng tiền @Model.Sum(item => item.Subtotal).ToString("c") đ</strong>
+                    </td>
+                    <td>
+                        <a href="~/Cart/ThanhToan" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}
+

@@ -13,10 +13,18 @@ namespace Fashion_Website.Models.mapSanPham
         {
             fashionDBEntities db = new fashionDBEntities();
             var data = (from Loai in db.LOAISANPHAMs
-                        select Loai).ToList();  
-            return data;    
+                        select Loai).ToList();
+            return data;
         }
-
+        //Lấy ra size quần áo
+        public List<KICHCOSP> DanhSachSize(String MaSP)
+        {
+            fashionDBEntities db = new fashionDBEntities();
+            var data = (from size in db.KICHCOSPs
+                        where size.MaSP == MaSP
+                        select size).ToList();
+            return data;
+        }
         //Lấy ra chi tiết sản phẩm
         public SANPHAM ChiTietSanPham(String MaSP)
         {
