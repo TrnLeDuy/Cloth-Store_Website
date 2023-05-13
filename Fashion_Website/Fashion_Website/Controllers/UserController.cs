@@ -36,16 +36,19 @@ namespace Fashion_Website.Controllers
                     if (user != null)
                     {
                         //Lưu thông vào session
-                        Session["KhachHang"] = user;
-                        Session["Username"] = user.Username;
-                        Session["Fullname"] = user.HoTen;
-                        Session["ID"] = user.MaKH;
                         if (user.TinhTrang == 0)
                         {
                             ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
                         }
+
                         else
+                        {
+                            Session["KhachHang"] = user;
+                            Session["UsernameKH"] = user.Username;
+                            Session["FullnameKH"] = user.HoTen;
+                            Session["IDKH"] = user.MaKH;
                             return Redirect("~/Home/TrangChu");
+                        }
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";

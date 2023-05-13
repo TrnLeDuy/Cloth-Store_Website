@@ -193,6 +193,7 @@
     <Compile Include="Models\shoppingCart\CartItemViewModel.cs" />
     <Compile Include="Models\shoppingCart\PaymentViewModel.cs" />
     <Compile Include="Models\taoMa\taoMaKhachHang.cs" />
+    <Compile Include="Models\taoMa\taoMaNhanVien.cs" />
     <Compile Include="Models\taoMa\taoMaSanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

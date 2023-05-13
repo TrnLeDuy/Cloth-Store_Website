@@ -1,94 +1,97 @@
 ﻿@model IEnumerable<Fashion_Website.Models.ADMIN>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách Nhân viên";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<style>
+    .detail-button {
+        background-color: lightblue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserPass)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TinhTrang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChucVu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.avatar)
-        </th>
-        <th></th>
-    </tr>
+    .delete-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioiTinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TinhTrang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChucVu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.avatar)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaAD }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaAD }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaAD })
-        </td>
-    </tr>
-}
+    .edit-button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+</style>
 
-</table>
+<div class="row mt-4">
+    <div class="col-6">
+        @Html.ActionLink("Thêm Nhân viên mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-6">
+        <form style="width: 100%; padding-left: 250px;" action="/User" method="get">
+            <div class="form-group">
+                <input class="form-control" id="search" type="text" name="search" placeholder="" value="" />
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Mã NV
+            </th>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Tài Khoản
+            </th>
+            <th></th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaAD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+
+                <td>
+                    <a class="edit-button" href="~/NhanVien/Edit?id=@item.MaAD">Cập nhật</a>
+                    <a class="detail-button" href="~/NhanVien/Details?id=@item.MaAD">Chi tiết</a>
+                    <a class="delete-button" href="~/NhanVien/Delete?id=@item.MaAD">Xóa</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

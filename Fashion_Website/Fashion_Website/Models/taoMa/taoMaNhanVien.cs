@@ -5,30 +5,30 @@ using System.Web;
 
 namespace Fashion_Website.Models.taoMa
 {
-    public class taoMaKhachHang
+    public class taoMaNhanVien
     {
         public List<string> maKoGiaTri()
         {
             fashionDBEntities db = new fashionDBEntities();
-            var data = (from KHACHHANG in db.KHACHHANGs
-                        orderby KHACHHANG.MaKH ascending
-                        select KHACHHANG.MaKH).ToList();
+            var data = (from ADMIN in db.ADMINs
+                        orderby ADMIN.MaAD ascending
+                        select ADMIN.MaAD).ToList();
             return data;
         }
         //Tạo mã
-        public string TaoMaKhachHang()
+        public string TaoMaNhanVien()
         {
             fashionDBEntities db = new fashionDBEntities();
             string macuoi = "";
-            foreach (var item in new taoMaKhachHang().maKoGiaTri())
+            foreach (var item in new taoMaNhanVien().maKoGiaTri())
             {
                 macuoi = item.Substring(2, 3);
             }
 
-            string ma1 = "KH";
+            string ma1 = "AD";
             string s = "";
 
-            if (db.KHACHHANGs.Count() <= 0)
+            if (db.ADMINs.Count() <= 0)
             {
                 s = Convert.ToString((ma1 + "001"));
                 return s;
