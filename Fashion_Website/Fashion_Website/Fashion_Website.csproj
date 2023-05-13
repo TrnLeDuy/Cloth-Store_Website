@@ -204,6 +204,7 @@
     <Compile Include="Models\taoMa\taoMaDonHang.cs" />
     <Compile Include="Models\taoMa\taoMaHoaDon.cs" />
     <Compile Include="Models\taoMa\taoMaKhachHang.cs" />
+    <Compile Include="Models\taoMa\taoMaNhanVien.cs" />
     <Compile Include="Models\taoMa\taoMaSanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
