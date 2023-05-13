@@ -907,13 +907,13 @@
     <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\HeThongCuaHang.cshtml" />
-    <Content Include="Views\Cart\SanPhamGH.cshtml" />
     <Content Include="Views\Cart\ThanhToan.cshtml" />
     <Content Include="Views\NhanVien\Create.cshtml" />
     <Content Include="Views\NhanVien\Delete.cshtml" />
     <Content Include="Views\NhanVien\Details.cshtml" />
     <Content Include="Views\NhanVien\Edit.cshtml" />
     <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\Cart\SanPhamGH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
