@@ -120,6 +120,31 @@ namespace Fashion_Website.Controllers
             return RedirectToAction("SanPhamGH");
         }
 
+        //public ActionResult SummaryOrder()
+        //{
+        //    fashionDBEntities db = new fashionDBEntities();
+        //    var cart = Cart.GetCart();
+        //    var cartItems = cart.Items.GroupBy(item => new { item.ProductId, item.ProductSize });
+
+        //    string tenKH = Session["Fullname"].ToString().Trim();
+        //    string userID = Session["ID"].ToString().Trim();
+        //    var user = db.KHACHHANGs.FirstOrDefault(k => k.MaKH == userID);
+        //    var phoneNum = user.SDT.ToString().Trim();  
+        //    var diaChi = user.DiaChi.ToString().Trim();     
+        //    ViewBag.TenKH = tenKH;
+        //    ViewBag.PhoneNumber = phoneNum;
+        //    ViewBag.Address = diaChi;
+        //    var paymentViewModel = new PaymentViewModel
+        //    {
+                
+        //        Fullname = tenKH,
+        //        PhoneNumber = phoneNum,
+        //        Address = diaChi,
+        //        TotalAmount = cartItems.Sum(g => g.Sum(item => item.Quantity * item.Price))
+        //    };
+        //    return View(paymentViewModel);
+        //}    
+
         public ActionResult ThanhToan()
         {
             fashionDBEntities db = new fashionDBEntities();
@@ -133,7 +158,17 @@ namespace Fashion_Website.Controllers
             // Create a view model containing the cart items
             var cartViewModel = new List<CartItemViewModel>();
             //tạo đơn hàng và lưu đơn hàng
-            string maKH = Session["ID"].ToString().Trim(); 
+            string maKH = Session["ID"].ToString().Trim();
+            string tenKH = Session["Fullname"].ToString().Trim();
+
+            var user = db.KHACHHANGs.FirstOrDefault(k => k.MaKH == maKH);
+            var phoneNum = user.SDT.ToString().Trim();
+            var diaChi = user.DiaChi.ToString().Trim();
+
+            ViewBag.TenKH = tenKH;
+            ViewBag.PhoneNumber = phoneNum;
+            ViewBag.Address = diaChi;
+
             DONHANG donHang = new DONHANG();
             donHang.MaDH = new Fashion_Website.Models.taoMa.taoMaDonHang().TaoMaDonHang();
             donHang.NgayDatHang = DateTime.Now;
@@ -206,40 +241,22 @@ namespace Fashion_Website.Controllers
                 Session["CTDH"] = ctDonHang;
             }
 
-            if (donHang.PTThanhToan == "chuyển khoản")
-            {
+            //if (donHang.PTThanhToan == "chuyển khoản")
+            //{
 
-                return RedirectToAction("PaymentWithPaypal", "PayPal");
-            }    
+            //    return RedirectToAction("PaymentWithPaypal", "PayPal");
+            //}    
 
 
             // Pass the cart items to the view
             return View(cartViewModel);
         }
-
-        [HttpPost]
-        public ActionResult ProcessPayment(PaymentViewModel model)
+        public ActionResult ProcessPayment()
         {
-            fashionDBEntities db = new fashionDBEntities();
-            // Get the current cart
-            var cart = Cart.GetCart();
-
-            // Ensure that the model state is valid
-            if (ModelState.IsValid)
-            {
-                // TODO: Implement payment processing logic here
-
-                // Clear the cart
-                cart.Clear();
-
-                // Return a view indicating that payment was successful
-                return View("PaymentSuccess");
-            }
-            else
-            {
-                // If the model state is not valid, return the payment view with validation errors
-                return View("Payment", model);
-            }
+            var donHang = Session["DonHang"];
+            var ctHD = Session["CTDH"];
+       
+                return RedirectToAction("PaymentWithPaypal", "PayPal");
         }
     }
 }
