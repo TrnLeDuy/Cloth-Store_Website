@@ -158,8 +158,8 @@ namespace Fashion_Website.Controllers
             // Create a view model containing the cart items
             var cartViewModel = new List<CartItemViewModel>();
             //tạo đơn hàng và lưu đơn hàng
-            string maKH = Session["ID"].ToString().Trim();
-            string tenKH = Session["Fullname"].ToString().Trim();
+            string maKH = Session["IDKH"].ToString().Trim();
+            string tenKH = Session["FullnameKH"].ToString().Trim();
 
             var user = db.KHACHHANGs.FirstOrDefault(k => k.MaKH == maKH);
             var phoneNum = user.SDT.ToString().Trim();
