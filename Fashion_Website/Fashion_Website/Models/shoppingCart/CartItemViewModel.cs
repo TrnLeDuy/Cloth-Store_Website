@@ -15,5 +15,6 @@ namespace Fashion_Website.Models.shoppingCart
         public decimal Price { get; set; }
 
         public decimal Subtotal { get; set; }
+
     }
 }

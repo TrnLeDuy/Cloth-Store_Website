@@ -142,8 +142,10 @@
     <div class="form-input form-group" style="display:inline-block;">
         <label for="MoTa">Hình ảnh sản phẩm</label>
         <div class="col-md-10">
+            @Html.HiddenFor(m => m.HinhSP)
             @Html.TextBoxFor(m => m.HinhSP, new { type = "file", style = "display:none", id = "file-input", onchange = "previewFile()" })
             <button onclick="document.getElementById('file-input').click(); return false;">Choose File</button>
+            <span id="file-display"></span>
         </div>
     </div>
 

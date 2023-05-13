@@ -1,5 +1,6 @@
 ﻿using Fashion_Website.Models;
 using Fashion_Website.Models.mapSanPham;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,16 @@ namespace Fashion_Website.Controllers
             return View();
         }      
 
-        public ActionResult SanPham()
+        public ActionResult SanPham(int? page)
         {
             fashionDBEntities db = new fashionDBEntities();
-            var danhSachSP = db.SANPHAMs.ToList();
-            return View(danhSachSP);
+            int pageSize = 2; // number of products to display per page
+            int pageNumber = (page ?? 1); // if no page is specified, default to page 1
+
+            var products = db.SANPHAMs.OrderBy(p => p.MaSP); // replace db.SANPHAMs with your own data source
+            var pagedProducts = products.ToPagedList(pageNumber, pageSize);
+
+            return View(pagedProducts);
         }
         public ActionResult ChinhSach()
         {

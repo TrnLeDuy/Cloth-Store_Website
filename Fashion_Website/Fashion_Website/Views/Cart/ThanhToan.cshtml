@@ -1,5 +1,4 @@
 ﻿@model List<Fashion_Website.Models.shoppingCart.CartItemViewModel>
-
 @{
     ViewBag.Title = "ThanhToan";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
@@ -37,9 +36,9 @@
     </tfoot>
 </table>
 <h3>Payment Information</h3>
-<p>Customer Name: @ViewBag.CustomerName</p>
-<p>Customer Phone Number: @ViewBag.CustomerPhoneNumber</p>
-<p>Customer Address: @ViewBag.CustomerAddress</p>
+<p>Customer Name: @ViewBag.TenKH</p>
+<p>Customer Phone Number: @ViewBag.PhoneNumber</p>
+<p>Customer Address: @ViewBag.Address</p>
 <form action="@Url.Action("ProcessPayment", "Cart")" method="post">
     <div>
         <label>
@@ -49,11 +48,11 @@
     </div>
     <div>
         <label>
-            <input type="radio" name="paymentMethod" value="creditCard">
+            <input type="radio" name="paymentMethod" value="chuyển khoản">
             Credit Card
         </label>
     </div>
-    <div id="credit-card-details" style="display: none;">
+    @*<div id="credit-card-details" style="display: none;">
         <div>
             <label for="card-number">Card Number:</label>
             <input type="text" id="card-number" name="cardNumber">
@@ -66,9 +65,10 @@
             <label for="cvv">CVV:</label>
             <input type="text" id="cvv" name="cvv">
         </div>
-    </div>
+    </div>*@
     <div>
-        <button type="submit">Process Payment</button>
+            <a href="~/Cart/ProcessPayment">submit</a>
+        
     </div>
 </form>
 
