@@ -5,9 +5,6 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-
-
-
 <link rel="stylesheet" href="~/Content/ChiTiet.css" />
 
 <body>
@@ -23,19 +20,29 @@
                     <input name="productId" value="@Model.MaSP" hidden />
                     <h1>@Model.TenSP</h1>
                     <input name="TenSP" value="@Model.TenSP" hidden />
-                    <span class="price">@Model.GiaSP₫</span>
+                    <span class="price">$@Model.GiaSP</span>
                     <input name="GiaSP" value="@Model.GiaSP" hidden />
                     <br />
                     <div class="info">
                         <div>Loại : <span>@Model.LOAISANPHAM.TenLoaiSP</span></div>
-                        <div>Tình trạng :<span>Còn Hàng</span></div>
+                        <div>Tình trạng :
+                            @{
+                                if (Model.TinhTrangSP == 1)
+                                {
+                                    <span>Còn Hàng</span>
+                                }
+                                else { 
+                                    <span>Hết hàng</span>
+                                }
+                            }
+                        </div>
                     </div>
                     <div style="height:1px;background-color:lightgray;"></div>
                     <div class="size-div">
                         <div class="headname">
                             SIZE:
                             <select name="size" required>
-                                <option>Chọn size</option>
+                                <option disabled selected>Chọn size</option>
                                 @foreach (var item in new Fashion_Website.Models.mapSanPham.mapSanPham().DanhSachSize(Model.MaSP))
                                 {
                                     <option value="@item.KichCo">@item.KichCo</option>
@@ -46,14 +53,13 @@
                     <br />
                     <br />
                     <div class="quantity">
-                        <div>Số Lượng:  <input type="number" min="1" max="5" value="1" name="quantity"></div>
+                        <div>Số Lượng:  <input type="number" min="1" max="10" value="1" name="quantity"></div>
                     </div>
                     <div id="WishList_btn_none">
                         <a href="#" class="btn-yeuthich"><i class="fa fa-heart" style="height:15px;width:15px;margin-top:3px;margin-right:5px;"></i> Thêm vào yêu thích</a>
                     </div>
                     <div class="product-actions">
                         <button type="submit" name="add" id="AddToCart" class="btnAddToCart">Thêm vào giỏ</button>
-                        <button type="submit" name="buy" id="buy-now" class="btnBuyNow">Mua ngay</button>
                     </div>
                     <div style="height:1px;background-color:lightgray;"></div>
                     <div class="mota">

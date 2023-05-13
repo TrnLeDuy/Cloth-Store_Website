@@ -5,6 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Fashion_Website.Models.shoppingCart;
+using System.Data.Common;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
+using PayPal.Api;
+using System.ComponentModel;
 
 namespace Fashion_Website.Controllers
 {
@@ -81,13 +86,7 @@ namespace Fashion_Website.Controllers
         }
 
 
-        public ActionResult RemoveFromCart(string productId)
-        {
-            var cart = Cart.GetCart();
-            cart.RemoveItem(productId);
-
-            return RedirectToAction("SanPhamGH");
-        }
+        
 
         public ActionResult ClearCart()
         {
@@ -108,9 +107,23 @@ namespace Fashion_Website.Controllers
             return total;
         }
 
+        public ActionResult RemoveFromCart(string productId)
+        {
+            var cart = Cart.GetCart();
+            var itemToRemove = cart.Items.SingleOrDefault(item => item.ProductId == productId);
+            if (itemToRemove != null)
+            {
+                cart.Items.Remove(itemToRemove);
+                Cart.GetCart();
+            }
+
+            return RedirectToAction("SanPhamGH");
+        }
+
         public ActionResult ThanhToan()
         {
             fashionDBEntities db = new fashionDBEntities();
+
             // Get the current cart
             var cart = Cart.GetCart();
 
@@ -119,6 +132,36 @@ namespace Fashion_Website.Controllers
 
             // Create a view model containing the cart items
             var cartViewModel = new List<CartItemViewModel>();
+            //tạo đơn hàng và lưu đơn hàng
+            string maKH = Session["ID"].ToString().Trim(); 
+            DONHANG donHang = new DONHANG();
+            donHang.MaDH = new Fashion_Website.Models.taoMa.taoMaDonHang().TaoMaDonHang();
+            donHang.NgayDatHang = DateTime.Now;
+            donHang.NgayGiaoHang = DateTime.Now.AddDays(1);
+            donHang.TrangThaiDH = 0;
+            donHang.PTThanhToan = "chuyển khoản";
+            donHang.TongTien = cartItems.Sum(i => i.Sum(item => item.Quantity * item.Price));
+            donHang.MaKH = maKH;
+            try
+            {
+                // Lưu dữ liệu vào cơ sở dữ liệu
+                db.DONHANGs.Add(donHang);
+                db.SaveChanges();
+                Session["DonHang"] = donHang;
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in error.ValidationErrors)
+                    {
+                        Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
+
+
+
             foreach (var itemGroup in cartItems)
             {
                 var product = db.SANPHAMs.Find(itemGroup.Key.ProductId);
@@ -132,8 +175,43 @@ namespace Fashion_Website.Controllers
                     Price = itemGroup.First().Price,
                     Subtotal = itemGroup.Sum(i => i.Quantity * i.Price)
                 };
-                cartViewModel.Add(cartItemViewModel);
+                var productSize = itemGroup.Key.ProductSize.Replace(" ", "");
+                CTDONHANG ctDonHang = new CTDONHANG();
+
+                try
+                {
+                    // Save data to the database
+                    ctDonHang.MACTDH = new Fashion_Website.Models.taoMa.taoMaCTDH().TaoMaCTDH();
+                    ctDonHang.SoLuongDat = itemGroup.Sum(i => i.Quantity);
+                    ctDonHang.DonGia = itemGroup.First().Price;
+                    ctDonHang.TenSP = product.TenSP;
+                    ctDonHang.KichCo = productSize; // Use the trimmed size string
+                    ctDonHang.MaDH = donHang.MaDH;
+                    ctDonHang.MaSP = itemGroup.Key.ProductId;
+                    cartViewModel.Add(cartItemViewModel);
+                    db.CTDONHANGs.Add(ctDonHang);
+                    db.SaveChanges();
+
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var error in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in error.ValidationErrors)
+                        {
+                            Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                        }
+                    }
+                }
+                Session["CTDH"] = ctDonHang;
             }
+
+            if (donHang.PTThanhToan == "chuyển khoản")
+            {
+
+                return RedirectToAction("PaymentWithPaypal", "PayPal");
+            }    
+
 
             // Pass the cart items to the view
             return View(cartViewModel);

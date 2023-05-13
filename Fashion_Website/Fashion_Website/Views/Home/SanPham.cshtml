@@ -1,9 +1,41 @@
-﻿@model IEnumerable<Fashion_Website.Models.SANPHAM>
+﻿@model PagedList.IPagedList<Fashion_Website.Models.SANPHAM>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
+<style>
+    .pager {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
+        .pager a {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+            .pager a:hover,
+            .pager a:focus {
+                background-color: #ddd;
+            }
+
+        .pager .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .pager .active a {
+            background-color: #fff;
+            color: #ff0000;
+        }
+</style>
 
 
 <head>
@@ -35,11 +67,11 @@
                             <a href="~/ChiTietSanPham/ChiTietSP?masp=@item.MaSP" class="product-title a">@item.TenSP</a>
                             <span class="sku-loop">Mã sản phẩm: @item.MaSP</span>
                             <span class="product-price">
-                                <span class="current-price">Giá: @item.GiaSP₫</span>
+                                <span class="current-price">Giá: $@item.GiaSP</span>
                             </span>
                         </div>
                         <div style="background:black;padding-left:20px;padding-right:20px;border-radius:5px;height:40px;padding-top:10px;margin-top:10px;">
-                            <a href="#" style="color:white;text-align:center;">Mua Hàng</a>
+                            <a href="~/ChiTietSanPham/ChiTietSP?masp=@item.MaSP" style="color:white;text-align:center;">Mua Hàng</a>
                         </div>
                     </div>
                 </div>
@@ -49,4 +81,7 @@
 
 </body>
 
+<div class="pager">
+    @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+</div>
 
