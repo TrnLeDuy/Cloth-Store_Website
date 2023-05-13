@@ -12,7 +12,7 @@ namespace Fashion_Website.Models.shoppingCart
         public static Cart GetCart()
         {
             var cart = HttpContext.Current.Session["Cart"] as Cart;
-
+            
             if (cart == null)
             {
                 cart = new Cart();
@@ -50,5 +50,8 @@ namespace Fashion_Website.Models.shoppingCart
             Items = null;
             HttpContext.Current.Session.Remove("Cart");
         }
+
+        
+
     }
 }

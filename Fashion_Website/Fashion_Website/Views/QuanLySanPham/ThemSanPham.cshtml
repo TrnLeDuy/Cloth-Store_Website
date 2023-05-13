@@ -5,6 +5,17 @@
 }
 <script src="~/Assets/js/previewFile.js"></script>
 <style>
+    .d-flex {
+        display: flex;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .justify-content-center {
+        justify-content: center;
+    }
 
     input:focus {
         outline: none;
@@ -50,6 +61,7 @@
         margin: 30px 30px 35px 30px;
         transition: box-shadow 200ms;
         width: 830px;
+        height:700px;
         display: inline-block;
     }
 
@@ -165,10 +177,8 @@
             <img id="target" class="img" src="#" alt="your image" style="width: 320px; height: 300px;" />
         </div>
     </div>
-    <div class="form-input form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" style="background: #005574; color: #ececec" value="THÊM" class="btn btn-default" />
-        </div>
-    </div>
 </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <input type="submit" style="background: #005574; color: #ececec" value="THÊM" class="btn btn-default" />
+    </div>
 }
