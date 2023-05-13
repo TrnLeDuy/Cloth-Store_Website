@@ -64,6 +64,9 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -132,12 +135,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Config\PaypalConfiguration.cs" />
     <Compile Include="Controllers\AuthencationController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +187,9 @@
     <Compile Include="Models\LOAISANPHAM.cs">
       <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\mapContactEmail\mapContactEmail.cs" />
+    <Compile Include="Models\mapHoaDon\mapHoaDon.cs" />
+    <Compile Include="Models\mapPayPal\PaymentRequest.cs" />
     <Compile Include="Models\mapSanPham\mapSanPham.cs" />
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>Fashion_Store.tt</DependentUpon>
@@ -191,6 +199,9 @@
     <Compile Include="Models\shoppingCart\CartItemGroup.cs" />
     <Compile Include="Models\shoppingCart\CartItemViewModel.cs" />
     <Compile Include="Models\shoppingCart\PaymentViewModel.cs" />
+    <Compile Include="Models\taoMa\taoMaCTDH.cs" />
+    <Compile Include="Models\taoMa\taoMaDonHang.cs" />
+    <Compile Include="Models\taoMa\taoMaHoaDon.cs" />
     <Compile Include="Models\taoMa\taoMaKhachHang.cs" />
     <Compile Include="Models\taoMa\taoMaSanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,6 +223,7 @@
     <Content Include="Assets\Form\images\registration-form-2.jpg" />
     <Content Include="Assets\Form\images\registration-form-2.png" />
     <Content Include="Assets\js\previewFile.js" />
+    <Content Include="Assets\js\updateQuantity.js" />
     <Content Include="Assets\Login\css\main.css" />
     <Content Include="Assets\Login\css\util.css" />
     <Content Include="Assets\Login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -900,6 +912,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Helpers\" />
     <Folder Include="Security\" />
+    <Folder Include="Views\PayPal\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
