@@ -100,6 +100,7 @@ CREATE TABLE [dbo].[ADMIN](
 	[UserPass] [char](30) NULL,
 	[TinhTrang] [int] NULL,
 	[ChucVu] [nvarchar](50) NOT NULL,
+	avatar varchar(255)
  CONSTRAINT [PK_ADMIN] PRIMARY KEY CLUSTERED 
 (
 	[MaAD] ASC
@@ -198,6 +199,7 @@ CREATE TABLE [dbo].[KHACHHANG](
 	[Username] [char](50) NULL,
 	[UserPass] [char](30) NULL,
 	[TinhTrang] [int] NULL,
+	avatar varchar(255)
  CONSTRAINT [PK_KHACHHANG] PRIMARY KEY CLUSTERED 
 (
 	[MaKH] ASC
@@ -311,11 +313,6 @@ GO
 USE [fashionDB]
 GO
 
-ALTER TABLE [dbo].[ADMIN]
-ADD avatar varchar(255);
-
-ALTER TABLE [dbo].[KHACHHANG]
-ADD avatar varchar(255);
 
 insert into KHACHHANG values ('KH001', N'Nguyễn Hoàng Kha', '0977216038', 'hkha928@gmail.com', '12/02/2002', 'M', N'221/ 81 Đông Thạnh 4', 'hkha928', '123', 1, 'avartar-01.jpg')
 
