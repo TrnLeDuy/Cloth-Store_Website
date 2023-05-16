@@ -1,4 +1,4 @@
-﻿@model Fashion_Website.Models.KHACHHANG
+@model Fashion_Website.Models.KHACHHANG
 
 @{
     ViewBag.Title = "Cập nhật tài khoản Khách Hàng";
@@ -10,6 +10,8 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.avatar)
+            @Html.HiddenFor(model => model.MaKH)
 
         <div class="form-horizontal">
             <hr />
@@ -22,12 +24,12 @@
                     @Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.MaKH, "", new { @class = "text-danger" })
                 </div>
+
                 <div class="form-wrapper">
                     Họ tên
                     @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                 </div>
-            </div>
 
             <div class="form-wrapper">
                 Số điện thoại
