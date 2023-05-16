@@ -10,6 +10,8 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using PayPal.Api;
 using System.ComponentModel;
+using Fashion_Website.Models.taoMa;
+using System.Security.Policy;
 
 namespace Fashion_Website.Controllers
 {
@@ -145,10 +147,10 @@ namespace Fashion_Website.Controllers
         //    return View(paymentViewModel);
         //}    
 
-        public ActionResult ThanhToan()
+        public ActionResult ThanhToan(String paymentMethod)
         {
             fashionDBEntities db = new fashionDBEntities();
-
+            string cod = "thanh toán khi nhận hàng";
             // Get the current cart
             var cart = Cart.GetCart();
 
@@ -174,7 +176,7 @@ namespace Fashion_Website.Controllers
             donHang.NgayDatHang = DateTime.Now;
             donHang.NgayGiaoHang = DateTime.Now.AddDays(1);
             donHang.TrangThaiDH = 0;
-            donHang.PTThanhToan = "chuyển khoản";
+            donHang.PTThanhToan = " ";
             donHang.TongTien = cartItems.Sum(i => i.Sum(item => item.Quantity * item.Price));
             donHang.MaKH = maKH;
             try
@@ -215,7 +217,6 @@ namespace Fashion_Website.Controllers
 
                 try
                 {
-                    // Save data to the database
                     ctDonHang.MACTDH = new Fashion_Website.Models.taoMa.taoMaCTDH().TaoMaCTDH();
                     ctDonHang.SoLuongDat = itemGroup.Sum(i => i.Quantity);
                     ctDonHang.DonGia = itemGroup.First().Price;
@@ -226,7 +227,7 @@ namespace Fashion_Website.Controllers
                     cartViewModel.Add(cartItemViewModel);
                     db.CTDONHANGs.Add(ctDonHang);
                     db.SaveChanges();
-
+                    Session["CTDH"] = ctDonHang;
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -237,26 +238,122 @@ namespace Fashion_Website.Controllers
                             Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
                         }
                     }
-                }
-                Session["CTDH"] = ctDonHang;
+                }             
             }
 
-            //if (donHang.PTThanhToan == "chuyển khoản")
-            //{
+            if (paymentMethod == "paypal")
+            {
+                DONHANG dhang = Session["DonHang"] as DONHANG;
+                dhang.PTThanhToan = paymentMethod;
+                Session["DonHang"] = dhang;
+                return RedirectToAction("PaymentWithPaypal", "PayPal");
+            }
+            //else if (paymentMethod == cod) {
 
-            //    return RedirectToAction("PaymentWithPaypal", "PayPal");
-            //}    
+            //    CTDONHANG ctDonHang = Session["CTDH"] as CTDONHANG;
+
+            //    HOADON modelHoaDon = new HOADON();
+            //    modelHoaDon.MaHD = new Fashion_Website.Models.taoMa.taoMaHoaDon().TaoMaHoaDon();
+            //    modelHoaDon.NgayLap = DateTime.Now;
+            //    modelHoaDon.TongTien = donHang.TongTien;
+            //    modelHoaDon.MaKH = maKH;
+            //    modelHoaDon.MaAD = "AD001";
+            //    modelHoaDon.MaDH = donHang.MaDH;
+            //    try
+            //    {
+            //        // Lưu dữ liệu vào cơ sở dữ liệu
+            //        db.HOADONs.Add(modelHoaDon);
+            //        db.SaveChanges();
+            //        Session["HoaDon"] = modelHoaDon;
+            //    }
+            //    catch (DbEntityValidationException ex)
+            //    {
+            //        foreach (var error in ex.EntityValidationErrors)
+            //        {
+            //            foreach (var validationError in error.ValidationErrors)
+            //            {
+            //                Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+            //            }
+            //        }
+            //    }
+            //}
 
 
             // Pass the cart items to the view
             return View(cartViewModel);
         }
-        public ActionResult ProcessPayment()
-        {
-            var donHang = Session["DonHang"];
-            var ctHD = Session["CTDH"];
-       
-                return RedirectToAction("PaymentWithPaypal", "PayPal");
-        }
+        //public ActionResult ProcessPayment()
+        //{
+        //    fashionDBEntities db = new fashionDBEntities();
+
+        //    DONHANG donHang = Session["DonHang"] as DONHANG;
+        //    CTDONHANG ctDonHang = Session["CTDH"] as CTDONHANG;
+
+        //    //string maKH = Session["IDKH"].ToString().Trim();
+
+        //    //HOADON modelHoaDon = new HOADON();
+        //    //modelHoaDon.MaHD = new Fashion_Website.Models.taoMa.taoMaHoaDon().TaoMaHoaDon();
+        //    //modelHoaDon.NgayLap = DateTime.Now;
+        //    //modelHoaDon.TongTien = donHang.TongTien;
+        //    //modelHoaDon.MaKH = maKH;
+        //    //try
+        //    //{
+        //    //    // Lưu dữ liệu vào cơ sở dữ liệu
+        //    //    db.HOADONs.Add(modelHoaDon);
+        //    //    db.SaveChanges();
+        //    //    Session["HoaDon"] = modelHoaDon;
+        //    //}
+        //    //catch (DbEntityValidationException ex)
+        //    //{
+        //    //    foreach (var error in ex.EntityValidationErrors)
+        //    //    {
+        //    //        foreach (var validationError in error.ValidationErrors)
+        //    //        {
+        //    //            Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+        //    //        }
+        //    //    }
+        //    //}
+
+        //    //CTHOADON ctHoaDon = new CTHOADON();
+        //    //ctHoaDon.MACTHD = new Fashion_Website.Models.taoMa.taoMaCTHD().TaoMaCTHD();
+        //    //ctHoaDon.TenSP = ctDonHang.TenSP;
+        //    //ctHoaDon.DonGia = ctDonHang.DonGia;
+        //    //ctHoaDon.SoLuong = ctDonHang.SoLuongDat;
+        //    //ctHoaDon.KichCo = ctDonHang.KichCo;
+        //    //ctHoaDon.ThanhTien = ctDonHang.DonGia * ctDonHang.SoLuongDat;
+        //    //ctHoaDon.MaHD = modelHoaDon.MaHD;
+        //    //ctHoaDon.MaSP = ctDonHang.MaSP;
+        //    //try
+        //    //{
+        //    //    // Lưu dữ liệu vào cơ sở dữ liệu
+        //    //    db.CTHOADONs.Add(ctHoaDon);
+        //    //    db.SaveChanges();
+        //    //}
+        //    //catch (DbEntityValidationException ex)
+        //    //{
+        //    //    foreach (var error in ex.EntityValidationErrors)
+        //    //    {
+        //    //        foreach (var validationError in error.ValidationErrors)
+        //    //        {
+        //    //            Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+        //    //        }
+        //    //    }
+        //    //}
+
+        //    //if (donHang.PTThanhToan == "thanh toán khi nhận hàng")
+        //    //{
+        //    //    return View();
+        //    //}
+        //    //else if (donHang.PTThanhToan == "chuyển khoản")
+        //    //{
+        //    //    return RedirectToAction("PaymentWithPaypal", "PayPal");
+        //    //}
+
+        //    //Session.Remove("DonHang");
+        //    //Session.Remove("CTDH");
+        //    //Session.Remove("HoaDon");
+
+        //    return RedirectToAction("PaymentWithPaypal", "PayPal");
+        //}
     }
 }

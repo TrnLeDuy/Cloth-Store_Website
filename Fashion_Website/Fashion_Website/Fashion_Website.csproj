@@ -205,6 +205,7 @@
     <Compile Include="Models\shoppingCart\CartItemViewModel.cs" />
     <Compile Include="Models\shoppingCart\PaymentViewModel.cs" />
     <Compile Include="Models\taoMa\taoMaCTDH.cs" />
+    <Compile Include="Models\taoMa\taoMaCTHD.cs" />
     <Compile Include="Models\taoMa\taoMaDonHang.cs" />
     <Compile Include="Models\taoMa\taoMaHoaDon.cs" />
     <Compile Include="Models\taoMa\taoMaKhachHang.cs" />

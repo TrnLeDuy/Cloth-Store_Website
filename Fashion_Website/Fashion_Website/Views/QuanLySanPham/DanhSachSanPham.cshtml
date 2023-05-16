@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 <style>
@@ -97,7 +99,9 @@
             <tr>
                 <td colspan="8"></td>
                 <td class="control">
-                    <a href="~/QuanLySanPham/ThemSanPham"><i class="ti-plus">+</i></a>
+                    <a href="~/QuanLySanPham/ThemSanPham">
+                        <i class="fa fa-plus-square-o"></i>
+                    </a>
                 </td>
             </tr>
             <tr>
@@ -120,31 +124,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.MaSP</td>
-                <td>@item.TenSP</td>
-                <td>@item.MaLoaiSP</td>
-                <td><img src="~/images/@item.HinhSP" style="width: 100px; height: 100px;" /></td>
-                <td>@item.MoTa</td>
-                <td>@item.GiaSP</td>
-                @{
-                    if (item.TinhTrangSP == 1)
-                    {
-                        <td>Còn hàng</td>
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>@item.MaLoaiSP</td>
+                    <td><img src="~/images/@item.HinhSP" style="width: 100px; height: 100px;" /></td>
+                    <td>@item.MoTa</td>
+                    <td>@item.GiaSP</td>
+                    @{
+                        if (item.TinhTrangSP == 1)
+                        {
+                            <td>Còn hàng</td>
 
+                        }
+                        else
+                        {
+                            <td>Hết hàng</td>
+                        }
                     }
-                    else
-                    {
-                        <td>Hết hàng</td>
-                    }
-                }
-                <td>
-                    <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="ti-marker-alt">~</i></a>
-                </td>
-                <td>
-                    <a onclick="if (confirm('Bạn chắc chắn xóa ưu đãi này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" href="#" style="text-decoration:none; color:#00305B"><i class="ti-trash">-</i></a>
-                </td>
-            </tr>
+                    <td>
+                        <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a onclick="if (confirm('Bạn chắc chắn xóa sản phẩm này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" style="text-decoration:none; color:#00305B"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
