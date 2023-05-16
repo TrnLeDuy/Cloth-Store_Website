@@ -4,6 +4,8 @@ using Fashion_Website.Models.shoppingCart;
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -109,6 +111,76 @@ namespace Fashion_Website.Controllers
             ////xóa đơn và hóa đơn trong session sau khi hoàn thành 
             //Session.Remove("donDatVe");
             //Session.Remove("hoaDonTemp");
+
+            fashionDBEntities db = new fashionDBEntities();
+
+            DONHANG donHang = Session["DonHang"] as DONHANG;
+            CTDONHANG ctDonHang = Session["CTDH"] as CTDONHANG;
+
+            string maKH = Session["IDKH"].ToString().Trim();
+
+            HOADON modelHoaDon = new HOADON();
+            modelHoaDon.MaHD = new Fashion_Website.Models.taoMa.taoMaHoaDon().TaoMaHoaDon();
+            modelHoaDon.NgayLap = DateTime.Now;
+            modelHoaDon.TongTien = donHang.TongTien;
+            modelHoaDon.MaKH = maKH;
+            modelHoaDon.MaAD = "AD001";
+            modelHoaDon.MaDH = donHang.MaDH;
+            try
+            {
+                // Lưu dữ liệu vào cơ sở dữ liệu
+                db.HOADONs.Add(modelHoaDon);
+                db.SaveChanges();
+                Session["HoaDon"] = modelHoaDon;
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in error.ValidationErrors)
+                    {
+                        Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
+
+            CTHOADON ctHoaDon = new CTHOADON();
+            ctHoaDon.MACTHD = new Fashion_Website.Models.taoMa.taoMaCTHD().TaoMaCTHD();
+            ctHoaDon.TenSP = ctDonHang.TenSP;
+            ctHoaDon.DonGia = ctDonHang.DonGia;
+            ctHoaDon.SoLuong = ctDonHang.SoLuongDat;
+            ctHoaDon.KichCo = ctDonHang.KichCo;
+            ctHoaDon.ThanhTien = ctDonHang.DonGia * ctDonHang.SoLuongDat;
+            ctHoaDon.MaHD = modelHoaDon.MaHD;
+            ctHoaDon.MaSP = ctDonHang.MaSP;
+            try
+            {
+                // Lưu dữ liệu vào cơ sở dữ liệu
+                db.CTHOADONs.Add(ctHoaDon);
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in error.ValidationErrors)
+                    {
+                        Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+            }
+
+    
+
+            DONHANG dONHANG = Session["DonHang"] as DONHANG;
+
+            var khachHang = db.KHACHHANGs.SingleOrDefault(k => k.MaKH == dONHANG.MaKH);
+
+            new Fashion_Website.Models.mapContactEmail.mapContactEmail().SendEmail(khachHang.Email, "Thanh toán thành công", "<p style=\"font-size:20px\">Cảm ơn bạn đã đặt sản phẩm của chúng tôi <br/>Mã đơn hàng của bạn là: " + dONHANG.MaDH);
+
+            Session.Remove("DonHang");
+            Session.Remove("CTDH");
+            Session.Remove("HoaDon");
 
             return RedirectToAction("SanPham", "Home");
 

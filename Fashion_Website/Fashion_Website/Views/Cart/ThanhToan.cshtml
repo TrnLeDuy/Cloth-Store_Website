@@ -4,16 +4,100 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h3>Order Summary</h3>
+<style>
+    h3.title {
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f16767;
+    }
+
+    .title i {
+        margin-right: 10px;
+    }
+
+    /* Style for table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    thead {
+        background-color: #f2f2f2;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Style for form */
+    form {
+        margin: 20px 0;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    /* Style for button */
+    a.button-container {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        margin:0 0 0 110rem;
+    }
+
+        a.button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button-container {
+            text-align: right;
+        }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 10px;
+        line-height: 1.5;
+        color: #333;
+        margin: 0 0 0 100px;
+    }
+
+    label {
+        margin: 0 0 0 100px;
+    }
+</style>
+
+<h3 class="title">
+    <i class="fa fa-shopping-cart"></i>
+    Thông tin đơn hàng
+</h3>
 <table>
     <thead>
         <tr>
-            <th>Product</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
+            <th>Sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +105,7 @@
         {
             <tr>
                 <td>@item.ProductName - (@item.ProductSize)</td>
-                <td><img src="@item.ProductImg" alt="@item.ProductName"></td>
+                <td><img src="~/images/@item.ProductImg" alt="@item.ProductName" style="width: 100px; height: 100px;" /></td>
                 <td>@item.Price.ToString("c")</td>
                 <td>@item.Quantity</td>
                 <td>@item.Subtotal.ToString("c")</td>
@@ -30,56 +114,40 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="4" align="right">Total:</td>
+            <td colspan="4" align="right">Tổng cộng:</td>
             <td>@Model.Sum(item => item.Subtotal).ToString("c")</td>
         </tr>
     </tfoot>
 </table>
-<h3>Payment Information</h3>
-<p>Customer Name: @ViewBag.TenKH</p>
-<p>Customer Phone Number: @ViewBag.PhoneNumber</p>
-<p>Customer Address: @ViewBag.Address</p>
-<form action="@Url.Action("ProcessPayment", "Cart")" method="post">
+<h3 class="title">
+    <i class="fa fa-id-card-o"></i>
+    Thông tin giao hàng
+</h3>
+<p>Tên khách hàng: @ViewBag.TenKH</p>
+<p>Số điện thoại: @ViewBag.PhoneNumber</p>
+<p>Địa chỉ giao hàng: @ViewBag.Address</p>
+<h3 class="title">
+    <i class="fa fa-credit-card"></i>
+    Phương thức thanh toán
+</h3>
+<form action="~/Cart/ThanhToan" method="get">
     <div>
         <label>
-            <input type="radio" name="paymentMethod" value="delivery" checked>
-            Pay on Delivery
+            <input type="radio" name="paymentMethod" value="thanh toán khi nhận hàng" checked>
+            <i class="fa fa-truck"></i>
+            Thanh toán khi nhận hàng
         </label>
     </div>
     <div>
         <label>
-            <input type="radio" name="paymentMethod" value="chuyển khoản">
-            Credit Card
+            <input type="radio" name="paymentMethod" value="paypal">
+            <i class="fa fa-cc-paypal"></i>
+            Paypal
         </label>
     </div>
-    @*<div id="credit-card-details" style="display: none;">
-        <div>
-            <label for="card-number">Card Number:</label>
-            <input type="text" id="card-number" name="cardNumber">
-        </div>
-        <div>
-            <label for="expiry-date">Expiry Date:</label>
-            <input type="text" id="expiry-date" name="expiryDate">
-        </div>
-        <div>
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv">
-        </div>
-    </div>*@
     <div>
-            <a href="~/Cart/ProcessPayment">submit</a>
-        
+        <a href="~/Cart/ProcessPayment" class="button-container">Xác nhận</a>
     </div>
 </form>
-
-<script>
-    $('input[type=radio][name=paymentMethod]').change(function () {
-        if (this.value === 'creditCard') {
-            $('#credit-card-details').show();
-        } else {
-            $('#credit-card-details').hide();
-        }
-    });
-</script>
 
 
