@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -149,6 +150,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConstHelper.cs" />
+    <Compile Include="Helpers\GeneratePdf.cs" />
+    <Compile Include="Helpers\Hash.cs" />
     <Compile Include="Models\ADMIN.cs">
       <DependentUpon>Fashion_Store.tt</DependentUpon>
     </Compile>
@@ -913,11 +917,11 @@
     <Content Include="Views\NhanVien\Details.cshtml" />
     <Content Include="Views\NhanVien\Edit.cshtml" />
     <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\Cart\SanPhamGH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Security\" />
     <Folder Include="Views\PayPal\" />
   </ItemGroup>

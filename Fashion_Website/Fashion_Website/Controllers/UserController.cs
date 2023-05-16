@@ -33,22 +33,18 @@ namespace Fashion_Website.Controllers
                 {
                     //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
                     var user = db.KHACHHANGs.FirstOrDefault(k => k.Username == khachhang.Username && k.UserPass == khachhang.UserPass);
+                    if (user.TinhTrang == 0)
+                    {
+                        ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
+                    } else
                     if (user != null)
                     {
                         //Lưu thông vào session
-                        if (user.TinhTrang == 0)
-                        {
-                            ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
-                        }
-
-                        else
-                        {
-                            Session["KhachHang"] = user;
-                            Session["UsernameKH"] = user.Username;
-                            Session["FullnameKH"] = user.HoTen;
-                            Session["IDKH"] = user.MaKH;
-                            return Redirect("~/Home/TrangChu");
-                        }
+                        Session["KhachHang"] = user;
+                        Session["UsernameKH"] = user.Username;
+                        Session["FullnameKH"] = user.HoTen;
+                        Session["IDKH"] = user.MaKH;
+                        return Redirect("~/Home/TrangChu");
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";

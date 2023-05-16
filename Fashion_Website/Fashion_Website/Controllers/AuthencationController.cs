@@ -38,6 +38,11 @@ namespace Fashion_Website.Controllers
                 {
                     //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
                     var user = db.ADMINs.FirstOrDefault(k => k.Username == adUser.Username && k.UserPass == adUser.UserPass);
+                    if (user.TinhTrang == 0)
+                    {
+                        ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
+                    }
+                    else
                     if (user != null)
                     {
                         //Lưu thông vào session
@@ -46,12 +51,7 @@ namespace Fashion_Website.Controllers
                         Session["Fullname"] = user.HoTen;
                         Session["ID"] = user.MaAD;
                         Session["Role"] = user.ChucVu;
-                        if (user.TinhTrang == 0)
-                        {
-                            ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
-                        }
-                        else
-                            return Redirect("~/Dashboard/Dashboard");
+                        return Redirect("~/Dashboard/Dashboard");
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";
@@ -75,29 +75,31 @@ namespace Fashion_Website.Controllers
             return RedirectToAction("Login");
         }
 
-        //[HttpGet]
-        //public ActionResult ChangePassword()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult ChangePassword(string oldPassword, string newPassword, string repeatPassword)
-        //{
-        //    ADMIN admin = db.ADMINs.Find(Convert.ToInt32(Session["ID"].ToString()));
+        [HttpPost]
+        public ActionResult ChangePassword(string oldPassword, string newPassword, string repeatPassword)
+        {
+            ADMIN admin = db.ADMINs.Find(Convert.ToInt32(Session["ID"].ToString()));
 
-        //    if (admin == null)
-        //    {
-        //        return RedirectToAction("Login");
-        //    }
+            if (admin == null)
+            {
+                return RedirectToAction("Login");
+            }
 
-        //    if(newPassword != repeatPassword)
-        //    {
-        //        TempData["Error"] = "Mật khẩu mới không khớp với nhau!";
-        //        return View();
-        //    }
+            if (newPassword != repeatPassword)
+            {
+                TempData["Error"] = "Mật khẩu mới không khớp với nhau!";
+                return View();
+            }
 
-            
-        //}
-    }
+            if (admin.UserPass != oldPassword)
+                TempData["Error"] = "Vui lòng kiểm tra lại mật khẩu !";
+            return View();
+            }
+        }
 }
