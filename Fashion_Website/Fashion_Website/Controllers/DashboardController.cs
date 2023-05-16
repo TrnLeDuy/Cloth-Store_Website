@@ -21,7 +21,7 @@ namespace Fashion_Website.Controllers
             }
 
             ViewBag.countSanPham = db.SANPHAMs.Count();
-            ViewBag.countDonHang = db.HOADONs.Count();
+            ViewBag.countDonHang = db.DONHANGs.Count();
             ViewBag.countKhachHang = db.KHACHHANGs.Count();
             ViewBag.countDoanhThu = total;
             return View();
