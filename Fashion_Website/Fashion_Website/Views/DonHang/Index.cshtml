@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Fashion_Website.Models.DONHANG>
+
+@{
+    ViewBag.Title = "Danh sách Đơn hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .detail-button {
+        background-color: lightblue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+
+    .delete-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+
+    .edit-button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-decoration: none;
+    }
+</style>
+
+<div class="row mt-4">
+    <div class="col-6">
+    </div>
+    <div class="col-6">
+        <form style="width: 100%; padding-left: 250px;" action="/User" method="get">
+            <div class="form-group">
+                <input class="form-control" id="search" type="text" name="search" placeholder="Tìm kiếm Đơn hàng" value="" />
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Mã Đơn hàng
+            </th>
+            <th>
+                Thời gian Đơn được đặt
+            </th>
+            <th>
+                Thời gian Giao hàng
+            </th>
+            <th>
+                Phương thức thanh toán
+            </th>
+            <th>
+                Khách hàng
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDatHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PTThanhToan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TongTien)
+                </td>
+                @{
+                    if (item.TrangThaiDH == 0)
+                    {
+                        <td>Chưa xác nhận</td>
+                    }
+                    else
+                    {
+                        <td>Đã xác nhận</td>
+                    }
+                }
+            <td>
+                <a class="edit-button" href="~/DonHang/Edit?id=@item.MaKH">Xác nhận đơn</a>
+            </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
