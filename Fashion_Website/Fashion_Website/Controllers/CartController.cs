@@ -12,6 +12,7 @@ using PayPal.Api;
 using System.ComponentModel;
 using Fashion_Website.Models.taoMa;
 using System.Security.Policy;
+using System.Security.Cryptography;
 
 namespace Fashion_Website.Controllers
 {
@@ -243,11 +244,21 @@ namespace Fashion_Website.Controllers
 
             if (paymentMethod == "paypal")
             {
-                DONHANG dhang = Session["DonHang"] as DONHANG;
-                dhang.PTThanhToan = paymentMethod;
-                Session["DonHang"] = dhang;
+                var dhang = Session["DonHang"] as DONHANG;
+                var dh = db.DONHANGs.SingleOrDefault(ma => ma.MaDH == dhang.MaDH);
+                dh.PTThanhToan = paymentMethod;
+                db.SaveChanges();
                 return RedirectToAction("PaymentWithPaypal", "PayPal");
             }
+            else if (paymentMethod == cod)
+            {
+                var dhang = Session["DonHang"] as DONHANG;
+
+                var dh = db.DONHANGs.SingleOrDefault(ma => ma.MaDH == dhang.MaDH);
+                dh.PTThanhToan = paymentMethod;
+                db.SaveChanges();
+                return RedirectToAction("HoanTatThanhToan");
+            }    
             //else if (paymentMethod == cod) {
 
             //    CTDONHANG ctDonHang = Session["CTDH"] as CTDONHANG;
@@ -282,6 +293,79 @@ namespace Fashion_Website.Controllers
             // Pass the cart items to the view
             return View(cartViewModel);
         }
+
+        public ActionResult HoanTatThanhToan()
+        {
+            return View();  
+        }
+        //public ActionResult TaoHoaDon(String MaDH) 
+        //{
+        //    fashionDBEntities db = new fashionDBEntities();
+        //    var donhang = db.DONHANGs.FirstOrDefault(ma => ma.MaDH == MaDH);
+        //    DONHANG donHang = Session["DonHang"] as DONHANG;
+        //    CTDONHANG ctDonHang = Session["CTDH"] as CTDONHANG;
+
+
+        //    string maAD = Session["ID"].ToString().Trim();
+
+        //    HOADON modelHoaDon = new HOADON();
+        //    modelHoaDon.MaHD = new Fashion_Website.Models.taoMa.taoMaHoaDon().TaoMaHoaDon();
+        //    modelHoaDon.NgayLap = DateTime.Now;
+        //    modelHoaDon.TongTien = donHang.TongTien;
+        //    modelHoaDon.MaKH = donhang.MaKH;
+        //    modelHoaDon.MaAD = maAD;
+        //    modelHoaDon.MaDH = donHang.MaDH;
+        //    try
+        //    {
+        //        // Lưu dữ liệu vào cơ sở dữ liệu
+        //        db.HOADONs.Add(modelHoaDon);
+        //        db.SaveChanges();
+        //        Session["HoaDon"] = modelHoaDon;
+        //    }
+        //    catch (DbEntityValidationException ex)
+        //    {
+        //        foreach (var error in ex.EntityValidationErrors)
+        //        {
+        //            foreach (var validationError in error.ValidationErrors)
+        //            {
+        //                Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+        //            }
+        //        }
+        //    }
+
+        //    var ctdon = db.CTDONHANGs.Where(ma => ma.MaDH == donhang.MaDH).ToList();
+        //    foreach (var ct in ctdon)
+        //    {
+        //        CTHOADON ctHoaDon = new CTHOADON();
+        //        ctHoaDon.MACTHD = new Fashion_Website.Models.taoMa.taoMaCTHD().TaoMaCTHD();
+        //        ctHoaDon.TenSP = ct.TenSP;
+        //        ctHoaDon.DonGia = ct.DonGia;
+        //        ctHoaDon.SoLuong = ct.SoLuongDat;
+        //        ctHoaDon.KichCo = ct.KichCo;
+        //        ctHoaDon.ThanhTien = ct.DonGia * ct.SoLuongDat;
+        //        ctHoaDon.MaHD = modelHoaDon.MaHD;
+        //        ctHoaDon.MaSP = ct.MaSP;
+        //        try
+        //        {
+        //            // Lưu dữ liệu vào cơ sở dữ liệu
+        //            db.CTHOADONs.Add(ctHoaDon);
+        //            db.SaveChanges();
+        //        }
+        //        catch (DbEntityValidationException ex)
+        //        {
+        //            foreach (var error in ex.EntityValidationErrors)
+        //            {
+        //                foreach (var validationError in error.ValidationErrors)
+        //                {
+        //                    Debug.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+        //                }
+        //            }
+        //        }
+        //    }
+
+            
+        //    return RedirectToAction("Index", "DonHang");
+        //}
         //public ActionResult ProcessPayment()
         //{
         //    fashionDBEntities db = new fashionDBEntities();
