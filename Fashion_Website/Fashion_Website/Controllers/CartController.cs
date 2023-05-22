@@ -148,10 +148,10 @@ namespace Fashion_Website.Controllers
         //    return View(paymentViewModel);
         //}    
 
-        public ActionResult ThanhToan(String paymentMethod)
+        public ActionResult ThanhToan()
         {
             fashionDBEntities db = new fashionDBEntities();
-            string cod = "thanh toán khi nhận hàng";
+            //string cod = "thanh toán khi nhận hàng";
             // Get the current cart
             var cart = Cart.GetCart();
 
@@ -242,23 +242,7 @@ namespace Fashion_Website.Controllers
                 }             
             }
 
-            if (paymentMethod == "paypal")
-            {
-                var dhang = Session["DonHang"] as DONHANG;
-                var dh = db.DONHANGs.SingleOrDefault(ma => ma.MaDH == dhang.MaDH);
-                dh.PTThanhToan = paymentMethod;
-                db.SaveChanges();
-                return RedirectToAction("PaymentWithPaypal", "PayPal");
-            }
-            else if (paymentMethod == cod)
-            {
-                var dhang = Session["DonHang"] as DONHANG;
-
-                var dh = db.DONHANGs.SingleOrDefault(ma => ma.MaDH == dhang.MaDH);
-                dh.PTThanhToan = paymentMethod;
-                db.SaveChanges();
-                return RedirectToAction("HoanTatThanhToan");
-            }    
+             
             //else if (paymentMethod == cod) {
 
             //    CTDONHANG ctDonHang = Session["CTDH"] as CTDONHANG;
@@ -293,7 +277,29 @@ namespace Fashion_Website.Controllers
             // Pass the cart items to the view
             return View(cartViewModel);
         }
+        public ActionResult XacNhanDonDat(String paymentMethod)
+        {
+            fashionDBEntities db = new fashionDBEntities(); 
+            string cod = "thanh toán khi nhận hàng";
+            if (paymentMethod == "paypal")
+            {
+                var dhang = Session["DonHang"] as DONHANG;
+                var dh = db.DONHANGs.SingleOrDefault(ma => ma.MaDH == dhang.MaDH);
+                dh.PTThanhToan = paymentMethod;
+                db.SaveChanges();
+                return RedirectToAction("PaymentWithPaypal", "PayPal");
+            }
+            else if (paymentMethod == cod)
+            {
+                var dhang = Session["DonHang"] as DONHANG;
 
+                var dh = db.DONHANGs.SingleOrDefault(ma => ma.MaDH == dhang.MaDH);
+                dh.PTThanhToan = paymentMethod;
+                db.SaveChanges();
+                return RedirectToAction("HoanTatThanhToan");
+            }
+            return RedirectToAction("HoanTatThanhToan");
+        }    
         public ActionResult HoanTatThanhToan()
         {
             return View();  
