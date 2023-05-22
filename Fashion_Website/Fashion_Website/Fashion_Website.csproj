@@ -920,6 +920,7 @@
     <Content Include="Views\NhanVien\Index.cshtml" />
     <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\Cart\SanPhamGH.cshtml" />
+    <Content Include="Views\Cart\HoanTatThanhToan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
