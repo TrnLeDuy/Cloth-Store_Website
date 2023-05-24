@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Fashion_Website.Models.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    #arrange {
+        border-radius: 4px 4px 0 0;
+        padding: 10px 20px;
+        line-height: 22px;
+    }
+</style>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<form action="~/HoaDon/Index">
+    <table>
+        <tr>
+            <td>
+                <span><b>Tìm kiếm theo: </b></span>
+                @Html.RadioButton("searchBy", "Mã hóa đơn")
+                <text>Mã hóa đơn</text>
+                @Html.RadioButton("searchBy", "Mã khách hàng")
+                <text>Mã khách hàng</text>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("searchValue", null, new { Class = "form-control", placehoder = "Nhập mã hóa đơn hoặc mã khách hàng" })
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <input type="submit" value="Tìm kiếm" class="btn btn-success" />
+            </td>                
+        </tr>
+    </table>
+</form>
+
+<table style="margin:5px 5px 5px 1200px;">
+    <tr>
+        <td id="arrange">
+            <strong>Tùy chọn sắp xếp:</strong>
+        </td>
+        <td>
+            <select id="arrange">
+                <option>Theo ngày</option>
+                <option>Theo tổng tiền</option>
+            </select>
+        </td>
+    </tr>
+</table>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayLap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADMIN.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONHANG.PTThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADMIN.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONHANG.PTThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaHD }) |
+                <a href="~/HoaDon/Details?id=@item.MaHD">Details</a> |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaHD })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="5"></td>
+        <td>
+            <a style="margin:5px 5px 5px 100px;" href="#">[In file Excel]</a><br />
+            <a style="margin:5px 5px 5px 100px;" href="#">[In file CSV]</a>
+        </td>
+    </tr>
+</table>

@@ -141,6 +141,7 @@
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
+    <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -921,6 +922,11 @@
     <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\Cart\SanPhamGH.cshtml" />
     <Content Include="Views\Cart\HoanTatThanhToan.cshtml" />
+    <Content Include="Views\HoaDon\Create.cshtml" />
+    <Content Include="Views\HoaDon\Delete.cshtml" />
+    <Content Include="Views\HoaDon\Details.cshtml" />
+    <Content Include="Views\HoaDon\Edit.cshtml" />
+    <Content Include="Views\HoaDon\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

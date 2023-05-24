@@ -45,6 +45,13 @@
             line-height: 22px;
         }
 
+        .managerCB #arrange, #filter {
+            border-radius: 4px 4px 0 0;
+            padding: 10px 20px;
+            margin: 0px 0 5px 0;
+            line-height: 22px;
+        }
+
     input:focus {
         outline: none;
     }
@@ -85,6 +92,13 @@
         margin-bottom: 5px;
         text-align: center
     }
+
+    #arrange {
+        border-radius: 4px 4px 0 0;
+        padding: 10px 20px;
+        line-height: 22px;
+    }
+
 </style>
 
 <div class="link">
@@ -92,6 +106,35 @@
         <li><a href="~/QuanLySanPham/DanhSachSanPham">Quản lý sản phẩm</a></li>
     </ul>
 </div>
+
+<table style="margin:5px 5px 5px 400px;">
+    <tr>
+        <td>
+            <input style="margin: 5px 5px 5px 30px; width: 30rem;" type="search" placeholder="Tìm kiếm sản phẩm" />
+        </td>
+        <td id="filter">
+            <strong>Lọc sản phẩm:</strong>
+        </td>
+        <td>
+            <select id="filter">
+                <option>Áo</option>
+                <option>Quần</option>
+                <option>Phụ kiện</option>
+            </select>
+        </td>
+        <td id="arrange">
+            <strong>Tùy chọn sắp xếp:</strong>
+        </td>
+        <td>
+            <select id="arrange">
+                <option>A - Z</option>
+                <option>Loại sản phẩm</option>
+                <option>Giá tăng dần</option>
+                <option>Giá giảm dần</option>
+            </select>
+        </td>
+    </tr>
+</table>
 
 <div class="managerCB">
     <table class="table-manager">
@@ -107,7 +150,7 @@
             <tr>
                 <td colspan="9">
                     <h1>Quản lý sản phẩm</h1>
-                </td>
+                </td>               
             </tr>
             <tr>
                 <th>Mã Sản Phẩm</th>
