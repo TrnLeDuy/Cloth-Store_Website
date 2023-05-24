@@ -11,11 +11,7 @@
         line-height: 22px;
     }
 </style>
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 <form action="~/HoaDon/Index">
     <table>
@@ -97,8 +93,15 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.MaHD }) |
-                <a href="~/HoaDon/Details?id=@item.MaHD">Details</a> |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaHD })
+                <a href="~/HoaDon/Details?id=@item.MaHD">Details</a>
+                @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+                {
+                    <a>
+                        |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaHD })
+                    </a>
+
+                }
             </td>
         </tr>
     }

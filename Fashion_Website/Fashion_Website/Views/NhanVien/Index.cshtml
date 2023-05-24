@@ -41,78 +41,95 @@
 </style>
 
 <div class="row mt-4">
+    @if (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang")
+    {
+        <div class="col-6">
+        </div>
+
+    }
     <div class="col-6">
-        @Html.ActionLink("Thêm Nhân viên mới", "Create", null, new { @class = "btn btn-primary" })
-    </div>
-    <div class="col-6">
-        <form style="width: 100%; padding-left: 250px;" action="/User" method="get">
+        <form style="width: 100%; padding-left: 250px;" action="/NhanVien/Index" method="get">
             <div class="form-group">
                 <input class="form-control" id="search" type="text" name="search" placeholder="" value="Tìm kiếm nhân viên" />
             </div>
         </form>
     </div>
+    @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+    {
+        <div class="col-6">
+            @Html.ActionLink("Thêm Nhân viên mới", "Create", null, new { @class = "btn btn-primary" })
+        </div>
 
-    <table style="margin:5px 5px 5px 1200px;">
-        <tr>
-            <td id="arrange">
-                <strong>Tùy chọn sắp xếp:</strong>
-            </td>
-            <td>
-                <select id="arrange">
-                    <option>A -Z</option>
-                    <option>Z - A</option>
-                    <option>Theo địa chỉ</option>
-                </select>
-            </td>
-        </tr>
-    </table>
-    <table class="table">
-        <tr>
-            <th>
-                Mã NV
-            </th>
-            <th>
-                Họ tên
-            </th>
-            <th>
-                Số điện thoại
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Tài Khoản
-            </th>
-            <th></th>
+    }
 
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+    {
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaAD)
+                <td id="arrange">
+                    <strong>Tùy chọn sắp xếp:</strong>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HoTen)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SDT)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-
-                <td>
-                    <a class="edit-button" href="~/NhanVien/Edit?id=@item.MaAD">Cập nhật</a>
-                    <a class="detail-button" href="~/NhanVien/Details?id=@item.MaAD">Chi tiết</a>
-                    <a class="delete-button" href="~/NhanVien/Delete?id=@item.MaAD">Xóa</a>
+                    <select id="arrange">
+                        <option>A -Z</option>
+                        <option>Z - A</option>
+                        <option>Theo địa chỉ</option>
+                    </select>
                 </td>
             </tr>
-        }
+        </table>
+        <table class="table">
+            <tr>
+                <th>
+                    Mã NV
+                </th>
+                <th>
+                    Họ tên
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Tài Khoản
+                </th>
+                <th></th>
 
-    </table>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaAD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+
+                    <td>
+
+                        <a class="detail-button" href="~/NhanVien/Details?id=@item.MaAD">Chi tiết</a>
+                        @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+                        {
+                            <a class="delete-button" href="~/NhanVien/Delete?id=@item.MaAD">Xóa</a>
+                            <a class="edit-button" href="~/NhanVien/Edit?id=@item.MaAD">Cập nhật</a>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
 </div>

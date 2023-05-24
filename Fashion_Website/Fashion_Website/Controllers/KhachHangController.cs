@@ -15,8 +15,13 @@ namespace Fashion_Website.Controllers
         private fashionDBEntities db = new fashionDBEntities();
 
         // GET: KhachHang
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            if (search != null)
+            {
+                var customers = db.KHACHHANGs.Where(customer => customer.SDT.Contains(search)).ToList();
+                return View(customers);
+            }
             return View(db.KHACHHANGs.ToList());
         }
 

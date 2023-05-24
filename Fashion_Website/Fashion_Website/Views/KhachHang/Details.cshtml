@@ -56,8 +56,11 @@
 
 
             <div class="profile-card-ctr">
-                <a class="profile-card__button button--orange" href="~/KhachHang/Edit?id=@Model.MaKH">Cập nhật</a>
-                <a class="profile-card__button button--blue" href="~/KhachHang/Index">Back to List</a>
+                @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+                {
+                    <a class="profile-card__button button--orange" href="~/KhachHang/Edit?id=@Model.MaKH">Cập nhật</a>
+                }
+                <a class="profile-card__button button--blue" href="~/KhachHang/Index">Trở về</a>
             </div>
         </div>
 

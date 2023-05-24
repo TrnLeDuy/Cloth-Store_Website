@@ -193,10 +193,10 @@
                             </a>
                         </li>
                         @*Sau khi xong chức năng sẽ xóa*@
-                        <li class="d-flex align-content-center ">
-                            <i class="fas fa-shopping-cart" style="padding: 20px 0"></i>
-                            <a class="w-100 ml-3" href="/DonHang/Index">Quản lí Đơn hàng</a>
-                        </li>
+                        @*<li class="d-flex align-content-center ">
+            <i class="fas fa-shopping-cart" style="padding: 20px 0"></i>
+            <a class="w-100 ml-3" href="/DonHang/Index">Quản lí Đơn hàng</a>
+        </li>*@
                         @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
                         {
                             <li class="d-flex align-content-center ">
@@ -217,11 +217,15 @@
                             </li>
                             <li class="d-flex align-content-center ">
                                 <i class="fas fa-clipboard-list" style="padding: 20px 0"></i>
-                                <a class="w-100 ml-3" href="#">Quản lí Hóa đơn</a>
+                                <a class="w-100 ml-3" href="/HoaDon/Index">Quản lí Hóa đơn</a>
                             </li>
                         }
-                        @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
+                        @if (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang")
                         {
+                            <li class="d-flex align-content-center ">
+                                <i class="fas fa-database" style="padding: 20px 0"></i>
+                                <a class="w-100 ml-3" href="/NhanVien/Index">Danh sách Nhân viên</a>
+                            </li>
                             <li class="d-flex align-content-center ">
                                 <i class="fas fa-database" style="padding: 20px 0"></i>
                                 <a class="w-100 ml-3" href="/KhachHang/Index">Quản lí Khách hàng</a>
@@ -236,11 +240,16 @@
                             </li>
                             <li class="d-flex align-content-center ">
                                 <i class="fas fa-clipboard-list" style="padding: 20px 0"></i>
-                                <a class="w-100 ml-3" href="#">Quản lí Hóa đơn</a>
+                                <a class="w-100 ml-3" href="/HoaDon/Index">Quản lí Hóa đơn</a>
                             </li>
                         }
-                        @if (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang")
+                        @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
                         {
+
+                            <li class="d-flex align-content-center ">
+                                <i class="fas fa-database" style="padding: 20px 0"></i>
+                                <a class="w-100 ml-3" href="/KhachHang/Index">Quản lí Khách hàng</a>
+                            </li>
                             <li class="d-flex align-content-center ">
                                 <i class="fas fa-archive" style="padding: 20px 0"></i>
                                 <a class="w-100 ml-3" href="/QuanLySanPham/DanhSachSanPham">Quản lí Sản phẩm</a>
@@ -251,7 +260,7 @@
                             </li>
                             <li class="d-flex align-content-center ">
                                 <i class="fas fa-clipboard-list" style="padding: 20px 0"></i>
-                                <a class="w-100 ml-3" href="#">Quản lí Hóa đơn</a>
+                                <a class="w-100 ml-3" href="/HoaDon/Index">Quản lí Hóa đơn</a>
                             </li>
                         }
                     </ul>

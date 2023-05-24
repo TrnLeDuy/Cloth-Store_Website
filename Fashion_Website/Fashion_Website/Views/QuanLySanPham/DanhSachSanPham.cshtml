@@ -141,11 +141,14 @@
         <thead>
             <tr>
                 <td colspan="8"></td>
-                <td class="control">
-                    <a href="~/QuanLySanPham/ThemSanPham">
-                        <i class="fa fa-plus-square-o"></i>
-                    </a>
-                </td>
+                @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                {
+                    <td class="control">
+                        <a href="~/QuanLySanPham/ThemSanPham">
+                            <i class="fa fa-plus-square-o"></i>
+                        </a>
+                    </td>
+                }
             </tr>
             <tr>
                 <td colspan="9">
@@ -160,9 +163,18 @@
                 <th>Mô Tả</th>
                 <th>Giá Sản Phẩm</th>
                 <th>Tình Trạng</th>
-                <th>Sửa</th>
-                <th>Xóa</th>
-            </tr>
+                
+                @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
+                {
+                    <th></th>
+                    <th></th>
+                }
+                    @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                    {
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+                    }
+                </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
@@ -185,12 +197,21 @@
                             <td>Hết hàng</td>
                         }
                     }
-                    <td>
-                        <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="fa fa-edit"></i></a>
-                    </td>
-                    <td>
-                        <a onclick="if (confirm('Bạn chắc chắn xóa sản phẩm này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" style="text-decoration:none; color:#00305B"><i class="fa fa-trash"></i></a>
-                    </td>
+
+                    @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                    {
+                        <td>
+                            <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            <a onclick="if (confirm('Bạn chắc chắn xóa sản phẩm này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" style="text-decoration:none; color:#00305B"><i class="fa fa-trash"></i></a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

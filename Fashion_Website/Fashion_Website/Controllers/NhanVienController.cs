@@ -15,8 +15,13 @@ namespace Fashion_Website.Controllers
         private fashionDBEntities db = new fashionDBEntities();
 
         // GET: NhanVien
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            if (search != null)
+            {
+                var customers = db.ADMINs.Where(customer => customer.SDT.Contains(search)).ToList();
+                return View(customers);
+            }
             return View(db.ADMINs.ToList());
         }
 
