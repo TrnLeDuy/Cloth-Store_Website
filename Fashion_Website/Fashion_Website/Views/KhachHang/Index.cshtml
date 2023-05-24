@@ -32,7 +32,14 @@
         border: none;
         text-decoration: none;
     }
+
+    #arrange {
+        border-radius: 4px 4px 0 0;
+        padding: 10px 20px;
+        line-height: 22px;
+    }
 </style>
+
 
 <div class="row mt-4">
     <div class="col-6">
@@ -41,10 +48,25 @@
     <div class="col-6">
         <form style="width: 100%; padding-left: 250px;" action="/User" method="get">
             <div class="form-group">
-                <input class="form-control" id="search" type="text" name="search" placeholder="" value="" />
+                <input class="form-control" id="search" type="text" name="search" placeholder="" value="Tìm kiếm khách hàng" />
             </div>
         </form>
     </div>
+
+    <table style="margin:5px 5px 5px 1200px;">
+        <tr>
+            <td id="arrange">
+                <strong>Tùy chọn sắp xếp:</strong>
+            </td>
+            <td>
+                <select id="arrange">
+                    <option>A -Z</option>
+                    <option>Z - A</option>
+                    <option>Theo địa chỉ</option>
+                </select>
+            </td>
+        </tr>
+    </table>
     <table class="table">
         <tr>
             <th>
@@ -85,6 +107,13 @@
             </tr>
 
         }
+        <tr>
+            <td colspan="4"></td>
+            <td>
+                <a style="margin:5px 5px 5px 100px;" href="#">[In file Excel]</a><br />
+                <a style="margin:5px 5px 5px 100px;" href="#">[In file PDF]</a>
+            </td>
+        </tr>
 
     </table>
 </div>
