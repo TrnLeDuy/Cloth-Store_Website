@@ -38,8 +38,8 @@
     <div class="col-6">
     </div>
     <div class="col-6">
-        <form style="width: 100%; padding-left: 250px;" action="/User" method="get">
-            <div class="form-group">
+        <form style="width: 100%; padding-left: 200px;" action="/User" method="get">
+            <div class="form-group">               
                 <input class="form-control" id="search" type="text" name="search" placeholder="Tìm kiếm Đơn hàng" value="" />
             </div>
         </form>
@@ -101,12 +101,18 @@
                         <td>Đã xác nhận</td>
                     }
                 }
-            <td>
-                <a class="edit-button" href="~/DonHang/Edit?id=@item.MaKH">Xác nhận đơn</a>
-            </td>
+                <td>
+                    <a class="edit-button" href="~/DonHang/XacNhanDon?MaDH=@item.MaDH">Xác nhận đơn</a>
+                </td>
             </tr>
         }
-
+        <tr>
+            <td colspan="7"></td>
+            <td>
+                <a style="margin:5px 5px 5px 100px;" href="#">[In file Excel]</a><br />
+                <a style="margin:5px 5px 5px 100px;" href="#">[In file CSV]</a>
+            </td>
+        </tr>
     </table>
 </div>
 

@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 <style>
@@ -40,6 +42,13 @@
             background-color: #005574;
             color: #fff;
             font-size: 18px;
+            line-height: 22px;
+        }
+
+        .managerCB #arrange, #filter {
+            border-radius: 4px 4px 0 0;
+            padding: 10px 20px;
+            margin: 0px 0 5px 0;
             line-height: 22px;
         }
 
@@ -83,6 +92,13 @@
         margin-bottom: 5px;
         text-align: center
     }
+
+    #arrange {
+        border-radius: 4px 4px 0 0;
+        padding: 10px 20px;
+        line-height: 22px;
+    }
+
 </style>
 
 <div class="link">
@@ -91,19 +107,32 @@
     </ul>
 </div>
 
+<table style="margin:5px 5px 5px 400px;">
+    <tr>
+        <td>
+            <input style="margin: 5px 5px 5px 30px; width: 30rem;" type="search" placeholder="Tìm kiếm sản phẩm" />
+        </td>
+    </tr>
+</table>
+
 <div class="managerCB">
     <table class="table-manager">
         <thead>
             <tr>
                 <td colspan="8"></td>
-                <td class="control">
-                    <a href="~/QuanLySanPham/ThemSanPham"><i class="ti-plus">+</i></a>
-                </td>
+                @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                {
+                    <td class="control">
+                        <a href="~/QuanLySanPham/ThemSanPham">
+                            <i class="fa fa-plus-square-o"></i>
+                        </a>
+                    </td>
+                }
             </tr>
             <tr>
                 <td colspan="9">
                     <h1>Quản lý sản phẩm</h1>
-                </td>
+                </td>               
             </tr>
             <tr>
                 <th>Mã Sản Phẩm</th>
@@ -113,38 +142,56 @@
                 <th>Mô Tả</th>
                 <th>Giá Sản Phẩm</th>
                 <th>Tình Trạng</th>
-                <th>Sửa</th>
-                <th>Xóa</th>
-            </tr>
+                
+                @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
+                {
+                    <th></th>
+                    <th></th>
+                }
+                    @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                    {
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+                    }
+                </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.MaSP</td>
-                <td>@item.TenSP</td>
-                <td>@item.MaLoaiSP</td>
-                <td><img src="~/images/@item.HinhSP" style="width: 100px; height: 100px;" /></td>
-                <td>@item.MoTa</td>
-                <td>@item.GiaSP</td>
-                @{
-                    if (item.TinhTrangSP == 1)
-                    {
-                        <td>Còn hàng</td>
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>@item.MaLoaiSP</td>
+                    <td><img src="~/images/@item.HinhSP" style="width: 100px; height: 100px;" /></td>
+                    <td>@item.MoTa</td>
+                    <td>@item.GiaSP</td>
+                    @{
+                        if (item.TinhTrangSP == 1)
+                        {
+                            <td>Còn hàng</td>
 
+                        }
+                        else
+                        {
+                            <td>Hết hàng</td>
+                        }
                     }
-                    else
+
+                    @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
                     {
-                        <td>Hết hàng</td>
+                        <td></td>
+                        <td></td>
                     }
-                }
-                <td>
-                    <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="ti-marker-alt">~</i></a>
-                </td>
-                <td>
-                    <a onclick="if (confirm('Bạn chắc chắn xóa ưu đãi này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" href="#" style="text-decoration:none; color:#00305B"><i class="ti-trash">-</i></a>
-                </td>
-            </tr>
+                    @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                    {
+                        <td>
+                            <a href="~/QuanLySanPham/CapNhatSanPham?MaSP=@item.MaSP" style="text-decoration:none; color:#00305B"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            <a onclick="if (confirm('Bạn chắc chắn xóa sản phẩm này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" style="text-decoration:none; color:#00305B"><i class="fa fa-trash"></i></a>
+                        </td>
+                    }
+                </tr>
             }
         </tbody>
     </table>

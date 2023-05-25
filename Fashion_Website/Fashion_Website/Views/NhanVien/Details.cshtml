@@ -72,7 +72,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserPass)
+            *************************
         </dd>
 
         <dt>
@@ -102,6 +102,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaAD }) |
+    @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+    {
+        <a class="profile-card__button button--orange" href="~/NhanVien/Edit?id=@Model.MaAD">Cập nhật</a>
+    } |
     @Html.ActionLink("Back to List", "Index")
 </p>
