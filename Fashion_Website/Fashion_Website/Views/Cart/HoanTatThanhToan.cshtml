@@ -3,6 +3,27 @@
     ViewBag.Title = "HoanTatThanhToan";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h2>HoanTatThanhToan</h2>
+<style>
+    div {
+        text-align:center;
+    }
+
+    h1 {
+        color:green;
+    }
+
+    #link{
+        color: blue;
+        margin-bottom: 20px;
+        margin-left: 100rem;
+    }
+</style>
+<div>
+    <h1>Thanh toán thành công!</h1>
+    <i class="fa fa-check-circle" style="font-size:48px;color:green"></i>
+    <h3>Đơn hàng của bạn đã được đặt! Mã đơn hàng sẽ được gửi qua Email của bạn trong ít phút.</h3>
+    <a id="link" href="~/Home/TrangChu">Tiếp tục mua hàng</a>
+</div>
 

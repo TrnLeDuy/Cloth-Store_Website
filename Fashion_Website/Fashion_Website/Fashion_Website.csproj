@@ -219,17 +219,6 @@
     <Content Include="Assets\Form\fonts\material-design-iconic-font\css\material-design-iconic-font.css" />
     <Content Include="Assets\Form\fonts\material-design-iconic-font\css\material-design-iconic-font.min.css" />
     <Content Include="Assets\Form\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
-    <Content Include="Assets\Form\images\1000_F_420053918_yVpQT6RxcSc16C937FliLK9YPWjaNiMB.jpg" />
-    <Content Include="Assets\Form\images\background.png" />
-    <Content Include="Assets\Form\images\bank-account-illustration_335657-4821.jpg" />
-    <Content Include="Assets\Form\images\bg-01.jpg" />
-    <Content Include="Assets\Form\images\bg-registration-form-2.jpg" />
-    <Content Include="Assets\Form\images\bg.png" />
-    <Content Include="Assets\Form\images\bg2.png" />
-    <Content Include="Assets\Form\images\finance-services-financial-transaction-e-commerce-e-payment_335657-3134.jpg" />
-    <Content Include="Assets\Form\images\pig.png" />
-    <Content Include="Assets\Form\images\registration-form-2.jpg" />
-    <Content Include="Assets\Form\images\registration-form-2.png" />
     <Content Include="Assets\js\previewFile.js" />
     <Content Include="Assets\js\updateQuantity.js" />
     <Content Include="Assets\Login\css\main.css" />
@@ -558,9 +547,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </Content>
     <Content Include="CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.eot" />
     <Content Include="CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.ttf" />
     <Content Include="CoolAdmin-master\fonts\poppins\poppins-v5-latin-100.woff" />
@@ -760,6 +746,8 @@
     <Content Include="Models\Fashion_Store.edmx.diagram">
       <DependentUpon>Fashion_Store.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\hkha928-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\hkha928-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.6.4.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.4.js" />
     <Content Include="Scripts\jquery-3.6.4.min.js" />
@@ -930,6 +918,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Form\images\" />
     <Folder Include="Security\" />
     <Folder Include="Views\PayPal\" />
   </ItemGroup>
