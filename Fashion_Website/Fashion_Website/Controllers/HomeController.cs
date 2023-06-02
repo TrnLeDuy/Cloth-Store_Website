@@ -19,7 +19,7 @@ namespace Fashion_Website.Controllers
         public ActionResult SanPham(int? page)
         {
             fashionDBEntities db = new fashionDBEntities();
-            int pageSize = 4; // number of products to display per page
+            int pageSize = 8; // number of products to display per page
             int pageNumber = (page ?? 1); // if no page is specified, default to page 1
 
             var products = db.SANPHAMs.OrderBy(p => p.MaSP); // replace db.SANPHAMs with your own data source

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Fashion_Website.Models.KHACHHANG>
+﻿@using Fashion_Website.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<KHACHHANG>
 
 @{
     ViewBag.Title = "Danh sách Khách Hàng";
@@ -32,18 +34,12 @@
         border: none;
         text-decoration: none;
     }
-
-    #arrange {
-        border-radius: 4px 4px 0 0;
-        padding: 10px 20px;
-        line-height: 22px;
-    }
 </style>
 
 
 <div class="row mt-4">
     <div class="col-6">
-        @Html.ActionLink("Thêm khách hàng mới", "Create", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink(" ", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
     </div>
     <div class="col-6">
         <form style="width: 100%; padding-left: 250px;" action="/KhachHang/Index" method="get">
@@ -74,27 +70,34 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HoTen)
+                    <a style="text-decoration: none; color: black;" href="~/KhachHang/Details?id=@item.MaKH">
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    <a style="text-decoration: none; color: black;" href="~/KhachHang/Details?id=@item.MaKH">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SDT)
+                    <a style="text-decoration: none; color: black;" href="~/KhachHang/Details?id=@item.MaKH">
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DiaChi)
+                    <a style="text-decoration: none; color: black;" href="~/KhachHang/Details?id=@item.MaKH">
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </a>
                 </td>
                 <td>
 
-                    <a class="detail-button" href="~/KhachHang/Details?id=@item.MaKH">Chi tiết</a>
                     @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
                     {
-                        <a class="edit-button" href="~/KhachHang/Edit?id=@item.MaKH">Cập nhật</a>
+                        <a class="edit-button fa fa-pencil" href="~/KhachHang/Edit?id=@item.MaKH"></a>
                     }
                     @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
                     {
-                        <a class="delete-button" href="~/KhachHang/Delete?id=@item.MaKH">Xóa</a>
+                        <a class="delete-button fa fa-trash" href="~/KhachHang/Delete?id=@item.MaKH"></a>
                     }
                 </td>
             </tr>
@@ -103,3 +106,23 @@
 
     </table>
 </div>
+
+<!-- Thêm mã phân trang -->
+<br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+            background-color: lightblue;
+            color: white;
+            padding: 10px 20px;
+            margin: 2px 5px;
+            border-radius: 5px;
+            border: none;
+            text-decoration: none;
+        }
+    </style>
+    <!-- Kết thúc -->

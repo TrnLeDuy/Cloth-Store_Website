@@ -58,6 +58,9 @@ namespace Fashion_Website.Controllers
 
         public ActionResult AddToCart(string productId, int quantity, string size)
         {
+            if (Session["IDKH"] == null)
+                return RedirectToAction("Signin", "User");
+
             fashionDBEntities db = new fashionDBEntities();
             var product = db.SANPHAMs.Find(productId);
 
@@ -150,6 +153,9 @@ namespace Fashion_Website.Controllers
 
         public ActionResult ThanhToan()
         {
+            if (Session["IDKH"] == null)
+                return RedirectToAction("Signin", "User");
+
             fashionDBEntities db = new fashionDBEntities();
             //string cod = "thanh toán khi nhận hàng";
             // Get the current cart

@@ -139,8 +139,10 @@
     <Compile Include="Controllers\AuthencationController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
+    <Compile Include="Controllers\CTHOADONsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
+    <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -913,6 +915,12 @@
     <Content Include="Views\Cart\HoanTatThanhToan.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\NhanVien\Create.cshtml" />
+    <Content Include="Views\HoaDon\Index.cshtml" />
+    <Content Include="Views\CTHOADONs\Create.cshtml" />
+    <Content Include="Views\CTHOADONs\Delete.cshtml" />
+    <Content Include="Views\CTHOADONs\Details.cshtml" />
+    <Content Include="Views\CTHOADONs\Edit.cshtml" />
+    <Content Include="Views\CTHOADONs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

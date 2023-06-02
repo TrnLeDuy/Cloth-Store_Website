@@ -22,7 +22,7 @@ namespace Fashion_Website.Models.taoMa
             string macuoi = "";
             foreach (var item in new taoMaNhanVien().maKoGiaTri())
             {
-                macuoi = item.Substring(2, 3);
+                macuoi = item.Substring(3, 7);
             }
 
             string ma1 = "AD";
