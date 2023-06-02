@@ -139,7 +139,9 @@
 
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
-
+                                    <div class="image">
+                                        <img src="~/Images/@Session["Avatar"]" alt="avatar" />
+                                    </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">@Session["FullName"]</a>
                                     </div>
@@ -152,22 +154,22 @@
                                                 </a>
                                             </div>
 
-                                        <div class="account-dropdown__footer">
-                                            <div class="account-dropdown__item">
-                                                <a href="/Authencation/ChangePassword">
-                                                    <i class="zmdi zmdi-account"></i>Thay đổi mật khẩu
+                                            <div class="account-dropdown__footer">
+                                                <div class="account-dropdown__item">
+                                                    <a href="/Authencation/ChangePassword">
+                                                        <i class="zmdi zmdi-account"></i>Thay đổi mật khẩu
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="/Authencation/Logout">
+                                                    <i class="zmdi zmdi-power"></i>Đăng xuất
                                                 </a>
                                             </div>
-
-                                        </div>
-                                        <div class="account-dropdown__footer">
-                                            <a href="/Authencation/Logout">
-                                                <i class="zmdi zmdi-power"></i>Đăng xuất
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
