@@ -84,9 +84,11 @@
         line-height: 1.5;
         color: #333;
         text-align: center;
+        background-color: white;
     }
 
     div .method {
+        background-color: white;
         text-align: center;
         font-size: 16px;
     }
@@ -128,20 +130,22 @@
 <h3 class="title">
     <span><i class="fa fa-id-card-o"></i>Thông tin giao hàng</span>
 </h3>
-<p>Tên khách hàng: @ViewBag.TenKH</p>
-<p>Số điện thoại: @ViewBag.PhoneNumber</p>
-<p>Địa chỉ giao hàng: @ViewBag.Address</p>
+<div style="background-color: white;">
+    <p>Tên khách hàng: @ViewBag.TenKH</p>
+    <p>Số điện thoại: @ViewBag.PhoneNumber</p>
+    <p>Địa chỉ giao hàng: @ViewBag.Address</p>
+</div>
 <h3 class="title">
     <span><i class="fa fa-credit-card"></i>Phương thức thanh toán</span>
 </h3>
 <form action="~/Cart/XacNhanDonDat" method="get">
     <div class="method">
-        <label>
+        <label style="background-color: white">
             <input type="radio" name="paymentMethod" value="thanh toán khi nhận hàng" checked>
             <i class="fa fa-truck"></i>
             Thanh toán khi nhận hàng
         </label><br />
-        <label style="margin-right:155px;">
+        <label style="margin-right:155px; background-color: white">
             <input type="radio" name="paymentMethod" value="paypal">
             <i class="fa fa-cc-paypal"></i>
             Paypal
