@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Fashion_Website.Models;
+using PagedList;
 
 namespace Fashion_Website.Controllers
 {
@@ -15,17 +17,38 @@ namespace Fashion_Website.Controllers
         private fashionDBEntities db = new fashionDBEntities();
 
         // GET: NhanVien
-        public ActionResult Index(string search)
+        public ActionResult Index(string currentFilter, string search, int? page)
         {
             if (Session["Role"] == null)
                 return RedirectToAction("Login", "Authencation");
 
+            int pageSize = 10;
+            int pageNum = (page ?? 1);
+
             if (search != null)
             {
-                var customers = db.ADMINs.Where(customer => customer.SDT.Contains(search)).ToList();
-                return View(customers);
+                page = 1;
             }
-            return View(db.ADMINs.ToList());
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
+            var employees = from l in db.ADMINs
+                            select l;
+            
+            if (!String.IsNullOrEmpty(search))
+            {
+                employees = db.ADMINs.Where(emp => emp.SDT.Contains(search) ||
+                emp.MaAD.Contains(search) ||
+                emp.Email.Contains(search) ||
+                emp.HoTen.Contains(search));
+            }
+            employees = employees.OrderBy(id => id.MaAD);
+
+            return View(employees.ToPagedList(pageNum, pageSize));
         }
 
         // GET: NhanVien/Details/5

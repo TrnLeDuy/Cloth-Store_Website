@@ -33,19 +33,23 @@ namespace Fashion_Website.Controllers
                 {
                     //Tìm người dùng có tên đăng nhập và password hợp lệ trong CSDL
                     var user = db.KHACHHANGs.FirstOrDefault(k => k.Username == khachhang.Username && k.UserPass == khachhang.UserPass);
-                    if (user.TinhTrang == 0)
-                    {
-                        ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
-                    } else
+                    
                     if (user != null)
                     {
-                        //Lưu thông vào session
+                        if (user.TinhTrang == 0)
+                        {
+                            ViewBag.ThongBao = "Tài khoản này đã bị khóa!";
+                        }
+                        else
+                        {
+                                                    //Lưu thông vào session
                         Session["KhachHang"] = user;
                         Session["UsernameKH"] = user.Username;
                         Session["FullnameKH"] = user.HoTen;
                         Session["IDKH"] = user.MaKH;
                         Session["AvatarKH"] = user.avatar;
                         return Redirect("~/Home/TrangChu");
+                        }
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";
@@ -70,16 +74,21 @@ namespace Fashion_Website.Controllers
                     return View(user);
                 //Kiểm tra xem có người nào đã đăng ký với tên đăng nhập này hay chưa
                 var khachhang = db.KHACHHANGs.FirstOrDefault(k => k.Username == user.Username);
-                if (khachhang != null)
+
+                if (khachhang == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Tên đăng nhập này đã tồn tại");
-                    ViewBag.ThongBao = "Tên đăng nhập này đã tồn tại";
-                }
-                if (ModelState.IsValid)
-                {
-                    db.KHACHHANGs.Add(user);
-                    db.SaveChanges();
-                    return RedirectToAction("Signin");
+                    try
+                    {
+                        db.KHACHHANGs.Add(user);
+                        db.SaveChanges();
+                        return RedirectToAction("Signin");
+                    }
+                    catch (Exception ex)
+                    {
+                            // username already exists
+                            ViewBag.ThongBao = "Tên đăng nhập đã tồn tại!";
+                            return View(user);
+                    }
                 }
             }
             

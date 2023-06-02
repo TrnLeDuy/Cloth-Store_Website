@@ -141,18 +141,19 @@
                 <th>Hình Ảnh</th>
                 <th>Giá Sản Phẩm</th>
                 <th>Tình Trạng</th>
-                
+
                 @if (Session["Role"] != null && Session["Role"].ToString() == "nhan_vien")
                 {
                     <th></th>
                     <th></th>
                 }
-                    @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
-                    {
-                        <th>Sửa</th>
-                        <th>Xóa</th>
-                    }
-                </tr>
+                @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
+                {
+                    <th>Sửa</th>
+                    <th>Xóa</th>
+                }
+                <th display: none></th>
+            </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
@@ -189,6 +190,7 @@
                             <a onclick="if (confirm('Bạn chắc chắn xóa sản phẩm này không !?')) { location.href='/QuanLySanPham/XoaSanPham?MaSP=@item.MaSP'}" style="text-decoration:none; color:#00305B"><i class="fa fa-trash"></i></a>
                         </td>
                     }
+                    <td></td>
                 </tr>
             }
         </tbody>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Fashion_Website.Models.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3>CÁC ĐƠN HÀNG ĐÃ ĐƯỢC THANH TOÁN</h3>
+<hr />
+
+<table class="table">
+    <tr>
+        <th>
+            Nhân viên Xác nhận đơn
+        </th>
+        <th>
+            Ngày Lập Đơn 
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Đơn hàng của
+        </th>
+        <th>
+            Mã Đơn hàng đã được thành toán
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMIN.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayLap)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DONHANG.MaDH)
+        </td>
+    </tr>
+}
+
+</table>
