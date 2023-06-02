@@ -101,18 +101,30 @@
                         <td>Đã xác nhận</td>
                     }
                 }
-                <td>
+                @{
+                    if (item.TrangThaiDH == 0)
+                    {
+                        <td>
+                            <a class="edit-button" href="~/DonHang/XacNhanDon?MaDH=@item.MaDH">Xác nhận đơn</a>
+                        </td>                    
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+                @*<td>
                     <a class="edit-button" href="~/DonHang/XacNhanDon?MaDH=@item.MaDH">Xác nhận đơn</a>
-                </td>
+                </td>*@
             </tr>
         }
-        <tr>
+        @*<tr>
             <td colspan="7"></td>
             <td>
                 <a style="margin:5px 5px 5px 100px;" href="#">[In file Excel]</a><br />
                 <a style="margin:5px 5px 5px 100px;" href="#">[In file CSV]</a>
             </td>
-        </tr>
+        </tr>*@
     </table>
 </div>
 

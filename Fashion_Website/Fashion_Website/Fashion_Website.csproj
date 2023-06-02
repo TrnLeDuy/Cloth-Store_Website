@@ -310,6 +310,18 @@
     <Content Include="CoolAdmin-master\grid.html" />
     <Content Include="CoolAdmin-master\images\bg-title-01.jpg" />
     <Content Include="CoolAdmin-master\images\bg-title-02.jpg" />
+    <Content Include="Images\aothun1.jpg" />
+    <Content Include="Images\aothun10.jpg" />
+    <Content Include="Images\aothun11.jpg" />
+    <Content Include="Images\aothun12.jpg" />
+    <Content Include="Images\aothun2.jpg" />
+    <Content Include="Images\aothun3.jpg" />
+    <Content Include="Images\aothun4.jpg" />
+    <Content Include="Images\aothun5.jpg" />
+    <Content Include="Images\aothun6.jpg" />
+    <Content Include="Images\aothun7.jpg" />
+    <Content Include="Images\aothun8.jpg" />
+    <Content Include="Images\aothun9.jpg" />
     <Content Include="Images\avatar-01.jpg" />
     <Content Include="Images\avatar-02.jpg" />
     <Content Include="Images\avatar-03.jpg" />
@@ -517,14 +529,6 @@
     <Content Include="images\bg_img2.jpg" />
     <Content Include="images\bg_img3.jpg" />
     <Content Include="Images\fashion-background.png" />
-    <Content Include="images\img9.jpg" />
-    <Content Include="images\img10.jpg" />
-    <Content Include="images\img11.jpg" />
-    <Content Include="images\img12.jpg" />
-    <Content Include="images\img13.jpg" />
-    <Content Include="images\img6.jpg" />
-    <Content Include="images\img7.jpg" />
-    <Content Include="images\img8.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="Models\Fashion_Store.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -745,8 +749,8 @@
     <Content Include="Models\Fashion_Store.edmx.diagram">
       <DependentUpon>Fashion_Store.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\hkha928-001-site1 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\hkha928-001-site1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ptfashion-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ptfashion-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.6.4.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.4.js" />
     <Content Include="Scripts\jquery-3.6.4.min.js" />
