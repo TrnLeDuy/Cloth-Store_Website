@@ -517,14 +517,6 @@
     <Content Include="images\bg_img2.jpg" />
     <Content Include="images\bg_img3.jpg" />
     <Content Include="Images\fashion-background.png" />
-    <Content Include="images\img9.jpg" />
-    <Content Include="images\img10.jpg" />
-    <Content Include="images\img11.jpg" />
-    <Content Include="images\img12.jpg" />
-    <Content Include="images\img13.jpg" />
-    <Content Include="images\img6.jpg" />
-    <Content Include="images\img7.jpg" />
-    <Content Include="images\img8.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="Models\Fashion_Store.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
