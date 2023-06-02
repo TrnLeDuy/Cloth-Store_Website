@@ -107,19 +107,22 @@
     </ul>
 </div>
 
-<table style="margin:5px 5px 5px 400px;">
+@*<table style="margin:5px 5px 5px 400px;">
     <tr>
         <td>
             <input style="margin: 5px 5px 5px 30px; width: 30rem;" type="search" placeholder="Tìm kiếm sản phẩm" />
         </td>
     </tr>
-</table>
+</table>*@
 
 <div class="managerCB">
     <table class="table-manager">
         <thead>
             <tr>
-                <td colspan="8"></td>
+                <td colspan="5"></td>
+                <td colspan="2">
+                    <input style="margin: 5px 5px 5px 5px; width: 200px;" type="search" placeholder="Tìm kiếm sản phẩm" />
+                </td>
                 @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
                 {
                     <td class="control">
