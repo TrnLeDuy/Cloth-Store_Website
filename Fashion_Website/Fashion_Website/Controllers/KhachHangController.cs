@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Fashion_Website.Models;
+using PagedList;
 
 namespace Fashion_Website.Controllers
 {
@@ -15,19 +17,46 @@ namespace Fashion_Website.Controllers
         private fashionDBEntities db = new fashionDBEntities();
 
         // GET: KhachHang
-        public ActionResult Index(string search)
+        public ActionResult Index(string currentFilter, string search, int? page)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
+            int pageSize = 10;
+            int pageNum = (page ?? 1);
+
             if (search != null)
             {
-                var customers = db.KHACHHANGs.Where(customer => customer.SDT.Contains(search)).ToList();
-                return View(customers);
+                page = 1;
             }
-            return View(db.KHACHHANGs.ToList());
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
+            var customers = from l in db.KHACHHANGs
+                            select l;
+
+            if (search != null)
+            {
+                customers = db.KHACHHANGs.Where(customer => customer.MaKH.Contains(search) ||
+                customer.HoTen.Contains(search) ||
+                customer.SDT.Contains(search) ||
+                customer.Email.Contains(search) ||
+                customer.DiaChi.Contains(search));
+            }
+            customers = customers.OrderBy(id => id.MaKH);
+            return View(customers.ToPagedList(pageNum, pageSize));
         }
 
         // GET: KhachHang/Details/5
         public ActionResult Details(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,6 +72,9 @@ namespace Fashion_Website.Controllers
         // GET: KhachHang/Create
         public ActionResult Create()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             return View();
         }
 
@@ -66,6 +98,9 @@ namespace Fashion_Website.Controllers
         // GET: KhachHang/Edit/5
         public ActionResult Edit(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,7 +117,6 @@ namespace Fashion_Website.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaKH,HoTen,SDT,Email,NgaySinh,GioiTinh,DiaChi,Username,UserPass,TinhTrang,avatar")] KHACHHANG kHACHHANG)
         {
             if (ModelState.IsValid)
@@ -97,6 +131,9 @@ namespace Fashion_Website.Controllers
         // GET: KhachHang/Delete/5
         public ActionResult Delete(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

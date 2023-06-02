@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Fashion_Website.Models;
+using PagedList;
 
 namespace Fashion_Website.Controllers
 {
@@ -15,19 +17,46 @@ namespace Fashion_Website.Controllers
         private fashionDBEntities db = new fashionDBEntities();
 
         // GET: NhanVien
-        public ActionResult Index(string search)
+        public ActionResult Index(string currentFilter, string search, int? page)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
+            int pageSize = 10;
+            int pageNum = (page ?? 1);
+
             if (search != null)
             {
-                var customers = db.ADMINs.Where(customer => customer.SDT.Contains(search)).ToList();
-                return View(customers);
+                page = 1;
             }
-            return View(db.ADMINs.ToList());
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
+            var employees = from l in db.ADMINs
+                            select l;
+            
+            if (!String.IsNullOrEmpty(search))
+            {
+                employees = db.ADMINs.Where(emp => emp.SDT.Contains(search) ||
+                emp.MaAD.Contains(search) ||
+                emp.Email.Contains(search) ||
+                emp.HoTen.Contains(search));
+            }
+            employees = employees.OrderBy(id => id.MaAD);
+
+            return View(employees.ToPagedList(pageNum, pageSize));
         }
 
         // GET: NhanVien/Details/5
         public ActionResult Details(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,6 +72,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Create
         public ActionResult Create()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             return View();
         }
 
@@ -66,6 +98,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Edit/5
         public ActionResult Edit(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -97,6 +132,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Delete/5
         public ActionResult Delete(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

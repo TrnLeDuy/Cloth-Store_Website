@@ -5,106 +5,212 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<script src="~/Assets/js/previewFile.js"></script>
 
-<div>
-    <h4>ADMIN</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </dt>
+<div class="wrapper">
+    <div class="profile-card js-profile-card">
+        <div class="profile-card__img">
+            <img src="~/images/@Model.avatar" alt="profile card" />
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.HoTen)
-        </dd>
+        <div class="profile-card__cnt js-profile-cnt">
+            <div class="profile-card__name">@Html.DisplayFor(model => model.HoTen)</div>
+            <div class="profile-card__txt">Tài khoản : <strong>@Html.DisplayFor(model => model.Username)</strong> </div>
+            <div class="profile-card__txt">Mã Nhân viên : <strong>@Html.DisplayFor(model => model.MaAD)</strong> </div>
+            @{
+                if (Model.GioiTinh == "0")
+                {
+                    <div class="profile-card__txt">Giới tính : <strong>Nữ</strong> </div>
+                }
+                else
+                {
+                    <div class="profile-card__txt">Giới tính : <strong>Nam</strong> </div>
+                }
+            }
+            @*<div class="profile-card__txt">Giới tính : <strong>@Html.DisplayFor(model => model.GioiTinh)</strong> </div>*@
+            <div class="profile-card__txt">Số điện thoại : <strong>@Html.DisplayFor(model => model.SDT)</strong> </div>
+            <div class="profile-card__txt">Email : <strong>@Html.DisplayFor(model => model.Email)</strong> </div>
+            <div class="profile-card__txt">Địa chỉ : <strong>@Html.DisplayFor(model => model.DiaChi)</strong> </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SDT)
-        </dt>
+            <div class="profile-card-loc">
+                <span class="profile-card-loc__icon">
+                    <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+                </span>
+                @{
+                    if (Model.TinhTrang == 1)
+                    {
+                        <span class="profile-card-loc__txt">
+                            Hoạt động
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="profile-card-loc__txt">
+                            Đã Khóa
+                        </span>
+                    }
+                }
+                @*<div class="profile-card__txt">Tình Trạng : <strong>@Html.DisplayFor(model => model.TinhTrang)</strong> </div>*@
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SDT)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </dt>
+            <div class="profile-card-ctr">
+                @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+                {
+                    <a class="profile-card__button button--orange" href="~/NhanVien/Edit?id=@Model.MaAD">Cập nhật</a>
+                }
+                <a class="profile-card__button button--blue" href="~/NhanVien/Index">Trở về</a>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
-        </dd>
+        <div class="profile-card-message js-message">
+            <form class="profile-card-form">
+                <div class="profile-card-form__container">
+                    <textarea placeholder="Say something..."></textarea>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </dt>
+                <div class="profile-card-form__bottom">
+                    <button class="profile-card__button button--blue js-message-close">
+                    </button>
 
-        <dd>
-            @Html.DisplayFor(model => model.GioiTinh)
-        </dd>
+                    <button class="profile-card__button button--gray js-message-close">
+                        Cancel
+                    </button>
+                </div>
+            </form>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
+            <div class="profile-card__overlay js-message-close"></div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserPass)
-        </dt>
-
-        <dd>
-            *************************
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ChucVu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChucVu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.avatar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.avatar)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
-    {
-        <a class="profile-card__button button--orange" href="~/NhanVien/Edit?id=@Model.MaAD">Cập nhật</a>
-    } |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+
+<script>
+    var messageBox = document.querySelector('.js-message');
+    var btn = document.querySelector('.js-message-btn');
+    var card = document.querySelector('.js-profile-card');
+    var closeBtn = document.querySelectorAll('.js-message-close');
+
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        card.classList.add('active');
+    });
+
+    closeBtn.forEach(function (element, index) {
+        console.log(element);
+        element.addEventListener('click', function (e) {
+            e.preventDefault();
+            card.classList.remove('active');
+        });
+    });
+</script>
+
+@*<h2>Details</h2>
+
+    <div>
+        <h4>ADMIN</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SDT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserPass)
+            </dt>
+
+            <dd>
+                *************************
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TinhTrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TinhTrang)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ChucVu)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ChucVu)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.avatar)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.avatar)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+        {
+            <a class="profile-card__button button--orange" href="~/NhanVien/Edit?id=@Model.MaAD">Cập nhật</a>
+        } |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

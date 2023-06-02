@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Fashion_Website.Models.ADMIN>
+﻿@using Fashion_Website.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ADMIN>
 
 @{
     ViewBag.Title = "Danh sách Nhân viên";
@@ -32,12 +34,6 @@
         border: none;
         text-decoration: none;
     }
-
-    #arrange {
-        border-radius: 4px 4px 0 0;
-        padding: 10px 20px;
-        line-height: 22px;
-    }
 </style>
 
 <div class="row mt-4">
@@ -45,22 +41,23 @@
     {
         <div class="col-6">
         </div>
-
     }
+    @*@if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
+    {
+        <div class="col-6">
+            @Html.ActionLink(" ", "Create", null, new { @class = "btn btn-primary fa fa-plus" })
+        </div>
+
+    }*@
+    <div class="col-6"></div>
     <div class="col-6">
         <form style="width: 100%; padding-left: 250px;" action="/NhanVien/Index" method="get">
             <div class="form-group">
-                <input class="form-control" id="search" type="text" name="search" placeholder="" value="Tìm kiếm nhân viên" />
+                <input class="form-control" id="search" type="text" name="search" placeholder="Tìm kiếm nhân viên" value="" />
             </div>
         </form>
     </div>
-    @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
-    {
-        <div class="col-6">
-            @Html.ActionLink("Thêm Nhân viên mới", "Create", null, new { @class = "btn btn-primary" })
-        </div>
 
-    }
 
     @if ((Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien") || (Session["Role"] != null && Session["Role"].ToString() == "chu_cua_hang"))
     {
@@ -89,28 +86,37 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.MaAD)
+                        <a style="text-decoration: none; color: black;" href="~/NhanVien/Details?id=@item.MaAD">
+                            @Html.DisplayFor(modelItem => item.MaAD)
+                        </a>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.HoTen)
+                        <a style="text-decoration: none; color: black;" href="~/NhanVien/Details?id=@item.MaAD">
+                            @Html.DisplayFor(modelItem => item.HoTen)
+                        </a>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SDT)
+                        <a style="text-decoration: none; color: black;" href="~/NhanVien/Details?id=@item.MaAD">
+                            @Html.DisplayFor(modelItem => item.SDT)
+                        </a>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
+                        <a style="text-decoration: none; color: black;" href="~/NhanVien/Details?id=@item.MaAD">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </a>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Username)
+                        <a style="text-decoration: none; color: black;" href="~/NhanVien/Details?id=@item.MaAD">
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </a>
                     </td>
 
                     <td>
 
-                        <a class="detail-button" href="~/NhanVien/Details?id=@item.MaAD">Chi tiết</a>
                         @if (Session["Role"] != null && Session["Role"].ToString() == "quan_tri_vien")
                         {
-                            <a class="delete-button" href="~/NhanVien/Delete?id=@item.MaAD">Xóa</a>
-                            <a class="edit-button" href="~/NhanVien/Edit?id=@item.MaAD">Cập nhật</a>
+                            <a class="delete-button fa fa-trash" href="~/NhanVien/Delete?id=@item.MaAD"></a>
+                            <a class="edit-button fa fa-pencil" href="~/NhanVien/Edit?id=@item.MaAD"></a>
                         }
                     </td>
                 </tr>
@@ -121,3 +127,22 @@
         </table>
     }
 </div>
+<!-- Thêm mã phân trang -->
+<br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+            background-color: lightblue;
+            color: white;
+            padding: 10px 20px;
+            margin: 2px 5px;
+            border-radius: 5px;
+            border: none;
+            text-decoration: none;
+        }
+    </style>
+    <!-- Kết thúc -->

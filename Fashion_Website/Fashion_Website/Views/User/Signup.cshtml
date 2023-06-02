@@ -29,18 +29,6 @@
 
 </head>
 <body>
-    @using (Html.BeginForm("Signup", "User"))
-    {
-        if (!string.IsNullOrEmpty(ViewBag.ThongBao))
-        {
-            <div id="message-box">
-                <h3 class="warningMessage" style="text-align:center">@ViewBag.ThongBao</h3>
-                <form method="post" action="~/Views/User/Signup.cshtml">
-                    <input type="submit" name="closeMessage" value="ĐÓNG" />
-                </form>
-            </div>
-        }
-    }
     <div class="form">
         <div class="layout">
             <div class="img">
@@ -58,15 +46,24 @@
                     }
                 </div>
                 <div>
-                    @using (Html.BeginForm("Signup", "User"))
+                    @using (Html.BeginForm("Signup", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
+                        if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+                        {
+                            <div id="message-box">
+                                <h3 class="warningMessage" style="text-align:center">@ViewBag.ThongBao</h3>
+                                <form method="post" action="~/Views/User/Signup.cshtml">
+                                    <input type="submit" name="closeMessage" value="ĐÓNG" />
+                                </form>
+                            </div>
+                        }
                         @Html.AntiForgeryToken()
                         <div style="display: none">
                             <input name="MaKH" value="@{
                             String data = new Fashion_Website.Models.taoMa.taoMaKhachHang().TaoMaKhachHang();
                             @data
                             }" readonly />
-                            <input name="avatar" value="avatar-00.jpg"/>
+                            <input name="avatar" value="avatar-00.jpg" />
                             <input name="TinhTrang" value="1" />
                         </div>
 
