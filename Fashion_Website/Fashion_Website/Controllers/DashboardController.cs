@@ -15,6 +15,9 @@ namespace Fashion_Website.Controllers
         // GET: Dashboard
         public ActionResult Dashboard()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             foreach (var entity in db.HOADONs)
             {
                 total += entity.TongTien;

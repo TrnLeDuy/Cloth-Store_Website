@@ -19,6 +19,9 @@ namespace Fashion_Website.Controllers
         // GET: DonHang
         public ActionResult Index()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
             return View(dONHANGs.ToList());
         }
@@ -34,6 +37,9 @@ namespace Fashion_Website.Controllers
 
         public ActionResult XacNhanDon (String MaDH)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             fashionDBEntities db = new fashionDBEntities();
             var donhang = db.DONHANGs.FirstOrDefault(ma => ma.MaDH == MaDH);
    

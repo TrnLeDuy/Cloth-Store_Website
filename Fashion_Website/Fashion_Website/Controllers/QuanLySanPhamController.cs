@@ -20,6 +20,9 @@ namespace Fashion_Website.Controllers
         //Hiển thị danh sách sản phẩm
         public ActionResult DanhSachSanPham()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             fashionDBEntities db = new fashionDBEntities();
             var danhsachsp = db.SANPHAMs.ToList();
             return View(danhsachsp);
@@ -28,6 +31,9 @@ namespace Fashion_Website.Controllers
         //Xử lý thêm sản phẩm
         public ActionResult ThemSanPham()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             return View();
         }
 
@@ -48,6 +54,9 @@ namespace Fashion_Website.Controllers
         //Xử lý cập nhật sản phẩm
         public ActionResult CapNhatSanPham(String MaSP)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             var map = new mapSanPham();
             var sanPhamEdit = map.ChiTietSanPham(MaSP);
             return View(sanPhamEdit);
@@ -70,6 +79,9 @@ namespace Fashion_Website.Controllers
         //Xử lý xóa sản phẩm
         public ActionResult XoaSanPham(String MaSP)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             mapSanPham map = new mapSanPham();
             map.DeleteSP(MaSP);
             return RedirectToAction("DanhSachSanPham");

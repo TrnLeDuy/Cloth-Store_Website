@@ -17,6 +17,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien
         public ActionResult Index(string search)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (search != null)
             {
                 var customers = db.ADMINs.Where(customer => customer.SDT.Contains(search)).ToList();
@@ -28,6 +31,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Details/5
         public ActionResult Details(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,6 +49,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Create
         public ActionResult Create()
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             return View();
         }
 
@@ -66,6 +75,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Edit/5
         public ActionResult Edit(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -97,6 +109,9 @@ namespace Fashion_Website.Controllers
         // GET: NhanVien/Delete/5
         public ActionResult Delete(string id)
         {
+            if (Session["Role"] == null)
+                return RedirectToAction("Login", "Authencation");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

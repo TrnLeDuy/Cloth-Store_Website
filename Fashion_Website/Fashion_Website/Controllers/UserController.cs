@@ -44,6 +44,7 @@ namespace Fashion_Website.Controllers
                         Session["UsernameKH"] = user.Username;
                         Session["FullnameKH"] = user.HoTen;
                         Session["IDKH"] = user.MaKH;
+                        Session["AvatarKH"] = user.avatar;
                         return Redirect("~/Home/TrangChu");
                     }
                     else
