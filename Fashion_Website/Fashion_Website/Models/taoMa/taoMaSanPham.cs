@@ -30,7 +30,7 @@ namespace Fashion_Website.Models.taoMa
 
             if (db.SANPHAMs.Count() <= 0)
             {
-                s = Convert.ToString((ma1 + "001"));
+                s = Convert.ToString((ma1 + "00000001"));
                 return s;
             }
             else
@@ -40,9 +40,19 @@ namespace Fashion_Website.Models.taoMa
                 k = Convert.ToInt32(macuoi);
                 k = k + 1;
                 if (k < 10)
-                { s = s + "00"; }
+                { s = s + "0000000"; }
                 else if (k < 100)
-                { s = s + "0"; }
+                { s = s + "000000"; }
+                else if (k < 1000)
+                { s = s + "00000"; }
+                else if (k < 10000)
+                { s = s + "0000"; }
+                else if (k < 100000)
+                { s = s + "000"; }
+                else if (k < 1000000)
+                { s = s + "00"; }
+                else if (k < 10000000)
+                { s = s + "0"; }    
 
                 s = s + k.ToString();
 

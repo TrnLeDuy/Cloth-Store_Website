@@ -918,13 +918,9 @@
     <Content Include="Views\NhanVien\Index.cshtml" />
     <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\Cart\SanPhamGH.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\KhachHang\Edit.cshtml" />
-=======
     <Content Include="Views\Cart\HoanTatThanhToan.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\NhanVien\Create.cshtml" />
->>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,5 @@
+﻿INSERT INTO ADMIN VALUES ('AD00000001', N'Trần Lê Duy', '0904689418', 'trn.duyle@gmail.com', '02/26/2002', 'M', N'368/25A Tôn Đản', 'duytran262', '123', 1, 'quan_tri_vien', 'avatar-00.jpg')
+INSERT INTO ADMIN VALUES ('AD00000002', N'Nguyễn Hoàng Kha', '0977216038', 'hkha928@gmail.com', '12/02/2002', 'M', N'221/81 Đông Thạnh 4', 'hka928', '123', 1, 'quan_ly_cua_hang', 'avatar-00.jpg')
+INSERT INTO ADMIN VALUES ('AD00000003', N'Huỳnh Tấn Hiệp', '0949137332', 'cubihuynh@gmail.com', '06/27/2002', 'M', N'EHomeS Thành Phố Thủ Đức', 'hiephuynh', '123', 1, 'nhan_vien_ban_hang', 'avatar-00.jpg')
+INSERT INTO ADMIN VALUES ('AD00000004', N'Đoàn Phương Thảo', '0355085918', 'Doanthiphuongthao1208@gmail.com', '07/04/2002', 'F', N'354 Phan Văn Trị', 'dpthao', '123', 1, 'thu_ngan', 'avatar-00.jpg')
+INSERT INTO ADMIN VALUES ('AD00000005', N'Phan Thành Trung', '0932839089', 'trungphan@gmail.com', '02/13/2002', 'M', N'Apt 1929, 442 Jana Crossing', 'trungkaio', '123', 0, 'nhan_vien_ban_hang', 'avatar-00.jpg')

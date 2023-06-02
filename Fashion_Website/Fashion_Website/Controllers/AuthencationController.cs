@@ -51,6 +51,7 @@ namespace Fashion_Website.Controllers
                         Session["Fullname"] = user.HoTen;
                         Session["ID"] = user.MaAD;
                         Session["Role"] = user.ChucVu;
+                        Session["Avatar"] = user.avatar;
                         return Redirect("~/Dashboard/Dashboard");
                     }
                     else

@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[ADMIN](
 	[UserPass] [char](30) NULL,
 	[TinhTrang] [int] NULL,
 	[ChucVu] [nvarchar](50) NOT NULL,
-	avatar varchar(255)
+	[avatar] varchar(255)
  CONSTRAINT [PK_ADMIN] PRIMARY KEY CLUSTERED 
 (
 	[MaAD] ASC
@@ -185,13 +185,13 @@ GO
 CREATE TABLE [dbo].[KHACHHANG](
 	[MaKH] [char](10) NOT NULL,
 	[HoTen] [nvarchar](100) NOT NULL,
-	[SDT] [char](11) NULL,
+	[SDT] [char](11) NOT NULL,
 	[Email] [char](100) NULL,
-	[NgaySinh] [date] NOT NULL,
+	[NgaySinh] [date] NULL,
 	[GioiTinh] [char](1) NOT NULL,
 	[DiaChi] [nvarchar](200) NOT NULL,
-	[Username] [char](50) NULL,
-	[UserPass] [char](30) NULL,
+	[Username] [char](50) NOT NULL UNIQUE,
+	[UserPass] [char](30) NOT NULL,
 	[TinhTrang] [int] NULL,
 	avatar varchar(255)
  CONSTRAINT [PK_KHACHHANG] PRIMARY KEY CLUSTERED 
@@ -223,7 +223,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[LOAISANPHAM](
 	[MaLoaiSP] [char](10) NOT NULL,
-	[TenLoaiSP] [nvarchar](100) NOT NULL,
+	[TenLoaiSP] [nvarchar](100) NOT NULL UNIQUE,
  CONSTRAINT [PK_LOAISANPHAM] PRIMARY KEY CLUSTERED 
 (
 	[MaLoaiSP] ASC
@@ -307,44 +307,3 @@ GO
 USE [fashionDB]
 GO
 
-
-insert into KHACHHANG values ('KH001', N'Nguyễn Hoàng Kha', '0977216038', 'hkha928@gmail.com', '12/02/2002', 'M', N'221/ 81 Đông Thạnh 4', 'hkha928', '123', 1, 'avartar-01.jpg')
-
-
-insert into ADMIN values ('AD001', N'Trần Lê Duy', '0904689418', 'trn.duyle@gmail.com', '02/26/2002', 'M', N'368/25A Tôn Đản', 'admin', '123', 1, 'quan_tri_vien', 'avartar-02.jpg')
-
-
-insert into LOAISANPHAM values('LSP001', N'Áo thun')
-insert into LOAISANPHAM values('LSP002', N'Áo polo')
-
-
-insert into SANPHAM values('SP001', N'Áo trắng trơn', 'img6.jpg', N'Đây là mô tả', 100000, 1, 'LSP001')
-insert into SANPHAM values('SP002', N'Áo đỏ trơn', 'img7.jpg', N'Đây là mô tả', 150000, 1, 'LSP001')
-
-
-insert into KICHCOSP values('1', 'S', 100, 'SP001')
-insert into KICHCOSP values('2', 'M', 100, 'SP001')
-insert into KICHCOSP values('3', 'L', 100, 'SP001')
-insert into KICHCOSP values('4', 'S', 100, 'SP002')
-insert into KICHCOSP values('5', 'M', 100, 'SP002')
-insert into KICHCOSP values('6', 'L', 100, 'SP002')
-
-insert into DONHANG values('DH001', '05/05/2023', '05/06/2023', N'Chuyển khoản', 0, 200000, 'KH001')
-
-insert into CTDONHANG values('CTDH001', 1, 100000, N'Áo trắng trơn', 'S', 'DH001', 'SP001')
-insert into CTDONHANG values('CTDH002', 1, 100000, N'Áo trắng trơn', 'M', 'DH001', 'SP001')
-
-insert into HOADON values('HD001', '05/05/2023', 200000, 'KH001', 'DH001', 'AD001')
-
-insert into CTHOADON values('CTHD001', N'Áo trắng trơn', 100000, 1, 'S', 100000, 'HD001', 'SP001')
-insert into CTHOADON values('CTHD002', N'Áo trắng trơn', 100000, 1, 'M', 100000, 'HD001', 'SP001')
-
-select * from KHACHHANG
-select * from ADMIN 
-select * from LOAISANPHAM
-select * from SANPHAM
-select * from KICHCOSP
-select * from DONHANG
-select * from CTDONHANG
-select * from HOADON
-select * from CTHOADON
